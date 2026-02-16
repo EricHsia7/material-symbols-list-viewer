@@ -49,7 +49,7 @@ module.exports = (env, argv) => {
         skipWaiting: true,
         exclude: [/\.map$/, /\.erm$/, /LICENSE\.txt$/],
         include: [/\.js|css|png$/, /index\.html$/],
-        cacheId: `material-symbols-list-viewer-${thisVersion.hash}`,
+        cacheId: `material-symbols-list-viewer`,
         runtimeCaching: [
           {
             urlPattern: /^https:\/\/fonts\.googleapis\.com/,
