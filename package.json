@@ -1,0 +1,58 @@
+{
+  "name": "@erichsia7/material-symbols-list-viewer",
+  "version": "0.0.1",
+  "description": "",
+  "private": false,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/EricHsia7/material-symbols-list-viewer.git"
+  },
+  "keywords": ["material-symbols-list-viewer", "typescript"],
+  "author": "EricHsia7",
+  "bugs": {
+    "url": "https://github.com/erichsia7/material-symbols-list-viewer/issues"
+  },
+  "sideEffects": ["*.css"],
+  "homepage": "https://erichsia7.github.io/material-symbols-list-viewer/",
+  "devDependencies": {
+    "@babel/core": "7.29.0",
+    "@babel/plugin-transform-runtime": "7.29.0",
+    "@babel/preset-env": "7.29.0",
+    "@babel/preset-typescript": "7.28.5",
+    "@csstools/postcss-color-mix-function": "4.0.1",
+    "@eslint/js": "9.39.2",
+    "@resvg/resvg-js": "2.6.2",
+    "@typescript-eslint/eslint-plugin": "8.54.0",
+    "@typescript-eslint/parser": "8.54.0",
+    "acorn": "8.15.0",
+    "babel-loader": "10.0.0",
+    "babel-preset-modules": "0.0.2",
+    "css-loader": "7.1.3",
+    "css-minimizer-webpack-plugin": "7.0.4",
+    "cssnano-preset-advanced": "7.0.10",
+    "eslint-webpack-plugin": "5.0.2",
+    "eslint": "9.39.2",
+    "gh-pages": "6.3.0",
+    "html-webpack-plugin": "5.6.6",
+    "jimp": "1.6.0",
+    "magic-string": "0.30.21",
+    "mangle-css-class-webpack-plugin": "5.1.0",
+    "mini-css-extract-plugin": "2.10.0",
+    "postcss-loader": "8.2.0",
+    "postcss": "8.5.6",
+    "stylelint-config-standard": "40.0.0",
+    "stylelint-webpack-plugin": "5.1.0",
+    "stylelint": "17.1.1",
+    "typescript-eslint": "8.54.0",
+    "webpack-bundle-analyzer": "5.2.0",
+    "webpack-cli": "6.0.1",
+    "webpack-sources": "3.3.3",
+    "webpack-subresource-integrity": "5.1.0",
+    "webpack": "5.105.0",
+    "workbox-webpack-plugin": "7.4.0"
+  },
+  "dependencies": {
+    "js-levenshtein": "1.1.6",
+    "pako": "2.1.0"
+  }
+}
