@@ -16,8 +16,6 @@ const postcssColorMixFunction = require('@csstools/postcss-color-mix-function');
 const { Hasher } = require('./hasher');
 const { ErrorCodePlugin } = require('./plugins/error-code-plugin');
 const { PostCssOptimizationPlugin } = require('./plugins/postcss-optimization-plugin');
-const splashScreenHTML = require('./dist/splash-screen/html.json');
-const thisVersion = require('./dist/version.json');
 
 module.exports = (env, argv) => {
   return {
@@ -31,15 +29,6 @@ module.exports = (env, argv) => {
         mangleCssVariables: true,
         /*ignorePrefix: [''],*/
         log: false
-      }),
-      new webpack.DefinePlugin({
-        'process.env': {
-          HASH: JSON.stringify(thisVersion.hash),
-          FULL_HASH: JSON.stringify(thisVersion.full_hash),
-          BRANCH_NAME: JSON.stringify(thisVersion.branch_name),
-          TIME_STAMP: JSON.stringify(thisVersion.timestamp),
-          SPLASH_SCREEN_HTML: JSON.stringify(splashScreenHTML.html)
-        }
       }),
       new HtmlWebpackPlugin({
         template: './src/index.html', // Path to your custom HTML template file
