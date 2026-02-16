@@ -48,8 +48,8 @@ jobs:
 
       - name: Copy things to ./dist/
         run: |
-        # cp -r ./icons/ ./dist/icons/
           cp -r ./manifest.json ./dist/manifest.json
+        # cp -r ./icons/ ./dist/icons/
         # cp -r ./open-graph-image.png ./dist/open-graph-image.png
 
       - name: Deploy with gh-pages
