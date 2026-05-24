@@ -1,3 +1,5 @@
+import { getIntersection } from '../tools/array';
+import { levenshtein } from '../tools/levenshtein';
 import { getSearchIndex } from './apis/get-search-index';
 
 const variableCache_searchStructure = {
@@ -5,7 +7,7 @@ const variableCache_searchStructure = {
   data: {}
 };
 
-async function initializeSearch() {
+export async function initializeSearch() {
   const searchIndex = await getSearchIndex();
 
   const dictionary = searchIndex.dictionary.split(',');
@@ -40,8 +42,13 @@ async function initializeSearch() {
   variableCache_searchStructure.data = { dictionary, names, wordToSymbols, symbolToWords };
 }
 
-export function searchFor(query: string, searchFrom: number = 0, skipBroadTerms: boolean = true, broadThreshold: number = 0.3) {
+export function searchFor(query: string, searchFrom: number = 0, skipBroadTerms: boolean = true, broadThreshold: number = 0.3): Array<[symbolName: string, score: number]> {
+  if (!variableCache_searchStructure.available) {
+    return [];
+  }
+
   const { dictionary, names, wordToSymbols, symbolToWords } = variableCache_searchStructure;
+
   const broadLength = Math.round(names.length * broadThreshold);
 
   // Split query
@@ -89,11 +96,11 @@ export function searchFor(query: string, searchFrom: number = 0, skipBroadTerms:
   // Intersect
   let candidates = indexArrays[0];
   for (let i = 1; i < indexArraysLength; i++) {
-    candidates = this.__getIntersection(candidates, indexArrays[i]);
+    candidates = getIntersection(candidates, indexArrays[i]);
   }
 
   // Rank candidates
-  const scored = [];
+  const scored: Array<[symbolName: string, score: number]> = [];
   for (let i = 0, l = candidates.length; i < l; i++) {
     let score = 0;
     for (let j = queryWordsLength - 1; j >= 0; j--) {
