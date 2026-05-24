@@ -47,7 +47,7 @@ export function searchFor(query: string, searchFrom: number = 0, skipBroadTerms:
     return [];
   }
 
-  const { dictionary, names, wordToSymbols, symbolToWords } = variableCache_searchStructure;
+  const { dictionary, names, wordToSymbols, symbolToWords } = variableCache_searchStructure.data;
 
   const broadLength = Math.round(names.length * broadThreshold);
 
