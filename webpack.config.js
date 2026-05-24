@@ -7,11 +7,8 @@ const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const AdvancedPreset = require('cssnano-preset-advanced');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const WorkboxPlugin = require('workbox-webpack-plugin');
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const MangleCssClassPlugin = require('mangle-css-class-webpack-plugin');
 const { SubresourceIntegrityPlugin } = require('webpack-subresource-integrity');
-const ESLintPlugin = require('eslint-webpack-plugin');
-const StylelintPlugin = require('stylelint-webpack-plugin');
 const postcssColorMixFunction = require('@csstools/postcss-color-mix-function');
 const { Hasher } = require('./hasher');
 const { ErrorCodePlugin } = require('./plugins/error-code-plugin');
@@ -50,6 +47,8 @@ module.exports = (env, argv) => {
         exclude: [/\.map$/, /\.erm$/, /LICENSE\.txt$/],
         include: [/\.js|css|png$/, /index\.html$/],
         cacheId: `material-symbols-list-viewer-${new Date().getTime()}`,
+        navigateFallback: './index.html',
+        navigateFallbackDenylist: [/\/[^\/]+\.(?!(html$))[^\/.]{0,}$/],
         runtimeCaching: [
           {
             urlPattern: /^https:\/\/fonts\.googleapis\.com/,
@@ -70,19 +69,6 @@ module.exports = (env, argv) => {
       new SubresourceIntegrityPlugin({
         hashFuncNames: ['sha512'], // Hash algorithms
         enabled: true
-      }),
-      new StylelintPlugin({
-        extensions: ['css'],
-        fix: false,
-        failOnError: false
-      }),
-      new ESLintPlugin({
-        extensions: ['js', 'jsx', 'ts', 'tsx'],
-        failOnError: false
-      }),
-      new BundleAnalyzerPlugin({
-        analyzerMode: 'static', // Generate static HTML report
-        reportFilename: 'bundle-analysis-report/index.html' // Output file path and name
       })
     ],
     target: ['web', 'es6'], // Target the browser environment (es6 is the default for browsers)
@@ -140,7 +126,7 @@ module.exports = (env, argv) => {
           plugins: [postcssColorMixFunction({ preserve: false, enableProgressiveCustomProperties: false })]
         }),
         new CssMinimizerPlugin({
-          parallel: 4,
+          parallel: true,
           minimizerOptions: {
             preset: [
               'default',
