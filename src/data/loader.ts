@@ -1,6 +1,6 @@
 const { inflate } = require('pako/lib/inflate');
 
-async function fetchData(url: string): Promise<object> {
+export async function fetchData(url: string): Promise<object> {
   // Fetch data
   const response = await fetch(url);
   if (!response.ok) {

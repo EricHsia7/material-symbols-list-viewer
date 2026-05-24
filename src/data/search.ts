@@ -1,35 +1,47 @@
+import { getSearchIndex } from './apis/get-search-index';
 
-export function prepareForMaterialSymbolsSearch(materialSymbols: UnpackedMaterialSymbolsSearchIndex): void {
-  if (readyToSearch) return;
+const variableCache_searchStructure = {
+  available: false,
+  data: {}
+};
 
-  const dictionary = materialSymbols.dictionary.split(',');
-  const symbols = materialSymbols.symbols;
+async function initializeSearch() {
+  const searchIndex = await getSearchIndex();
+
+  const dictionary = searchIndex.dictionary.split(',');
+  const symbols = searchIndex.symbols;
   const names = [];
-  const wordToSymbols: { [wordIndexKey: string]: Array<number> } = {};
+  const wordToSymbols: Record<string, Array<number>> = {}; // { w0: [0, 2], ... }
+  const symbolToWords: Array<Array<number>> = []; // [[0, 1, 2, 3], [4, 5, 6], ...]
 
   let nameIndex = 0;
-  for (const symbol in symbols) {
+  for (const symbolKey in symbols) {
     // Create list of symbol names
+    const symbolNameComponents = symbolKey.split('_');
+    for (let i = symbolNameComponents.length - 1; i >= 0; i--) {
+      symbolNameComponents.splice(i, 1, dictionary[parseInt(symbolNameComponents[i], 36)]);
+    }
+    const symbol = symbolNameComponents.join('_');
     names.push(symbol);
     // Build wordIndex → nameIndex mapping
-    for (const wordIndex of symbols[symbol]) {
-      const wordIndexKey = `w${wordIndex}`;
-      if (!hasOwnProperty(wordToSymbols, wordIndexKey)) {
-        wordToSymbols[wordIndexKey] = [];
+    const wordIndexes = symbols[symbolKey].split(',').map((k) => parseInt(k, 36));
+    for (const wordIndex of wordIndexes) {
+      const key = `w${wordIndex}`;
+      if (!wordToSymbols.hasOwnProperty(key)) {
+        wordToSymbols[key] = [];
       }
-      wordToSymbols[wordIndexKey].push(nameIndex);
+      wordToSymbols[key].push(nameIndex);
     }
+    symbolToWords.push(wordIndexes);
     nameIndex++;
   }
 
-  searchStructure = { dictionary, names, wordToSymbols };
-  readyToSearch = true;
+  variableCache_searchStructure.available = true;
+  variableCache_searchStructure.data = { dictionary, names, wordToSymbols, symbolToWords };
 }
 
-export function searchForMaterialSymbols(query: string, searchFrom: number = 0, skipBroadTerms: boolean = true, broadThreshold: number = 0.3): Array<{ item: MaterialSymbols; score: number }> {
-  if (!readyToSearch) return [];
-
-  const { dictionary, names, wordToSymbols } = searchStructure;
+export function searchFor(query: string, searchFrom: number = 0, skipBroadTerms: boolean = true, broadThreshold: number = 0.3) {
+  const { dictionary, names, wordToSymbols, symbolToWords } = variableCache_searchStructure;
   const broadLength = Math.round(names.length * broadThreshold);
 
   // Split query
@@ -38,7 +50,7 @@ export function searchForMaterialSymbols(query: string, searchFrom: number = 0, 
       query
         .trim()
         .toLowerCase()
-        .split(/[\s_-]+/)
+        .split(/[\s_]+/)
     )
   );
   const queryWordsLength = queryWords.length;
@@ -77,7 +89,7 @@ export function searchForMaterialSymbols(query: string, searchFrom: number = 0, 
   // Intersect
   let candidates = indexArrays[0];
   for (let i = 1; i < indexArraysLength; i++) {
-    candidates = getIntersection(candidates, indexArrays[i]);
+    candidates = this.__getIntersection(candidates, indexArrays[i]);
   }
 
   // Rank candidates
@@ -88,15 +100,13 @@ export function searchForMaterialSymbols(query: string, searchFrom: number = 0, 
       if (matchedWordIndexes[j] < 0) continue;
       const symbolWordIndexes = wordToSymbols[`w${matchedWordIndexes[j]}`] || [];
       if (symbolWordIndexes.indexOf(candidates[i]) > -1) {
-        score -= j; // earlier query words = higher weight
+        score -= j + (symbolToWords[candidates[i]].indexOf(matchedWordIndexes[j]) + 1) * matchedWordIndexes[j];
+        // earlier query words && higher proability = higher weight
       }
     }
-    scored.push({
-      item: names[candidates[i]],
-      score: score
-    });
+    scored.push([names[candidates[i]], score]);
   }
 
-  scored.sort((a, b) => b.score - a.score);
+  scored.sort((a, b) => b[1] - a[1]);
   return scored;
 }
