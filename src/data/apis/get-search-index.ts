@@ -36,7 +36,7 @@ export async function getSearchIndex(): Promise<SearchIndex> {
     return variableCache_searchIndex.data as SearchIndex;
   }
   const manifest = await getManifest();
-  const url = manifest.search_index.compressed;
+  const url = `${manifest.search_index.compressed}?_=${manifest.search_index.sha256}`;
   const data = (await fetchData(url)) as SearchIndex;
   variableCache_searchIndex.available = true;
   variableCache_searchIndex.data = data;

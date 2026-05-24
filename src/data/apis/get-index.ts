@@ -15,7 +15,7 @@ export async function getIndex(): Promise<Index> {
     return variableCache_index.data as Index;
   }
   const manifest = await getManifest();
-  const url = manifest.index.compressed;
+  const url = `${manifest.index.compressed}?_=${manifest.index.sha256}`;
   const data = (await fetchData(url)) as Index;
   variableCache_index.available = true;
   variableCache_index.data = data;

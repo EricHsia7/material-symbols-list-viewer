@@ -33,7 +33,7 @@ export async function getSimilarity(): Promise<Similarity> {
     return variableCache_similarity.data as Similarity;
   }
   const manifest = await getManifest();
-  const url = manifest.similarity.compressed;
+  const url = `${manifest.similarity.compressed}?_=${manifest.similarity.sha256}`;
   const data = (await fetchData(url)) as Similarity;
   variableCache_similarity.available = true;
   variableCache_similarity.data = data;
