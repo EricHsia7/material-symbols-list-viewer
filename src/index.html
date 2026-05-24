@@ -5,5 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Material Symbols List Viewer</title>
   </head>
-  <body></body>
+  <body>
+    <div class="css_gallery_field"></div>
+    <div class="css_search_field"></div>
+    <div class="css_symbol_field"></div>
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        viewer.initialize();
+      });
+      window.addEventListener('load', function () {
+        if ('serviceWorker' in navigator) {
+          navigator.serviceWorker.register('./service-worker.js').then((registration) => {
+            registration.update();
+          });
+        }
+      });
+    </script>
+  </body>
 </html>

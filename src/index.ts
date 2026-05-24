@@ -4,7 +4,7 @@ import { getSearchIndex } from './data/apis/get-search-index';
 import { getSimilarity } from './data/apis/get-similarity';
 import { initializeSearch, searchFor } from './data/search';
 
-window.materialSymbolsListViewer = {
+window.viewer = {
   initialize: async function () {
     await getManifest();
     await Promise.all([getIndex(), getSearchIndex(), getSimilarity()]);
@@ -14,4 +14,4 @@ window.materialSymbolsListViewer = {
   }
 };
 
-export default window.materialSymbolsListViewer;
+export default window.viewer;
