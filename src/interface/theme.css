@@ -1,3 +1,16 @@
 :root {
-  --m-ffffff: #ffffff
+  --m-cssvar-ffffff: rgb(255, 255, 255);
+  --m-cssvar-f9f9fb: rgb(249, 249, 251);
+  --m-cssvar-333333: rgb(51, 51, 51);
+
+  --m-cssvar-head-background: linear-gradient(180deg, var(--m-cssvar-ffffff), rgba(0, 0, 0, 0));
+}
+
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --m-cssvar-ffffff: rgb(0, 0, 0);
+    --m-cssvar-f9f9fb: rgb(9, 10, 12);
+    --m-cssvar-333333: rgb(255, 255, 255);
+  }
 }

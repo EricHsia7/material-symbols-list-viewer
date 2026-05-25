@@ -4,6 +4,12 @@ import { getSearchIndex } from './data/apis/get-search-index';
 import { getSimilarity } from './data/apis/get-similarity';
 import { initializeSearch, searchFor } from './data/search';
 
+import './interface/theme.css';
+import './interface/icons/index.css';
+
+import './interface/gallery/field.css';
+import './interface/gallery/head.css';
+
 window.viewer = {
   initialize: async function () {
     await getManifest();
