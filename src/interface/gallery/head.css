@@ -20,6 +20,7 @@
   align-items: center;
   contain: layout;
   overflow: clip;
+  color: var(--m-cssvar-333333);
 }
 
 .css_gallery_field .css_gallery_head .css_gallery_head_button_left,
