@@ -15,6 +15,9 @@
   border-radius: calc(45px / 2);
   contain: layout;
   overflow: clip;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .css_gallery_field .css_gallery_head .css_gallery_head_button_left {
