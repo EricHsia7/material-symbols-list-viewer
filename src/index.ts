@@ -5,10 +5,14 @@ import { getSimilarity } from './data/apis/get-similarity';
 import { initializeSearch, searchFor } from './data/search';
 
 import './interface/theme.css';
+
+import './interface/index.css';
+
 import './interface/icons/index.css';
 
 import './interface/gallery/field.css';
 import './interface/gallery/head.css';
+import './interface/gallery/body.css';
 
 window.viewer = {
   initialize: async function () {
