@@ -1,0 +1,52 @@
+html {
+  background-color: var(--b-cssvar-ffffff-normal);
+  height: 100vh;
+  overscroll-behavior-y: none;
+  overflow: clip;
+}
+
+html::-webkit-scrollbar {
+  display: none;
+}
+
+body {
+  font-family: "Noto Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  background-color: var(--b-cssvar-ffffff-normal);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  height: 100vh;
+  overscroll-behavior-y: none;
+  overflow: clip;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+body * {
+  appearance: none;
+  -webkit-appearance: none;
+  outline: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  user-select: none;
+  -webkit-user-select: none;
+  cursor: default;
+}
+
+body input[type="text"] {
+  font-family: "Noto Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  font-variation-settings: "wdth" 100;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  user-select: text;
+  -webkit-user-select: text;
+  cursor: text;
+}
