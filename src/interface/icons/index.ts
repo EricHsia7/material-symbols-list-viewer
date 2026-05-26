@@ -10,3 +10,8 @@ export function getBlankIconElement(): HTMLSpanElement {
   iconElement.classList.add('css_material_symbols_rounded');
   return iconElement;
 }
+
+export function setIcon(parentElement: HTMLElement, identifier: string): void {
+  const thisSpanElement = parentElement.querySelector('span.css_material_symbols_rounded') as HTMLElement;
+  thisSpanElement.innerText = identifier;
+}

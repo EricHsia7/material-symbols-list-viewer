@@ -1,6 +1,6 @@
 import { getIndex } from '../../data/apis/get-index';
 import { hasOwnProperty } from '../../tools';
-import { getBlankIconElement } from '../icons';
+import { getBlankIconElement, setIcon } from '../icons';
 
 const galleryField = document.querySelector('.css_gallery_field') as HTMLElement;
 const galleryBodyElement = galleryField.querySelector('.css_gallery_body') as HTMLElement;
@@ -18,9 +18,15 @@ function generateElementOfSymbol(): HTMLElement {
 
 function updateGalleryField(symbols: Array<string>, skeletonScreen: boolean): void {
   function updateSymbol(thisElement: HTMLElement, thisSymbol: string, previousSymbol: string | null) {
-    function updateIcon(thisElement: HTMLElement, thisSymbol: string): void {}
+    function updateIcon(thisElement: HTMLElement, thisSymbol: string): void {
+      setIcon(thisElement, thisSymbol);
+    }
 
-    function updateOnclick(thisElement: HTMLElement, thisSymbol: string): void {}
+    function updateOnclick(thisElement: HTMLElement, thisSymbol: string): void {
+      thisElement.onclick = function () {
+        // open detail field
+      };
+    }
 
     if (thisSymbol !== previousSymbol) {
       updateIcon(thisElement, thisSymbol);
