@@ -6,7 +6,6 @@
   width: clamp(240px, 100%, 1000px);
   display: grid;
   gap: 5px;
-  grid-template-columns: repeat(3, 1fr);
   padding: 5px;
   box-sizing: border-box;
   overflow: clip;
