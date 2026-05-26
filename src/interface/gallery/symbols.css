@@ -13,19 +13,19 @@
   contain: layout;
 }
 
-@media (max-width: 500px) {
+@media (min-width: 240px) and (max-width: 500px) {
   .css_gallery_field .css_gallery_body .css_gallery_symbols {
     grid-template-columns: repeat(3, 1fr);
   }
 }
 
-@media (max-width: 800px) {
+@media (min-width: 501px) and (max-width: 800px) {
   .css_gallery_field .css_gallery_body .css_gallery_symbols {
     grid-template-columns: repeat(4, 1fr);
   }
 }
 
-@media (max-width: 1000px) {
+@media (min-width: 801px) and (max-width: 1000px) {
   .css_gallery_field .css_gallery_body .css_gallery_symbols {
     grid-template-columns: repeat(5, 1fr);
   }
