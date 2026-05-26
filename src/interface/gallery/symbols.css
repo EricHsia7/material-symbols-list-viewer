@@ -2,33 +2,15 @@
 .css_gallery_field .css_gallery_body .css_gallery_symbols {
   position: relative;
   top: 60px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: clamp(240px, 100%, 1000px);
-  display: grid;
-  gap: 5px;
-  padding: 5px;
+  left: 0px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  padding: 7.5px;
   box-sizing: border-box;
   overflow: clip;
   contain: layout;
-}
-
-@media (min-width: 240px) and (max-width: 500px) {
-  .css_gallery_field .css_gallery_body .css_gallery_symbols {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-@media (min-width: 501px) and (max-width: 800px) {
-  .css_gallery_field .css_gallery_body .css_gallery_symbols {
-    grid-template-columns: repeat(4, 1fr);
-  }
-}
-
-@media (min-width: 801px) {
-  .css_gallery_field .css_gallery_body .css_gallery_symbols {
-    grid-template-columns: repeat(5, 1fr);
-  }
 }
 
 /* symbols > symbol */
@@ -38,6 +20,7 @@
   align-items: center;
   justify-content: center;
   aspect-ratio: 1 / 1;
+  width: clamp(80px, 20%, 120px);
 }
 
 .css_gallery_field .css_gallery_body .css_gallery_symbols .css_gallery_symbols_symbol span.css_material_symbols_rounded {
