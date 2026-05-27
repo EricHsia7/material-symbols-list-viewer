@@ -3,7 +3,7 @@ import { getBlankIconElement, setIcon } from '../icons';
 import { openSearch } from '../search';
 
 const galleryField = document.querySelector('.css_gallery_field') as HTMLElement;
-const galleryHeadElement = galleryField.querySelector('.css_gallery_haed') as HTMLElement;
+const galleryHeadElement = galleryField.querySelector('.css_gallery_head') as HTMLElement;
 const galleryLeftButtonElement = galleryHeadElement.querySelector('.css_gallery_head_button_left') as HTMLElement;
 const galleryRightButtonElement = galleryHeadElement.querySelector('.css_gallery_head_button_right') as HTMLElement;
 
