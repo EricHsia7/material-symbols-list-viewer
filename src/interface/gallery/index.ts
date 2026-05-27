@@ -1,8 +1,12 @@
 import { getIndex } from '../../data/apis/get-index';
-import { hasOwnProperty } from '../../tools';
 import { getBlankIconElement, setIcon } from '../icons';
+import { openSearch } from '../search';
 
 const galleryField = document.querySelector('.css_gallery_field') as HTMLElement;
+const galleryHeadElement = galleryField.querySelector('.css_gallery_haed') as HTMLElement;
+const galleryLeftButtonElement = galleryHeadElement.querySelector('.css_gallery_head_button_left') as HTMLElement;
+const galleryRightButtonElement = galleryHeadElement.querySelector('.css_gallery_head_button_right') as HTMLElement;
+
 const galleryBodyElement = galleryField.querySelector('.css_gallery_body') as HTMLElement;
 const gallerySymbolsElement = galleryBodyElement.querySelector('.css_gallery_symbols') as HTMLElement;
 
@@ -24,13 +28,20 @@ function updateGalleryField(symbols: Array<string>, skeletonScreen: boolean): vo
 
     function updateOnclick(thisElement: HTMLElement, thisSymbol: string): void {
       thisElement.onclick = function () {
-        // open detail field
+        // open symbol
       };
+    }
+
+    function updateSkeletonScreen(thisElement: HTMLElement, skeletonScreen: boolean): void {
+      thisElement.setAttribute('skeleton-screen', skeletonScreen ? 'true' : 'false');
     }
 
     if (thisSymbol !== previousSymbol) {
       updateIcon(thisElement, thisSymbol);
       updateOnclick(thisElement, thisSymbol);
+    }
+    if (previousSkeletonScreen !== skeletonScreen) {
+      updateSkeletonScreen(thisElement, skeletonScreen);
     }
   }
 
@@ -73,25 +84,28 @@ function updateGalleryField(symbols: Array<string>, skeletonScreen: boolean): vo
 }
 
 export async function initializeGalleryField() {
+  galleryRightButtonElement.onclick = function () {
+    openSearch();
+  };
   updateGalleryField(new Array(20).fill(''), true);
   const index = await getIndex();
   const symbols = index.list.split(',');
   updateGalleryField(symbols, false);
 }
 
-export function showGalleryField(): void {
+export function showGallery(): void {
   galleryField.setAttribute('displayed', 'true');
 }
 
-export function hideGalleryField(): void {
+export function hideGallery(): void {
   galleryField.setAttribute('displayed', 'false');
 }
 
-export function openGalleryField(): void {
-  showGalleryField();
+export function openGallery(): void {
+  showGallery();
   initializeGalleryField();
 }
 
-export function closeGalleryField(): void {
-  hideGalleryField();
+export function closeGallery(): void {
+  hideGallery();
 }

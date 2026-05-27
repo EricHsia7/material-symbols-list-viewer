@@ -29,3 +29,10 @@
   width: 48px;
   height: 48px;
 }
+
+/* skeleton-screen: true */
+.css_gallery_field .css_gallery_body .css_gallery_symbols .css_gallery_symbols_symbol[skeleton-screen="true"] span.css_material_symbols_rounded {
+  border-radius: 15px;
+  background: var(--m-cssvar-f9f9fb);
+  color: rgba(0, 0, 0, 0);
+}

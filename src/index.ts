@@ -3,6 +3,7 @@ import { getSearchIndex } from './data/apis/get-search-index';
 import { getSimilarity } from './data/apis/get-similarity';
 import { initializeSearch, searchFor } from './data/search';
 import { initializeGalleryField } from './interface/gallery';
+import { initializeSearchField } from './interface/search';
 
 import './interface/theme.css';
 
@@ -15,11 +16,18 @@ import './interface/gallery/head.css';
 import './interface/gallery/body.css';
 import './interface/gallery/symbols.css';
 
+import './interface/search/field.css';
+import './interface/search/head.css';
+import './interface/search/body.css';
+import './interface/search/results.css';
+
 window.viewer = {
   initialize: async function () {
     await getManifest();
     await Promise.all([initializeGalleryField(), getSearchIndex(), getSimilarity()]);
     await initializeSearch();
+    await initializeSearchField();
+
     console.log(searchFor('code'));
   }
 };
