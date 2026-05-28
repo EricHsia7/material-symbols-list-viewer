@@ -22,7 +22,8 @@ import './interface/search/results.css';
 
 window.viewer = {
   initialize: async function () {
-    await Promise.all([initializeGalleryField(), getSearchIndex(), getSimilarity()]);
+    await initializeGalleryField();
+    await Promise.all([getSearchIndex(), getSimilarity()]);
     await initializeSearch();
     await initializeSearchField();
   }
