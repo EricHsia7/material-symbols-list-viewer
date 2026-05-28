@@ -36,13 +36,15 @@
 .css_search_field .css_search_body .css_search_results .css_search_result .css_search_result_symbol_name {
   position: absolute;
   top: 0px;
-  left: 45px;
+  left: 60px;
   width: calc(100% - 60px - (60px - 45px) / 2);
   height: 45px;
   contain: layout;
-  overflow: clip;
-  display: flex;
-  align-items: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: keep-all;
+  white-space: nowrap;
+  line-height: 45px;
   color: var(--m-cssvar-333333);
   font-size: 20px;
 }
