@@ -20,6 +20,13 @@ import './interface/search/head.css';
 import './interface/search/body.css';
 import './interface/search/results.css';
 
+import './interface/symbol/field.css';
+import './interface/symbol/head.css';
+import './interface/symbol/body.css';
+import './interface/symbol/symbol.css';
+import './interface/symbol/similar-symbols.css';
+import './interface/symbol/keywords.css';
+
 window.viewer = {
   initialize: async function () {
     await initializeGalleryField();
