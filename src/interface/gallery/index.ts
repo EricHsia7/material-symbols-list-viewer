@@ -87,7 +87,7 @@ export async function initializeGalleryField() {
   galleryRightButtonElement.onclick = function () {
     openSearch();
   };
-  updateGalleryField(new Array(30).fill(''), true);
+  updateGalleryField(new Array(64).fill(''), true);
   const index = await getIndex();
   const symbols = index.list.split(',');
   updateGalleryField(symbols, false);
