@@ -23,7 +23,6 @@ import './interface/search/results.css';
 
 window.viewer = {
   initialize: async function () {
-    await getManifest();
     await Promise.all([initializeGalleryField(), getSearchIndex(), getSimilarity()]);
     await initializeSearch();
     await initializeSearchField();
