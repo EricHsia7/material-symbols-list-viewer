@@ -1,6 +1,7 @@
 /* results */
 .css_search_field .css_search_body .css_search_results {
   position: relative;
+  top: 60px;
   width: 100%;
 }
 
@@ -17,11 +18,14 @@
 .css_search_field .css_search_body .css_search_results .css_search_result .css_search_result_symbol {
   position: absolute;
   top: 0px;
-  left: 0px;
+  left: calc((60px - 45px) / 2);
   width: 45px;
   height: 45px;
   contain: layout;
   overflow: clip;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .css_search_field .css_search_body .css_search_results .css_search_result .css_search_result_symbol span.css_material_symbols_rounded {
@@ -33,8 +37,12 @@
   position: absolute;
   top: 0px;
   left: 45px;
-  width: calc(100% - 45px);
+  width: calc(100% - 60px - (60px - 45px) / 2);
   height: 45px;
   contain: layout;
   overflow: clip;
+  display: flex;
+  align-items: center;
+  color: var(--m-cssvar-333333);
+  font-size: 20px;
 }
