@@ -1,7 +1,6 @@
-import { getManifest } from './data/apis/get-manifest';
 import { getSearchIndex } from './data/apis/get-search-index';
 import { getSimilarity } from './data/apis/get-similarity';
-import { initializeSearch, searchFor } from './data/search';
+import { initializeSearch } from './data/search';
 import { initializeGalleryField } from './interface/gallery';
 import { initializeSearchField } from './interface/search';
 
@@ -26,8 +25,6 @@ window.viewer = {
     await Promise.all([initializeGalleryField(), getSearchIndex(), getSimilarity()]);
     await initializeSearch();
     await initializeSearchField();
-
-    console.log(searchFor('code'));
   }
 };
 
