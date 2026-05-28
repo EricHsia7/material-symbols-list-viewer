@@ -42,7 +42,10 @@ export async function initializeSearch() {
   variableCache_searchStructure.data = { dictionary, names, wordToSymbols, symbolToWords };
 }
 
-export function searchFor(query: string, searchFrom: number = 0, skipBroadTerms: boolean = true, broadThreshold: number = 0.3): Array<[symbolName: string, score: number]> {
+export type SearchResult = [symbolName: string, score: number];
+export type SearchResultArray = Array<SearchResult>;
+
+export function searchFor(query: string, searchFrom: number = 0, skipBroadTerms: boolean = true, broadThreshold: number = 0.3): SearchResultArray {
   if (!variableCache_searchStructure.available) {
     return [];
   }
@@ -100,7 +103,7 @@ export function searchFor(query: string, searchFrom: number = 0, skipBroadTerms:
   }
 
   // Rank candidates
-  const scored: Array<[symbolName: string, score: number]> = [];
+  const scored: SearchResultArray = [];
   for (let i = 0, l = candidates.length; i < l; i++) {
     let score = 0;
     for (let j = queryWordsLength - 1; j >= 0; j--) {

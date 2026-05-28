@@ -54,9 +54,9 @@ function updateGalleryField(symbols: Array<string>, skeletonScreen: boolean): vo
     if (difference < 0) {
       const fragment = new DocumentFragment();
       for (let o = 0; o > difference; o--) {
-        const newRecentViewItemElement = generateElementOfSymbol();
-        fragment.appendChild(newRecentViewItemElement);
-        symbolElements.push(newRecentViewItemElement);
+        const newSymbolElement = generateElementOfSymbol();
+        fragment.appendChild(newSymbolElement);
+        symbolElements.push(newSymbolElement);
       }
       gallerySymbolsElement.append(fragment);
     } else if (difference > 0) {
