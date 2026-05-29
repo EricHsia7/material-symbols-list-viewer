@@ -2,22 +2,26 @@
 .css_symbol_field .css_symbol_body .css_symbol_similar_symbols {
   position: relative;
   width: 100%;
+  padding: 7.5px;
+  box-sizing: border-box;
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
 }
 
 /* body > similar symbols > similar symbol */
 .css_symbol_field .css_symbol_body .css_symbol_similar_symbols .css_symbol_similar_symbol {
   position: relative;
-  width: 100%;
-  height: 45px;
+  aspect-ratio: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 /* body > similar symbols > similar symbol > icon */
 .css_symbol_field .css_symbol_body .css_symbol_similar_symbols .css_symbol_similar_symbol .css_symbol_similar_symbol_icon {
-  position: absolute;
-  top: 0px;
-  left: calc((60px - 45px) / 2);
-  width: 45px;
-  height: 45px;
+  position: relative;
+  width: 60px;
+  height: 60px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -25,17 +29,18 @@
 
 .css_symbol_field .css_symbol_body .css_symbol_similar_symbols .css_symbol_similar_symbol .css_symbol_similar_symbol_icon span.css_material_symbols_rounded {
   color: var(--m-cssvar-333333);
+  font-size: 45px;
+  width: 45px;
+  height: 45px;
 }
 
 /* body > similar symbols > similar symbol > name */
 .css_symbol_field .css_symbol_body .css_symbol_similar_symbols .css_symbol_similar_symbol .css_symbol_similar_symbol_name {
-  position: absolute;
-  top: 0px;
-  left: 60px;
-  width: calc(100% - 60px - (60px - 45px) / 2);
-  height: 45px;
-  font-size: 20px;
-  line-height: 45px;
+  position: relative;
+  width: calc(100% - 15px);
+  height: 15px;
+  font-size: 12px;
+  line-height: 15px;
   overflow: hidden;
   text-overflow: ellipsis;
   word-break: keep-all;
