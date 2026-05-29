@@ -11,6 +11,10 @@ const galleryRightButtonElement = galleryHeadElement.querySelector('.css_gallery
 const galleryBodyElement = galleryField.querySelector('.css_gallery_body') as HTMLElement;
 const gallerySymbolsElement = galleryBodyElement.querySelector('.css_gallery_symbols') as HTMLElement;
 
+galleryRightButtonElement.onclick = function () {
+  openSearch();
+};
+
 let previousSymbols: Array<string> = [];
 let previousSkeletonScreen: boolean = false;
 
@@ -85,9 +89,6 @@ function updateGalleryField(symbols: Array<string>, skeletonScreen: boolean): vo
 }
 
 export async function initializeGalleryField() {
-  galleryRightButtonElement.onclick = function () {
-    openSearch();
-  };
   updateGalleryField(new Array(64).fill(''), true);
   const index = await getIndex();
   const symbols = index.list.split(',');
