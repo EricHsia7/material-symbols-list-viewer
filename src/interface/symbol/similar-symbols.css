@@ -37,7 +37,7 @@
 /* body > similar symbols > similar symbol > name */
 .css_symbol_field .css_symbol_body .css_symbol_similar_symbols .css_symbol_similar_symbol .css_symbol_similar_symbol_name {
   position: relative;
-  width: calc(100% - 15px);
+  width: calc(100% - 30px);
   height: 15px;
   font-size: 12px;
   line-height: 15px;
@@ -46,4 +46,5 @@
   word-break: keep-all;
   white-space: nowrap;
   color: var(--m-cssvar-333333);
+  text-align: center;
 }
