@@ -54,14 +54,22 @@ function updateSymbolField(symbolName: string, details: Details): void {
       nameElement.innerText = similarSymbolName;
     }
 
+    function updateOnclick(thisSimilarSymbolElement: HTMLElement, similarSymbolName: string): void {
+      thisSimilarSymbolElement.onclick = function () {
+        openSymbol(similarSymbolName);
+      };
+    }
+
     if (previousSimilarSymbolName) {
       if (previousSimilarSymbolName !== similarSymbolName) {
         updateSimilarSymbolIcon(thisSimilarSymbolElement, similarSymbolName);
         updateSimilarSymbolName(thisSimilarSymbolElement, similarSymbolName);
+        updateOnclick(thisSimilarSymbolElement, similarSymbolName);
       }
     } else {
       updateSimilarSymbolIcon(thisSimilarSymbolElement, similarSymbolName);
       updateSimilarSymbolName(thisSimilarSymbolElement, similarSymbolName);
+      updateOnclick(thisSimilarSymbolElement, similarSymbolName);
     }
   }
 
