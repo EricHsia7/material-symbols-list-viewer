@@ -30,7 +30,7 @@ export async function getDetails(symbolName: string): Promise<Details> {
 
   let similarSymbols: Array<string> = [];
   const symbols = similarity.symbols.split(',');
-  const symbolKey1 = symbols.indexOf(symbolName);
+  const symbolKey1 = symbols.indexOf(symbolName).toString(36);
   if (similarity.similarity.hasOwnProperty(symbolKey1)) {
     similarSymbols = similarity.similarity[symbolKey1].split(',');
     for (let i = similarSymbols.length - 1; i >= 0; i--) {
