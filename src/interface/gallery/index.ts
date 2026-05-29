@@ -1,6 +1,7 @@
 import { getIndex } from '../../data/apis/get-index';
 import { getBlankIconElement, setIcon } from '../icons';
 import { openSearch } from '../search';
+import { openSymbol } from '../symbol';
 
 const galleryField = document.querySelector('.css_gallery_field') as HTMLElement;
 const galleryHeadElement = galleryField.querySelector('.css_gallery_head') as HTMLElement;
@@ -28,7 +29,7 @@ function updateGalleryField(symbols: Array<string>, skeletonScreen: boolean): vo
 
     function updateOnclick(thisElement: HTMLElement, thisSymbol: string): void {
       thisElement.onclick = function () {
-        // open symbol
+        openSymbol(thisSymbol);
       };
     }
 

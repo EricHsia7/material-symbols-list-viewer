@@ -1,5 +1,6 @@
 import { searchFor, SearchResult, SearchResultArray } from '../../data/search';
 import { getBlankIconElement, setIcon } from '../icons';
+import { openSymbol } from '../symbol';
 
 const searchField = document.querySelector('.css_search_field') as HTMLElement;
 const searchHeadElement = searchField.querySelector('.css_search_head') as HTMLElement;
@@ -78,14 +79,22 @@ function updateSearchResults(searchResults: SearchResultArray): void {
       symbolNameElement.innerText = thisSearchResult[0];
     }
 
+    function updateOnclick(thisElement: HTMLElement, thisSearchResult: SearchResult): void {
+      thisElement.onclick = function () {
+        openSymbol(thisSearchResult[0]);
+      };
+    }
+
     if (previousSearchResult) {
       if (thisSearchResult[0] !== previousSearchResult[0]) {
         updateSymbol(thisElement, thisSearchResult);
         updateSymbolName(thisElement, thisSearchResult);
+        updateOnclick(thisElement, thisSearchResult);
       }
     } else {
       updateSymbol(thisElement, thisSearchResult);
       updateSymbolName(thisElement, thisSearchResult);
+      updateOnclick(thisElement, thisSearchResult);
     }
   }
 

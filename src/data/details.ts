@@ -6,7 +6,7 @@ export interface Details {
   similarSymbols: Array<string>;
 }
 
-async function getDetails(symbolName: string): Promise<Details> {
+export async function getDetails(symbolName: string): Promise<Details> {
   const searchIndex = await getSearchIndex();
   const similarity = await getSimilarity();
 
