@@ -5,7 +5,11 @@
   left: 0px;
   width: 100%;
   height: 60px;
-  background: var(--m-cssvar-head-background);
+  background: var(--m-cssvar-ffffff);
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: var(--m-cssvar-f9f9fb);
+  box-sizing: border-box;
 }
 
 /* head > search input */
@@ -37,6 +41,11 @@
   font-weight: 400;
   caret-color: var(--m-cssvar-333333);
   background: rgba(0, 0, 0, 0);
+}
+
+.css_search_field .css_search_head .css_search_head_search_input input[type="text"]::placeholder {
+  color: var(--m-cssvar-aeaeb2);
+  opacity: 1;
 }
 
 /* head > button */
