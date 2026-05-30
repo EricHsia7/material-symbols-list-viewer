@@ -1,4 +1,5 @@
 import { Details, getDetails } from '../../data/details';
+import { copyToClipboard } from '../../tools/copy';
 import { getBlankIconElement, setIcon } from '../icons';
 
 const symbolField = document.querySelector('.css_symbol_field') as HTMLElement;
