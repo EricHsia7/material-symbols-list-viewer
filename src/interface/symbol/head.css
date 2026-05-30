@@ -58,6 +58,9 @@
   width: 45px;
   height: 45px;
   transition: opacity 0.35s, transform 0.35s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .css_symbol_field .css_symbol_head .css_symbol_head_button_right[copied="false"] .css_symbol_head_button_right_check {
