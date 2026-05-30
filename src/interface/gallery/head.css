@@ -7,22 +7,6 @@
   background: var(--m-cssvar-head-background);
 }
 
-.css_gallery_field .css_gallery_head .css_gallery_head_title {
-  position: absolute;
-  top: 0px;
-  left: 60px;
-  width: calc(100% - 60px - 60px);
-  height: 60px;
-  font-size: 20px;
-  font-weight: 500;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  contain: layout;
-  overflow: clip;
-  color: var(--m-cssvar-333333);
-}
-
 .css_gallery_field .css_gallery_head .css_gallery_head_button_left,
 .css_gallery_field .css_gallery_head .css_gallery_head_button_right {
   width: 45px;
