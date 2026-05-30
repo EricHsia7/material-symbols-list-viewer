@@ -21,9 +21,9 @@
     width: clamp(300px, 80%, 600px);
     height: auto;
     aspect-ratio: 1;
-    border-radius: 20px;
+    border-radius: 25px;
     border-color: var(--m-cssvar-f9f9fb);
-    border-width: 1px;
+    border-width: 2px;
     border-style: solid;
     transform: translateX(-50%) translateY(-50%);
   }
