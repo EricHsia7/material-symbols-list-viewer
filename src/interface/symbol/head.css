@@ -31,7 +31,6 @@
 .css_symbol_field .css_symbol_head .css_symbol_head_button_right {
   width: 45px;
   height: 45px;
-  background: var(--m-cssvar-f9f9fb);
   border-radius: calc(45px / 2);
   contain: layout;
   overflow: clip;

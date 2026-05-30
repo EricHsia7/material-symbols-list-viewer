@@ -52,7 +52,6 @@
 .css_search_field .css_search_head .css_search_head_button_left {
   width: 45px;
   height: 45px;
-  background: var(--m-cssvar-f9f9fb);
   border-radius: calc(45px / 2);
   contain: layout;
   overflow: clip;
