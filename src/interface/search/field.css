@@ -7,6 +7,7 @@
   background: var(--m-cssvar-ffffff);
   visibility: hidden;
   overflow: clip;
+  box-sizing: border-box;
 }
 
 .css_search_field[displayed="true"] {
@@ -18,8 +19,12 @@
     top: 50%;
     left: 50%;
     width: clamp(300px, 80%, 600px);
+    height: auto;
     aspect-ratio: 1;
-    border-radius: 15px;
+    border-radius: 20px;
+    border-color: var(--m-cssvar-f9f9fb);
+    border-width: 1px;
+    border-style: solid;
     transform: translateX(-50%) translateY(-50%);
   }
 }
