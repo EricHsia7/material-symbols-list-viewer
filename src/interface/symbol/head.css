@@ -27,7 +27,9 @@
 .css_symbol_field .css_symbol_head .css_symbol_head_button_right {
   width: 45px;
   height: 45px;
-  background: var(--m-cssvar-f9f9fb);
+  background: var(--m-cssvar-f9f9fb-60);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
   border-radius: calc(45px / 2);
   contain: layout;
   overflow: clip;

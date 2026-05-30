@@ -43,7 +43,9 @@
 .css_search_field .css_search_head .css_search_head_button_left {
   width: 45px;
   height: 45px;
-  background: var(--m-cssvar-f9f9fb);
+  background: var(--m-cssvar-f9f9fb-60);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
   border-radius: calc(45px / 2);
   contain: layout;
   overflow: clip;
