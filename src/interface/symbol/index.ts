@@ -41,6 +41,9 @@ function updateSymbolField(symbolName: string, details: Details): void {
 
   function updateName(symbolName: string): void {
     symbolNameElement.innerText = symbolName;
+    symbolNameElement.onclick = function () {
+      copyToClipboard(symbolName);
+    };
   }
 
   function updateSimilarSymbol(thisSimilarSymbolElement: HTMLElement, similarSymbolName: string, previousSimilarSymbolName: string | null): void {
@@ -52,9 +55,6 @@ function updateSymbolField(symbolName: string, details: Details): void {
     function updateSimilarSymbolName(thisSimilarSymbolElement: HTMLElement, similarSymbolName: string): void {
       const nameElement = thisSimilarSymbolElement.querySelector('.css_symbol_similar_symbol_name') as HTMLElement;
       nameElement.innerText = similarSymbolName;
-      nameElement.onclick = function () {
-        copyToClipboard(similarSymbolName);
-      };
     }
 
     function updateOnclick(thisSimilarSymbolElement: HTMLElement, similarSymbolName: string): void {
