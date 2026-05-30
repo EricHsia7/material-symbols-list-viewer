@@ -39,14 +39,7 @@ function generateElementOfSimilarSymbol(): HTMLElement {
 function updateSymbolField(symbolName: string, details: Details): void {
   function updateCopyButton(symbolName: string): void {
     rightButtonElement.onclick = function () {
-      copyToClipboard(symbolName).then(function (e) {
-        if (e) {
-          rightButtonElement.setAttribute('copied', 'true');
-          setTimeout(function () {
-            rightButtonElement.setAttribute('copied', 'false');
-          }, 1000);
-        }
-      });
+      copySymbolName(symbolName);
     };
   }
 
@@ -57,7 +50,7 @@ function updateSymbolField(symbolName: string, details: Details): void {
   function updateName(symbolName: string): void {
     symbolNameElement.innerText = symbolName;
     symbolNameElement.onclick = function () {
-      copyToClipboard(symbolName);
+      copySymbolName(symbolName);
     };
   }
 
@@ -154,4 +147,14 @@ export function openSymbol(symbolName: string): void {
 
 export function closeSymbol(): void {
   hideSymbol();
+}
+
+async function copySymbolName(symbolName: string) {
+  const copy = await copyToClipboard(symbolName);
+  if (copy) {
+    rightButtonElement.setAttribute('copied', 'true');
+    setTimeout(function () {
+      rightButtonElement.setAttribute('copied', 'false');
+    }, 1000);
+  }
 }
