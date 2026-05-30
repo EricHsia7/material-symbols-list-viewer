@@ -28,7 +28,7 @@ import './interface/symbol/symbol.css';
 import './interface/symbol/similar-symbols.css';
 import './interface/symbol/keywords.css';
 
-window.viewer = {
+window.app = {
   initialize: async function () {
     await initializeGalleryField();
     await Promise.all([getSearchIndex(), getSimilarity()]);
@@ -37,4 +37,4 @@ window.viewer = {
   }
 };
 
-export default window.viewer;
+export default window.app;
