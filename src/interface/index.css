@@ -1,5 +1,5 @@
 html {
-  background-color: var(--b-cssvar-ffffff-normal);
+  background-color: var(--m-cssvar-ffffff);
   height: 100vh;
   overscroll-behavior-y: none;
   overflow: clip;
@@ -15,7 +15,7 @@ body {
   font-weight: 400;
   font-style: normal;
   font-display: swap;
-  background-color: var(--b-cssvar-ffffff-normal);
+  background-color: var(--m-cssvar-ffffff);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   height: 100vh;
