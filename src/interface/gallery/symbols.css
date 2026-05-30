@@ -2,7 +2,7 @@
 .css_gallery_field .css_gallery_body .css_gallery_symbols {
   position: relative;
   max-width: 1200px;
-  margin: 60px auto;
+  margin: calc(var(--m-cssvar-safe-area-top) + 60px) auto;
   display: grid;
   gap: 12px;
   grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));

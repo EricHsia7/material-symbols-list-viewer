@@ -19,3 +19,28 @@
     --m-cssvar-333333: rgb(255, 255, 255);
   }
 }
+
+:root {
+  --m-cssvar-safe-area-left: 0px;
+  --m-cssvar-safe-area-right: 0px;
+  --m-cssvar-safe-area-top: 0px;
+  --m-cssvar-safe-area-bottom: 0px;
+}
+
+@supports (bottom: constant(safe-area-inset-top)) {
+  :root {
+    --m-cssvar-safe-area-left: constant(safe-area-inset-left);
+    --m-cssvar-safe-area-right: constant(safe-area-inset-right);
+    --m-cssvar-safe-area-top: constant(safe-area-inset-top);
+    --m-cssvar-safe-area-bottom: constant(safe-area-inset-bottom);
+  }
+}
+
+@supports (bottom: env(safe-area-inset-top)) {
+  :root {
+    --m-cssvar-safe-area-left: env(safe-area-inset-left);
+    --m-cssvar-safe-area-right: env(safe-area-inset-right);
+    --m-cssvar-safe-area-top: env(safe-area-inset-top);
+    --m-cssvar-safe-area-bottom: env(safe-area-inset-bottom);
+  }
+}

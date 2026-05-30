@@ -41,6 +41,9 @@
 
 /* head > button */
 .css_search_field .css_search_head .css_search_head_button_left {
+  position: absolute;
+  top: calc((60px - 45px) / 2);
+  left: calc((60px - 45px) / 2);
   width: 45px;
   height: 45px;
   background: var(--m-cssvar-ededf2-60);
@@ -54,12 +57,20 @@
   align-items: center;
 }
 
-.css_search_field .css_search_head .css_search_head_button_left {
-  position: absolute;
-  top: calc((60px - 45px) / 2);
-  left: calc((60px - 45px) / 2);
-}
-
 .css_search_field .css_search_head .css_search_head_button_left span.css_material_symbols_rounded {
   color: var(--m-cssvar-333333);
+}
+
+@media (max-width: 900px) {
+  .css_search_field .css_search_head {
+    height: calc(var(--m-cssvar-safe-area-top) + 60px);
+  }
+
+  .css_search_field .css_search_head .css_search_head_search_input input[type="text"] {
+    top: var(--m-cssvar-safe-area-top);
+  }
+
+  .css_search_field .css_search_head .css_search_head_button_left {
+    top: calc(var(--m-cssvar-safe-area-top) + (60px - 45px) / 2);
+  }
 }
