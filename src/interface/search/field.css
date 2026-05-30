@@ -20,5 +20,6 @@
     width: clamp(300px, 80%, 600px);
     aspect-ratio: 1;
     border-radius: 15px;
+    transform: translateX(-50%) translateY(-50%);
   }
 }

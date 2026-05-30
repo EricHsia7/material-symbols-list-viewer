@@ -15,6 +15,7 @@ import './interface/gallery/head.css';
 import './interface/gallery/body.css';
 import './interface/gallery/symbols.css';
 
+import './interface/search/lightbox.css';
 import './interface/search/field.css';
 import './interface/search/head.css';
 import './interface/search/body.css';
