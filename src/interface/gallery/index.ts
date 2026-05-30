@@ -4,14 +4,14 @@ import { openSearch } from '../search';
 import { openSymbol } from '../symbol';
 
 const galleryField = document.querySelector('.css_gallery_field') as HTMLElement;
-const headElement = galleryField.querySelector('.css_gallery_head') as HTMLElement;
-const searchInputElement = galleryField.querySelector('.css_gallery_head_search_input') as HTMLElement;
-const leftButtonElement = headElement.querySelector('.css_gallery_head_button_left') as HTMLElement;
-const rightButtonElement = headElement.querySelector('.css_gallery_head_button_right') as HTMLElement;
-const bodyElement = galleryField.querySelector('.css_gallery_body') as HTMLElement;
-const symbolsElement = bodyElement.querySelector('.css_gallery_symbols') as HTMLElement;
+const galleryHeadElement = galleryField.querySelector('.css_gallery_head') as HTMLElement;
+const galleryLeftButtonElement = galleryHeadElement.querySelector('.css_gallery_head_button_left') as HTMLElement;
+const galleryRightButtonElement = galleryHeadElement.querySelector('.css_gallery_head_button_right') as HTMLElement;
 
-searchInputElement.onclick = function () {
+const galleryBodyElement = galleryField.querySelector('.css_gallery_body') as HTMLElement;
+const gallerySymbolsElement = galleryBodyElement.querySelector('.css_gallery_symbols') as HTMLElement;
+
+galleryRightButtonElement.onclick = function () {
   openSearch();
 };
 
@@ -52,7 +52,7 @@ function updateGalleryField(symbols: Array<string>, skeletonScreen: boolean): vo
 
   const symbolQuantity = symbols.length;
 
-  const symbolElements = Array.from(symbolsElement.querySelectorAll('.css_gallery_symbols_symbol'));
+  const symbolElements = Array.from(gallerySymbolsElement.querySelectorAll('.css_gallery_symbols_symbol'));
   const currentSymbolElementsLength = symbolElements.length;
   if (symbolQuantity !== currentSymbolElementsLength) {
     const difference = currentSymbolElementsLength - symbolQuantity;
@@ -63,7 +63,7 @@ function updateGalleryField(symbols: Array<string>, skeletonScreen: boolean): vo
         fragment.appendChild(newSymbolElement);
         symbolElements.push(newSymbolElement);
       }
-      symbolsElement.append(fragment);
+      gallerySymbolsElement.append(fragment);
     } else if (difference > 0) {
       for (let p = currentSymbolElementsLength - 1, q = currentSymbolElementsLength - difference - 1; p > q; p--) {
         symbolElements[p].remove();

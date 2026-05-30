@@ -4,36 +4,30 @@
   left: 0px;
   width: 100%;
   height: 60px;
-  background: var(--m-cssvar-ffffff);
-  border-bottom-style: solid;
-  border-bottom-width: 1px;
-  border-bottom-color: var(--m-cssvar-f9f9fb);
-  box-sizing: border-box;
+  background: var(--m-cssvar-head-background);
 }
 
-.css_gallery_field .css_gallery_head .css_gallery_head_search_input {
+.css_gallery_field .css_gallery_head .css_gallery_head_title {
   position: absolute;
-  top: 10px;
-  left: 50%;
-  width: clamp(120px, calc(100% - 15px), 300px);
-  transform: translateX(-50%);
-  height: 40px;
+  top: 0px;
+  left: 60px;
+  width: calc(100% - 60px - 60px);
+  height: 60px;
   font-size: 20px;
-  font-weight: 400;
+  font-weight: 500;
   display: flex;
   justify-content: center;
   align-items: center;
   contain: layout;
   overflow: clip;
-  background: var(--m-cssvar-f9f9fb);
-  border-radius: calc(40px * 0.5);
-  color: var(--m-cssvar-aeaeb2);
+  color: var(--m-cssvar-333333);
 }
 
 .css_gallery_field .css_gallery_head .css_gallery_head_button_left,
 .css_gallery_field .css_gallery_head .css_gallery_head_button_right {
   width: 45px;
   height: 45px;
+  background: var(--m-cssvar-f9f9fb);
   border-radius: calc(45px / 2);
   contain: layout;
   overflow: clip;
