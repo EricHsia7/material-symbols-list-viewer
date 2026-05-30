@@ -50,7 +50,36 @@
   right: calc((60px - 45px) / 2);
 }
 
+.css_symbol_field .css_symbol_head .css_symbol_head_button_right .css_symbol_head_button_right_check,
+.css_symbol_field .css_symbol_head .css_symbol_head_button_right .css_symbol_head_button_right_copy {
+  position: relative;
+  width: 24px;
+  height: 24px;
+  transition: opacity 0.35s, transform 0.35s;
+}
+
+.css_symbol_field .css_symbol_head .css_symbol_head_button_right[copied="false"] .css_symbol_head_button_right_check {
+  transform: scale(0.5);
+  opacity: 0;
+}
+
+.css_symbol_field .css_symbol_head .css_symbol_head_button_right[copied="false"] .css_symbol_head_button_right_copy {
+  transform: scale(1);
+  opacity: 1;
+}
+
+.css_symbol_field .css_symbol_head .css_symbol_head_button_right[copied="true"] .css_symbol_head_button_right_check {
+  transform: scale(1);
+  opacity: 1;
+}
+
+.css_symbol_field .css_symbol_head .css_symbol_head_button_right[copied="true"] .css_symbol_head_button_right_copy {
+  transform: scale(0.5);
+  opacity: 0;
+}
+
 .css_symbol_field .css_symbol_head .css_symbol_head_button_left span.css_material_symbols_rounded,
-.css_symbol_field .css_symbol_head .css_symbol_head_button_right span.css_material_symbols_rounded {
+.css_symbol_field .css_symbol_head .css_symbol_head_button_right .css_symbol_head_button_right_check span.css_material_symbols_rounded,
+.css_symbol_field .css_symbol_head .css_symbol_head_button_right .css_symbol_head_button_right_copy span.css_material_symbols_rounded {
   color: var(--m-cssvar-333333);
 }

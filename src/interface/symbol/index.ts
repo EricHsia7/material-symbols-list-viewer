@@ -6,6 +6,7 @@ const symbolField = document.querySelector('.css_symbol_field') as HTMLElement;
 const headElement = symbolField.querySelector('.css_symbol_head') as HTMLElement;
 const leftButtonElement = headElement.querySelector('.css_symbol_head_button_left') as HTMLElement;
 const rightButtonElement = headElement.querySelector('.css_symbol_head_button_right') as HTMLElement;
+const rightButtonCopyElement = rightButtonElement.querySelector('.css_symbol_head_button_right_copy') as HTMLElement;
 const bodyElement = symbolField.querySelector('.css_symbol_body') as HTMLElement;
 const symbolElement = bodyElement.querySelector('.css_symbol_symbol') as HTMLElement;
 const symbolIconElement = symbolElement.querySelector('.css_symbol_symbol_icon') as HTMLElement;
@@ -36,6 +37,19 @@ function generateElementOfSimilarSymbol(): HTMLElement {
 }
 
 function updateSymbolField(symbolName: string, details: Details): void {
+  function updateCopyButton(symbolName: string): void {
+    rightButtonElement.onclick = function () {
+      copyToClipboard(symbolName).then(function (e) {
+        if (e) {
+          rightButtonElement.setAttribute('copied', 'true');
+          setTimeout(function () {
+            rightButtonElement.setAttribute('copied', 'false');
+          }, 1000);
+        }
+      });
+    };
+  }
+
   function updateIcon(symbolName: string): void {
     setIcon(symbolIconElement, symbolName);
   }
@@ -80,6 +94,7 @@ function updateSymbolField(symbolName: string, details: Details): void {
   if (previousSymbolName !== symbolName) {
     updateIcon(symbolName);
     updateName(symbolName);
+    updateCopyButton(symbolName);
   }
 
   const similarSymbolsQuantity = details.similarSymbols.length;
