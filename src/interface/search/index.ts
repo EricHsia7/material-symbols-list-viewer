@@ -2,6 +2,7 @@ import { searchFor, SearchResult, SearchResultArray } from '../../data/search';
 import { getBlankIconElement, setIcon } from '../icons';
 import { openSymbol } from '../symbol';
 
+const searchLightboxElement = document.querySelector('.css_search_lightbox') as HTMLElement;
 const searchField = document.querySelector('.css_search_field') as HTMLElement;
 const searchHeadElement = searchField.querySelector('.css_search_head') as HTMLElement;
 const searchHeadLeftButtonElement = searchHeadElement.querySelector('.css_search_head_button_left') as HTMLElement;
@@ -137,10 +138,12 @@ function updateSearchResults(searchResults: SearchResultArray): void {
 
 export function showSearch(): void {
   searchField.setAttribute('displayed', 'true');
+  searchLightboxElement.setAttribute('displayed', 'true');
 }
 
 export function hideSearch(): void {
   searchField.setAttribute('displayed', 'false');
+  searchLightboxElement.setAttribute('displayed', 'false');
 }
 
 export function openSearch(): void {

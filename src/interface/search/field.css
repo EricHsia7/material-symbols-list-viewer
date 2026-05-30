@@ -6,8 +6,19 @@
   height: 100%;
   background: var(--m-cssvar-ffffff);
   visibility: hidden;
+  overflow: clip;
 }
 
 .css_search_field[displayed="true"] {
   visibility: visible;
+}
+
+@media (min-width: 900px) {
+  .css_search_field {
+    top: 50%;
+    left: 50%;
+    width: clamp(300px, 80%, 600px);
+    aspect-ratio: 1;
+    border-radius: 15px;
+  }
 }

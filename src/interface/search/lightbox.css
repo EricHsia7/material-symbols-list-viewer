@@ -1,0 +1,21 @@
+.css_search_lightbox {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  visibility: hidden;
+}
+
+.css_search_lightbox[displayed="true"] {
+  visibility: hidden;
+}
+
+@media (min-width: 900px) {
+  .css_search_lightbox[displayed="true"] {
+    visibility: visible;
+  }
+}
