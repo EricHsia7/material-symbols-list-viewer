@@ -33,15 +33,15 @@
   border-radius: calc(45px / 2);
   contain: layout;
   overflow: clip;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .css_symbol_field .css_symbol_head .css_symbol_head_button_left {
   position: absolute;
   top: calc((60px - 45px) / 2);
   left: calc((60px - 45px) / 2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .css_symbol_field .css_symbol_head .css_symbol_head_button_right {
@@ -52,9 +52,11 @@
 
 .css_symbol_field .css_symbol_head .css_symbol_head_button_right .css_symbol_head_button_right_check,
 .css_symbol_field .css_symbol_head .css_symbol_head_button_right .css_symbol_head_button_right_copy {
-  position: relative;
-  width: 24px;
-  height: 24px;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 45px;
+  height: 45px;
   transition: opacity 0.35s, transform 0.35s;
 }
 
