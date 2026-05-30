@@ -1,14 +1,12 @@
 /* symbols */
 .css_gallery_field .css_gallery_body .css_gallery_symbols {
   position: relative;
-  width: 100%;
-  margin-top: 60px;
+  max-width: 1200px;
+  margin: 60px auto;
   display: grid;
   gap: 12px;
   grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
   box-sizing: border-box;
-  overflow: clip;
-  contain: layout;
 }
 
 /* symbols > symbol */
@@ -30,6 +28,6 @@
 /* skeleton-screen: true */
 .css_gallery_field .css_gallery_body .css_gallery_symbols .css_gallery_symbols_symbol[skeleton-screen="true"] span.css_material_symbols_rounded {
   border-radius: 15px;
-  background: var(--m-cssvar-f9f9fb);
+  background: var(--m-cssvar-ededf2);
   color: rgba(0, 0, 0, 0);
 }

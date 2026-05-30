@@ -89,7 +89,8 @@ function updateGalleryField(symbols: Array<string>, skeletonScreen: boolean): vo
 }
 
 export async function initializeGalleryField() {
-  updateGalleryField(new Array(64).fill(''), true);
+  const count = (Math.round(Math.min(window.innerWidth, 1200) / 110) + 1) * (Math.round(window.innerHeight / 110) + 1);
+  updateGalleryField(new Array(count).fill(''), true);
   const index = await getIndex();
   const symbols = index.list.split(',');
   updateGalleryField(symbols, false);

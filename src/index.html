@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Material Symbols List Viewer</title>
+    <title>Material Symbols List</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400..700&display=swap" rel="stylesheet" />
@@ -18,12 +18,13 @@
         <div class="css_gallery_head_button_left">
           <span class="css_material_symbols_rounded">bookmark_added</span>
         </div>
-        <div class="css_gallery_head_title">Gallery</div>
         <div class="css_gallery_head_button_right">
           <span class="css_material_symbols_rounded">search</span>
         </div>
       </div>
     </div>
+
+    <div class="css_search_lightbox" displayed="false"></div>
 
     <div class="css_search_field" displayed="false">
       <div class="css_search_body">
@@ -53,15 +54,20 @@
         <div class="css_symbol_head_button_left">
           <span class="css_material_symbols_rounded">arrow_back</span>
         </div>
-        <div class="css_symbol_head_button_right">
-          <span class="css_material_symbols_rounded">bookmark</span>
+        <div class="css_symbol_head_button_right" copied="false">
+          <div class="css_symbol_head_button_right_check">
+            <span class="css_material_symbols_rounded">check</span>
+          </div>
+          <div class="css_symbol_head_button_right_copy">
+            <span class="css_material_symbols_rounded">content_copy</span>
+          </div>
         </div>
       </div>
     </div>
 
     <script>
       document.addEventListener('DOMContentLoaded', function () {
-        viewer.initialize();
+        app.initialize();
       });
       window.addEventListener('load', function () {
         if ('serviceWorker' in navigator) {

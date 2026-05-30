@@ -1,10 +1,12 @@
 import { Details, getDetails } from '../../data/details';
+import { copyToClipboard } from '../../tools/copy';
 import { getBlankIconElement, setIcon } from '../icons';
 
 const symbolField = document.querySelector('.css_symbol_field') as HTMLElement;
 const headElement = symbolField.querySelector('.css_symbol_head') as HTMLElement;
 const leftButtonElement = headElement.querySelector('.css_symbol_head_button_left') as HTMLElement;
 const rightButtonElement = headElement.querySelector('.css_symbol_head_button_right') as HTMLElement;
+const rightButtonCopyElement = rightButtonElement.querySelector('.css_symbol_head_button_right_copy') as HTMLElement;
 const bodyElement = symbolField.querySelector('.css_symbol_body') as HTMLElement;
 const symbolElement = bodyElement.querySelector('.css_symbol_symbol') as HTMLElement;
 const symbolIconElement = symbolElement.querySelector('.css_symbol_symbol_icon') as HTMLElement;
@@ -35,12 +37,21 @@ function generateElementOfSimilarSymbol(): HTMLElement {
 }
 
 function updateSymbolField(symbolName: string, details: Details): void {
+  function updateCopyButton(symbolName: string): void {
+    rightButtonElement.onclick = function () {
+      copySymbolName(symbolName);
+    };
+  }
+
   function updateIcon(symbolName: string): void {
     setIcon(symbolIconElement, symbolName);
   }
 
   function updateName(symbolName: string): void {
     symbolNameElement.innerText = symbolName;
+    symbolNameElement.onclick = function () {
+      copySymbolName(symbolName);
+    };
   }
 
   function updateSimilarSymbol(thisSimilarSymbolElement: HTMLElement, similarSymbolName: string, previousSimilarSymbolName: string | null): void {
@@ -76,6 +87,7 @@ function updateSymbolField(symbolName: string, details: Details): void {
   if (previousSymbolName !== symbolName) {
     updateIcon(symbolName);
     updateName(symbolName);
+    updateCopyButton(symbolName);
   }
 
   const similarSymbolsQuantity = details.similarSymbols.length;
@@ -135,4 +147,14 @@ export function openSymbol(symbolName: string): void {
 
 export function closeSymbol(): void {
   hideSymbol();
+}
+
+async function copySymbolName(symbolName: string) {
+  const copy = await copyToClipboard(symbolName);
+  if (copy) {
+    rightButtonElement.setAttribute('copied', 'true');
+    setTimeout(function () {
+      rightButtonElement.setAttribute('copied', 'false');
+    }, 1000);
+  }
 }
