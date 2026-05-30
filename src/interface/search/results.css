@@ -1,8 +1,14 @@
 /* results */
 .css_search_field .css_search_body .css_search_results {
   position: relative;
-  top: 60px;
+  margin-top: 60px;
   width: 100%;
+}
+
+@media (max-width: 900px) {
+  .css_search_field .css_search_body .css_search_results {
+    margin-top: calc(var(--m-cssvar-safe-area-top) + 60px);
+  }
 }
 
 /* results > result */
