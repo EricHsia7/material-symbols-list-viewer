@@ -14,8 +14,9 @@
 .css_gallery_field .css_gallery_head .css_gallery_head_search_input {
   position: absolute;
   top: 10px;
-  left: 90px;
-  width: calc(100% - 90px - 90px);
+  left: 50%;
+  width: clamp(120px, calc(100% - 15px), 300px);
+  transform: translateX(-50%);
   height: 40px;
   font-size: 20px;
   font-weight: 400;
