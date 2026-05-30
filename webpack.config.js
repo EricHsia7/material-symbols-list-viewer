@@ -63,6 +63,23 @@ module.exports = (env, argv) => {
             options: {
               cacheName: 'google-fonts-sources'
             }
+          },
+          {
+            urlPattern: /^https:\/\/erichsia7\.github\.io\/material-symbols-list\/[a-z\-]+\.gz/,
+            handler: 'StaleWhileRevalidate',
+            options: {
+              cacheName: 'material-symbols-list',
+              expiration: {
+                maxEntries: 32,
+                maxAgeSeconds: 60 * 60 * 24
+              },
+              matchOptions: {
+                ignoreSearch: false
+              },
+              cacheableResponse: {
+                statuses: [0, 200]
+              }
+            }
           }
         ]
       }),
