@@ -66,7 +66,7 @@
     height: calc(var(--m-cssvar-safe-area-top) + 60px);
   }
 
-  .css_search_field .css_search_head .css_search_head_search_input input[type="text"] {
+  .css_search_field .css_search_head .css_search_head_search_input {
     top: var(--m-cssvar-safe-area-top);
   }
 
