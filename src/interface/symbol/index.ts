@@ -12,6 +12,7 @@ const symbolElement = bodyElement.querySelector('.css_symbol_symbol') as HTMLEle
 const symbolIconElement = symbolElement.querySelector('.css_symbol_symbol_icon') as HTMLElement;
 const symbolNameElement = symbolElement.querySelector('.css_symbol_symbol_name') as HTMLElement;
 const similarSymbolsElement = bodyElement.querySelector('.css_symbol_similar_symbols') as HTMLElement;
+const keywordsElement = bodyElement.querySelector('.css_symbol_keywords') as HTMLElement;
 
 let previousSymbolName: string = '';
 let previousSimilarSymbols: Details['similarSymbols'] = [];
@@ -54,6 +55,10 @@ function updateSymbolField(symbolName: string, details: Details): void {
     };
   }
 
+  function updateKeywords(keywords: Details['keywords']): void {
+    keywordsElement.innerText = keywords.join(', ');
+  }
+
   function updateSimilarSymbol(thisSimilarSymbolElement: HTMLElement, similarSymbolName: string, previousSimilarSymbolName: string | null): void {
     function updateSimilarSymbolIcon(thisSimilarSymbolElement: HTMLElement, similarSymbolName: string): void {
       const iconElement = thisSimilarSymbolElement.querySelector('.css_symbol_similar_symbol_icon') as HTMLElement;
@@ -88,6 +93,7 @@ function updateSymbolField(symbolName: string, details: Details): void {
     updateIcon(symbolName);
     updateName(symbolName);
     updateCopyButton(symbolName);
+    updateKeywords(details.keywords);
   }
 
   const similarSymbolsQuantity = details.similarSymbols.length;
