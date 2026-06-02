@@ -1,0 +1,52 @@
+/* info */
+.css_symbol .css_symbol_info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* info > category */
+.css_symbol .css_symbol_info .css_symbol_info_category {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--m-cssvar-main-color);
+}
+
+/* info > name */
+.css_symbol .css_symbol_info .css_symbol_info_name {
+  margin: 0 0 14px;
+  font-size: clamp(42px, 7vw, 72px);
+  line-height: 1.1;
+  font-weight: 700;
+  color: var(--m-cssvar-333333);
+}
+
+/* info > description */
+.css_symbol .css_symbol_info .css_symbol_info_description {
+  color: var(--m-cssvar-333333-60);
+}
+
+/* info > keywords */
+.css_symbol .css_symbol_info .css_symbol_info_keywords {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 14px 0 18px;
+}
+
+/* info > keywords > keyword */
+.css_symbol .css_symbol_info .css_symbol_info_keywords .css_symbol_info_keyword {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 10px;
+  font-size: 13px;
+  color: var(--m-cssvar-333333-60);
+  background: var(--m-cssvar-ffffff);
+  border: 1px solid var(--m-cssvar-f9f9fb);
+  border-radius: 15px;
+}
+
+/* info > metadata */
+.css_symbol .css_symbol_info .css_symbol_info_metadata {}
