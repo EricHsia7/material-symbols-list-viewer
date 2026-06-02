@@ -1,6 +1,6 @@
 import { searchFor, SearchResult, SearchResultArray } from '../../data/search';
 import { getBlankIconElement, setGlyph } from '../icons';
-import { openSymbol } from '../symbol';
+import { showSymbol } from '../symbol';
 
 const searchLightboxElement = document.querySelector('.css_search_lightbox') as HTMLElement;
 const searchField = document.querySelector('.css_search_field') as HTMLElement;
@@ -82,7 +82,7 @@ function updateSearchResults(searchResults: SearchResultArray): void {
 
     function updateOnclick(thisElement: HTMLElement, thisSearchResult: SearchResult): void {
       thisElement.onclick = function () {
-        openSymbol(thisSearchResult[0]);
+        showSymbol(thisSearchResult[0]);
       };
     }
 

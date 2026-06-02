@@ -15,7 +15,23 @@ const symbolDescription = symbolInfoElement.querySelector('.css_symbol_similar_s
 const keywordsElement = symbolInfoElement.querySelector('.css_symbol_keywords') as HTMLElement;
 
 let previousSymbolName: string = '';
-let previousSimilarSymbols: Details['similarSymbols'] = [];
+let previousKeywords: Details['keywords'] = [];
+
+function generateElementOfKeyword(): HTMLElement {
+  const element = document.createElement('div');
+  element.classList.add('css_related_symbol');
+
+  const glyphElement = document.createElement('div');
+  glyphElement.classList.add('css_related_symbol_glyph');
+  glyphElement.appendChild(getBlankIconElement());
+
+  const nameElement = document.createElement('div');
+  nameElement.classList.add('css_related_symbol_name');
+
+  element.appendChild(glyphElement);
+  element.appendChild(nameElement);
+  return element;
+}
 
 function updateSymbolSection(symbolName: string, details: Details): void {
   function updateGlyph(symbolName: string): void {
@@ -26,86 +42,91 @@ function updateSymbolSection(symbolName: string, details: Details): void {
     // copySymbolName(symbolName);
   }
 
-  function updateCategory(): void {}
+  function updateCategory(): void {
+    // TODO: details -> category
+  }
 
-  function updateName(): void {}
+  function updateName(symbolName: string): void {
+    symbolNameElement.innerText = symbolName;
+  }
 
-  function updateDescription(): void {}
+  function updateDescription(): void {
+    // TODO: details -> description
+  }
 
-  function updateKeywords(): void {}
+  function updateKeywords(keywords: Details['keywords']): void {
+    function updateKeyword(thisElement: HTMLElement, thisKeyword: string, previousKeyword: string | null): void {
+      function updateText(thisElement: HTMLElement, thisKeyword: string): void {
+        thisElement.innerText = thisKeyword;
+      }
+
+      if (previousKeyword) {
+        if (thisKeyword !== previousKeyword) {
+          updateText(thisElement, thisKeyword);
+        }
+      } else {
+        updateText(thisElement, thisKeyword);
+      }
+    }
+
+    const keywordsQuantity = keywords.length;
+
+    const keywordElements = Array.from(keywordsElement.querySelectorAll('.css_symbol_keyword'));
+    const currentKeywordElementsLength = keywordElements.length;
+    if (keywordsQuantity !== currentKeywordElementsLength) {
+      const difference = currentKeywordElementsLength - keywordsQuantity;
+      if (difference < 0) {
+        const fragment = new DocumentFragment();
+        for (let o = 0; o > difference; o--) {
+          const newKeywordElement = generateElementOfKeyword();
+          fragment.appendChild(newKeywordElement);
+          keywordElements.push(newKeywordElement);
+        }
+        keywordsElement.append(fragment);
+      } else if (difference > 0) {
+        for (let p = currentKeywordElementsLength - 1, q = currentKeywordElementsLength - difference - 1; p > q; p--) {
+          keywordElements[p].remove();
+          keywordElements.splice(p, 1);
+        }
+      }
+    }
+
+    for (let i = 0; i < keywordsQuantity; i++) {
+      const thisElement = keywordElements[i] as HTMLElement;
+      const thisKeyword = keywords[i];
+
+      if (previousKeywords[i]) {
+        const previousKeyword = previousKeywords[i];
+        updateKeyword(thisElement, thisKeyword, previousKeyword);
+      } else {
+        updateKeyword(thisElement, thisKeyword, null);
+      }
+    }
+  }
 
   if (previousSymbolName !== symbolName) {
-    updateIcon(symbolName);
+    updateGlyph(symbolName);
     updateName(symbolName);
     updateCopyButton(symbolName);
+    updateCategory();
+    updateDescription();
     updateKeywords(details.keywords);
   }
 
-  const similarSymbolsQuantity = details.similarSymbols.length;
-
-  const similarSymbolElements = Array.from(similarSymbolsElement.querySelectorAll('.css_symbol_similar_symbol'));
-  const currentSimilarSymbolElementsLength = similarSymbolElements.length;
-  if (similarSymbolsQuantity !== currentSimilarSymbolElementsLength) {
-    const difference = currentSimilarSymbolElementsLength - similarSymbolsQuantity;
-    if (difference < 0) {
-      const fragment = new DocumentFragment();
-      for (let o = 0; o > difference; o--) {
-        const newSimilarSymbolElement = generateElementOfRelatedSymbol();
-        fragment.appendChild(newSimilarSymbolElement);
-        similarSymbolElements.push(newSimilarSymbolElement);
-      }
-      similarSymbolsElement.append(fragment);
-    } else if (difference > 0) {
-      for (let p = currentSimilarSymbolElementsLength - 1, q = currentSimilarSymbolElementsLength - difference - 1; p > q; p--) {
-        similarSymbolElements[p].remove();
-        similarSymbolElements.splice(p, 1);
-      }
-    }
-  }
-
-  for (let i = 0; i < similarSymbolsQuantity; i++) {
-    const thisElement = similarSymbolElements[i] as HTMLElement;
-    const thisSymbol = details.similarSymbols[i];
-
-    if (previousSimilarSymbols[i]) {
-      const previousSimilarSymbol = previousSimilarSymbols[i];
-      updateSimilarSymbol(thisElement, thisSymbol, previousSimilarSymbol);
-    } else {
-      updateSimilarSymbol(thisElement, thisSymbol, null);
-    }
-  }
-
-  previousSimilarSymbols = details.similarSymbols;
+  previousKeywords = details.keywords;
 }
 
-async function initializeSymbol(symbolName: string) {
+export async function showSymbol(symbolName: string) {
   const details = await getDetails(symbolName);
   updateSymbolSection(symbolName, details);
 }
 
-export function showSymbol(): void {
-  symbolField.setAttribute('displayed', 'true');
-}
-
-export function hideSymbol(): void {
-  symbolField.setAttribute('displayed', 'false');
-}
-
-export function openSymbol(symbolName: string): void {
-  showSymbol();
-  initializeSymbol(symbolName);
-}
-
-export function closeSymbol(): void {
-  hideSymbol();
-}
-
 async function copySymbolName(symbolName: string) {
   const copy = await copyToClipboard(symbolName);
-  if (copy) {
-    rightButtonElement.setAttribute('copied', 'true');
-    setTimeout(function () {
-      rightButtonElement.setAttribute('copied', 'false');
-    }, 1000);
-  }
+  // if (copy) {
+  //   rightButtonElement.setAttribute('copied', 'true');
+  //   setTimeout(function () {
+  //     rightButtonElement.setAttribute('copied', 'false');
+  //   }, 1000);
+  // }
 }
