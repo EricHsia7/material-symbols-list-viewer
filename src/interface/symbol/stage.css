@@ -33,10 +33,3 @@
 .css_symbol_section .css_symbol_stage .css_symbol_glyph_actions .css_symbol_glyph_action {
   color: var(--m-cssvar-333333);
 }
-
-@media (max-width: 720px) {
-  .css_symbol_section .css_symbol_stage {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-}

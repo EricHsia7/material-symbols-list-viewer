@@ -51,7 +51,6 @@
 /* info > metadata */
 .css_symbol_section .css_symbol_info .css_symbol_info_metadata {}
 
-
 @media (max-width: 720px) {
   .css_symbol_section .css_symbol_info {
     text-align: center;

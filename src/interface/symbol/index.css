@@ -6,3 +6,10 @@
   gap: 28px;
   align-items: stretch;
 }
+
+@media (max-width: 720px) {
+  .css_symbol_section {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
