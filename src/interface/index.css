@@ -1,8 +1,8 @@
 html {
   background-color: var(--m-cssvar-ffffff);
-  height: 100vh;
-  overscroll-behavior-y: none;
-  overflow: clip;
+  min-height: 100vh;
+  overscroll-behavior-x: auto;
+  overscroll-behavior-y: contain;
 }
 
 html::-webkit-scrollbar {
