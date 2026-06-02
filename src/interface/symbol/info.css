@@ -50,3 +50,21 @@
 
 /* info > metadata */
 .css_symbol_section .css_symbol_info .css_symbol_info_metadata {}
+
+
+@media (max-width: 720px) {
+  .css_symbol_section .css_symbol_info {
+    text-align: center;
+    align-items: center;
+  }
+
+  .css_symbol_section .css_symbol_info .css_symbol_info_metadata {
+    width: 100%;
+  }
+}
+
+@media (max-width: 460px) {
+  .css_symbol_section .css_symbol_info .css_symbol_info_metadata {
+    grid-template-columns: 1fr;
+  }
+}

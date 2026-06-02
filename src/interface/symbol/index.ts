@@ -19,17 +19,8 @@ let previousKeywords: Details['keywords'] = [];
 
 function generateElementOfKeyword(): HTMLElement {
   const element = document.createElement('div');
-  element.classList.add('css_related_symbol');
+  element.classList.add('css_symbol_info_keyword');
 
-  const glyphElement = document.createElement('div');
-  glyphElement.classList.add('css_related_symbol_glyph');
-  glyphElement.appendChild(getBlankIconElement());
-
-  const nameElement = document.createElement('div');
-  nameElement.classList.add('css_related_symbol_name');
-
-  element.appendChild(glyphElement);
-  element.appendChild(nameElement);
   return element;
 }
 
