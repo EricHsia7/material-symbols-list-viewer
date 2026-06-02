@@ -1,5 +1,5 @@
 import { searchFor, SearchResult, SearchResultArray } from '../../data/search';
-import { getBlankIconElement, setIcon } from '../icons';
+import { getBlankIconElement, setGlyph } from '../icons';
 import { openSymbol } from '../symbol';
 
 const searchLightboxElement = document.querySelector('.css_search_lightbox') as HTMLElement;
@@ -72,7 +72,7 @@ function updateSearchResults(searchResults: SearchResultArray): void {
   function updateSearchResult(thisElement: HTMLElement, thisSearchResult: SearchResult, previousSearchResult: SearchResult | null): void {
     function updateSymbol(thisElement: HTMLElement, thisSearchResult: SearchResult): void {
       const symbolElement = thisElement.querySelector('.css_search_result_symbol') as HTMLElement;
-      setIcon(symbolElement, thisSearchResult[0]);
+      setGlyph(symbolElement, thisSearchResult[0]);
     }
 
     function updateSymbolName(thisElement: HTMLElement, thisSearchResult: SearchResult): void {

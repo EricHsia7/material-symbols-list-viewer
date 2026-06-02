@@ -1,93 +1,38 @@
 import { Details, getDetails } from '../../data/details';
 import { copyToClipboard } from '../../tools/copy';
-import { getBlankIconElement, setIcon } from '../icons';
+import { getBlankIconElement, setGlyph } from '../icons';
 
-const symbolField = document.querySelector('.css_symbol_field') as HTMLElement;
-const headElement = symbolField.querySelector('.css_symbol_head') as HTMLElement;
-const leftButtonElement = headElement.querySelector('.css_symbol_head_button_left') as HTMLElement;
-const rightButtonElement = headElement.querySelector('.css_symbol_head_button_right') as HTMLElement;
-const rightButtonCopyElement = rightButtonElement.querySelector('.css_symbol_head_button_right_copy') as HTMLElement;
-const bodyElement = symbolField.querySelector('.css_symbol_body') as HTMLElement;
-const symbolElement = bodyElement.querySelector('.css_symbol_symbol') as HTMLElement;
-const symbolIconElement = symbolElement.querySelector('.css_symbol_symbol_icon') as HTMLElement;
-const symbolNameElement = symbolElement.querySelector('.css_symbol_symbol_name') as HTMLElement;
-const similarSymbolsElement = bodyElement.querySelector('.css_symbol_similar_symbols') as HTMLElement;
-const keywordsElement = bodyElement.querySelector('.css_symbol_keywords') as HTMLElement;
+const symbolSection = document.querySelector('.css_symbol_section') as HTMLElement;
+
+const symbolStageElement = symbolSection.querySelector('.css_symbol_stage') as HTMLElement;
+const symbolGlyphElement = symbolStageElement.querySelector('.css_symbol_glyph') as HTMLElement;
+const symbolGlyphActionsElement = symbolStageElement.querySelector('.css_symbol_glyph_actions') as HTMLElement;
+
+const symbolInfoElement = symbolSection.querySelector('.css_symbol_info') as HTMLElement;
+const symbolCategory = symbolInfoElement.querySelector('.css_symbol_similar_symbols') as HTMLElement;
+const symbolNameElement = symbolInfoElement.querySelector('.css_symbol_name') as HTMLElement;
+const symbolDescription = symbolInfoElement.querySelector('.css_symbol_similar_symbols') as HTMLElement;
+const keywordsElement = symbolInfoElement.querySelector('.css_symbol_keywords') as HTMLElement;
 
 let previousSymbolName: string = '';
 let previousSimilarSymbols: Details['similarSymbols'] = [];
 
-leftButtonElement.onclick = function () {
-  closeSymbol();
-};
+function updateSymbolSection(symbolName: string, details: Details): void {
+  function updateGlyph(symbolName: string): void {
+    setGlyph(symbolGlyphElement, symbolName);
+  }
 
-function generateElementOfSimilarSymbol(): HTMLElement {
-  const element = document.createElement('div');
-  element.classList.add('css_symbol_similar_symbol');
-
-  const iconElement = document.createElement('div');
-  iconElement.classList.add('css_symbol_similar_symbol_icon');
-  iconElement.appendChild(getBlankIconElement());
-
-  const symbolNameElement = document.createElement('div');
-  symbolNameElement.classList.add('css_symbol_similar_symbol_name');
-
-  element.appendChild(iconElement);
-  element.appendChild(symbolNameElement);
-  return element;
-}
-
-function updateSymbolField(symbolName: string, details: Details): void {
   function updateCopyButton(symbolName: string): void {
-    rightButtonElement.onclick = function () {
-      copySymbolName(symbolName);
-    };
+    // copySymbolName(symbolName);
   }
 
-  function updateIcon(symbolName: string): void {
-    setIcon(symbolIconElement, symbolName);
-  }
+  function updateCategory(): void {}
 
-  function updateName(symbolName: string): void {
-    symbolNameElement.innerText = symbolName;
-    symbolNameElement.onclick = function () {
-      copySymbolName(symbolName);
-    };
-  }
+  function updateName(): void {}
 
-  function updateKeywords(keywords: Details['keywords']): void {
-    keywordsElement.innerText = keywords.join(', ');
-  }
+  function updateDescription(): void {}
 
-  function updateSimilarSymbol(thisSimilarSymbolElement: HTMLElement, similarSymbolName: string, previousSimilarSymbolName: string | null): void {
-    function updateSimilarSymbolIcon(thisSimilarSymbolElement: HTMLElement, similarSymbolName: string): void {
-      const iconElement = thisSimilarSymbolElement.querySelector('.css_symbol_similar_symbol_icon') as HTMLElement;
-      setIcon(iconElement, similarSymbolName);
-    }
-
-    function updateSimilarSymbolName(thisSimilarSymbolElement: HTMLElement, similarSymbolName: string): void {
-      const nameElement = thisSimilarSymbolElement.querySelector('.css_symbol_similar_symbol_name') as HTMLElement;
-      nameElement.innerText = similarSymbolName;
-    }
-
-    function updateOnclick(thisSimilarSymbolElement: HTMLElement, similarSymbolName: string): void {
-      thisSimilarSymbolElement.onclick = function () {
-        openSymbol(similarSymbolName);
-      };
-    }
-
-    if (previousSimilarSymbolName) {
-      if (previousSimilarSymbolName !== similarSymbolName) {
-        updateSimilarSymbolIcon(thisSimilarSymbolElement, similarSymbolName);
-        updateSimilarSymbolName(thisSimilarSymbolElement, similarSymbolName);
-        updateOnclick(thisSimilarSymbolElement, similarSymbolName);
-      }
-    } else {
-      updateSimilarSymbolIcon(thisSimilarSymbolElement, similarSymbolName);
-      updateSimilarSymbolName(thisSimilarSymbolElement, similarSymbolName);
-      updateOnclick(thisSimilarSymbolElement, similarSymbolName);
-    }
-  }
+  function updateKeywords(): void {}
 
   if (previousSymbolName !== symbolName) {
     updateIcon(symbolName);
@@ -105,7 +50,7 @@ function updateSymbolField(symbolName: string, details: Details): void {
     if (difference < 0) {
       const fragment = new DocumentFragment();
       for (let o = 0; o > difference; o--) {
-        const newSimilarSymbolElement = generateElementOfSimilarSymbol();
+        const newSimilarSymbolElement = generateElementOfRelatedSymbol();
         fragment.appendChild(newSimilarSymbolElement);
         similarSymbolElements.push(newSimilarSymbolElement);
       }
@@ -135,7 +80,7 @@ function updateSymbolField(symbolName: string, details: Details): void {
 
 async function initializeSymbol(symbolName: string) {
   const details = await getDetails(symbolName);
-  updateSymbolField(symbolName, details);
+  updateSymbolSection(symbolName, details);
 }
 
 export function showSymbol(): void {

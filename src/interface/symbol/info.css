@@ -1,12 +1,12 @@
 /* info */
-.css_symbol .css_symbol_info {
+.css_symbol_section .css_symbol_info {
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
 /* info > category */
-.css_symbol .css_symbol_info .css_symbol_info_category {
+.css_symbol_section .css_symbol_info .css_symbol_info_category {
   display: inline-block;
   font-size: 12px;
   font-weight: 600;
@@ -15,7 +15,7 @@
 }
 
 /* info > name */
-.css_symbol .css_symbol_info .css_symbol_info_name {
+.css_symbol_section .css_symbol_info .css_symbol_info_name {
   margin: 0 0 14px;
   font-size: clamp(42px, 7vw, 72px);
   line-height: 1.1;
@@ -24,12 +24,12 @@
 }
 
 /* info > description */
-.css_symbol .css_symbol_info .css_symbol_info_description {
+.css_symbol_section .css_symbol_info .css_symbol_info_description {
   color: var(--m-cssvar-333333-60);
 }
 
 /* info > keywords */
-.css_symbol .css_symbol_info .css_symbol_info_keywords {
+.css_symbol_section .css_symbol_info .css_symbol_info_keywords {
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
@@ -37,7 +37,7 @@
 }
 
 /* info > keywords > keyword */
-.css_symbol .css_symbol_info .css_symbol_info_keywords .css_symbol_info_keyword {
+.css_symbol_section .css_symbol_info .css_symbol_info_keywords .css_symbol_info_keyword {
   display: inline-flex;
   align-items: center;
   padding: 3px 10px;
@@ -49,4 +49,4 @@
 }
 
 /* info > metadata */
-.css_symbol .css_symbol_info .css_symbol_info_metadata {}
+.css_symbol_section .css_symbol_info .css_symbol_info_metadata {}

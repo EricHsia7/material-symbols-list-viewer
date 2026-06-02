@@ -1,5 +1,5 @@
 import { getIndex } from '../../data/apis/get-index';
-import { getBlankIconElement, setIcon } from '../icons';
+import { getBlankIconElement, setGlyph } from '../icons';
 import { openSearch } from '../search';
 import { openSymbol } from '../symbol';
 
@@ -28,7 +28,7 @@ function generateElementOfSymbol(): HTMLElement {
 function updateGalleryField(symbols: Array<string>, skeletonScreen: boolean): void {
   function updateSymbol(thisElement: HTMLElement, thisSymbol: string, previousSymbol: string | null) {
     function updateIcon(thisElement: HTMLElement, thisSymbol: string): void {
-      setIcon(thisElement, thisSymbol);
+      setGlyph(thisElement, thisSymbol);
     }
 
     function updateOnclick(thisElement: HTMLElement, thisSymbol: string): void {
