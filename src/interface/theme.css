@@ -19,6 +19,8 @@
   :root {
     --m-cssvar-ffffff: rgb(15, 17, 21);
 
+    --m-cssvar-f9f9fb: rgb(31, 32, 33);
+
     --m-cssvar-ededf2: rgb(22, 25, 34);
     --m-cssvar-ededf2-60: rgba(22, 25, 34, 0.6);
 
