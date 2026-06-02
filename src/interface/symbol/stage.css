@@ -15,6 +15,7 @@
 .css_symbol_section .css_symbol_stage .css_symbol_glyph span.css_material_symbols_rounded {
   font-size: clamp(96px, 22vw, 168px);
   width: clamp(96px, 22vw, 168px);
+  height: auto;
   aspect-ratio: 1;
   color: var(--m-cssvar-333333);
 }

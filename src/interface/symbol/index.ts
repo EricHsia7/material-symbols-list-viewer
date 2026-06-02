@@ -9,10 +9,10 @@ const symbolGlyphElement = symbolStageElement.querySelector('.css_symbol_glyph')
 const symbolGlyphActionsElement = symbolStageElement.querySelector('.css_symbol_glyph_actions') as HTMLElement;
 
 const symbolInfoElement = symbolSection.querySelector('.css_symbol_info') as HTMLElement;
-const symbolCategory = symbolInfoElement.querySelector('.css_symbol_similar_symbols') as HTMLElement;
-const symbolNameElement = symbolInfoElement.querySelector('.css_symbol_name') as HTMLElement;
-const symbolDescription = symbolInfoElement.querySelector('.css_symbol_similar_symbols') as HTMLElement;
-const keywordsElement = symbolInfoElement.querySelector('.css_symbol_keywords') as HTMLElement;
+const symbolCategory = symbolInfoElement.querySelector('.css_symbol_info_category') as HTMLElement;
+const symbolNameElement = symbolInfoElement.querySelector('.css_symbol_info_name') as HTMLElement;
+const symbolDescription = symbolInfoElement.querySelector('.css_symbol_info_description') as HTMLElement;
+const keywordsElement = symbolInfoElement.querySelector('.css_symbol_info_keywords') as HTMLElement;
 
 let previousSymbolName: string = '';
 let previousKeywords: Details['keywords'] = [];
