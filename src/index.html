@@ -31,61 +31,50 @@
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,300,0..1,0&display=swap" rel="stylesheet" />
   </head>
   <body>
-    <div class="css_gallery_field" displayed="true">
-      <div class="css_gallery_body">
-        <div class="css_gallery_symbols"></div>
-      </div>
-      <div class="css_gallery_head">
-        <div class="css_gallery_head_button_left">
-          <span class="css_material_symbols_rounded">bookmark_added</span>
-        </div>
-        <div class="css_gallery_head_button_right">
-          <span class="css_material_symbols_rounded">search</span>
+    <div class="css_symbol">
+      <div class="css_symbol_stage">
+        <div class="css_symbol_glyph"></div>
+        <div class="css_symbol_glyph_actions">
+          <div class="css_symbol_glyph_action">Copy</div>
+          <div class="css_symbol_glyph_action">Shuffle</div>
         </div>
       </div>
-    </div>
-
-    <div class="css_search_lightbox" displayed="false"></div>
-
-    <div class="css_search_field" displayed="false">
-      <div class="css_search_body">
-        <div class="css_search_results"></div>
-      </div>
-      <div class="css_search_head">
-        <div class="css_search_head_button_left">
-          <span class="css_material_symbols_rounded">arrow_back</span>
-        </div>
-        <div class="css_search_head_search_input">
-          <input type="text" placeholder="Search" />
-        </div>
-      </div>
-    </div>
-
-    <div class="css_symbol_field" displayed="false">
-      <div class="css_symbol_body">
-        <div class="css_symbol_symbol">
-          <div class="css_symbol_symbol_icon">
-            <span class="css_material_symbols_rounded"></span>
+      <div class="css_symbol_info">
+        <div class="css_symbol_info_category"></div>
+        <div class="css_symbol_info_name"></div>
+        <div class="css_symbol_info_description"></div>
+        <div class="css_symbol_info_keywords"></div>
+        <div class="css_symbol_info_metadata">
+          <div class="css_symbol_info_metadata_property">
+            <div class="css_symbol_info_metadata_property_key">Version</div>
+            <div class="css_symbol_info_metadata_property_value"></div>
           </div>
-          <div class="css_symbol_symbol_name"></div>
-        </div>
-        <div class="css_symbol_similar_symbols"></div>
-        <div class="css_symbol_keywords"></div>
-      </div>
-      <div class="css_symbol_head">
-        <div class="css_symbol_head_button_left">
-          <span class="css_material_symbols_rounded">arrow_back</span>
-        </div>
-        <div class="css_symbol_head_button_right" copied="false">
-          <div class="css_symbol_head_button_right_check">
-            <span class="css_material_symbols_rounded">check</span>
-          </div>
-          <div class="css_symbol_head_button_right_copy">
-            <span class="css_material_symbols_rounded">content_copy</span>
+          <div class="css_symbol_info_metadata_property">
+            <div class="css_symbol_info_metadata_property_key">Update Time</div>
+            <div class="css_symbol_info_metadata_property_value"></div>
           </div>
         </div>
       </div>
     </div>
+
+    <div class="css_related_symbol">
+      <div class="css_related_symbol_head">
+        <div class="css_related_symbol_title">Related Symbols</div>
+        <div class="css_related_symbol_view_control">
+          <div class="css_related_symbol_view_control_button">
+            <div class="css_related_symbol_view_control_button_icon"></div>
+            <div class="css_related_symbol_view_control_button_name">Grid</div>
+          </div>
+          <div class="css_related_symbol_view_control_button">
+            <div class="css_related_symbol_view_control_button_icon"></div>
+            <div class="css_related_symbol_view_control_button_name">List</div>
+          </div>
+        </div>
+      </div>
+      <div class="css_related_symbol_body"></div>
+    </div>
+
+    <div class="css_head"></div>
 
     <script>
       document.addEventListener('DOMContentLoaded', function () {
