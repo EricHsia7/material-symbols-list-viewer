@@ -28,7 +28,7 @@
   height: 40px;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  padding: 5px;
+  padding: 2.5px;
   gap: 5px;
   box-sizing: border-box;
   border-style: solid;
