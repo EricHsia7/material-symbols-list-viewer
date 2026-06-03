@@ -1,5 +1,6 @@
 /* body */
 .css_related_symbols_section .css_related_symbol_body {
+  display: grid;
   position: relative;
   width: 100%;
   height: auto;
@@ -8,7 +9,6 @@
 
 /* view: grid */
 .css_related_symbols_section .css_related_symbol_body[view="grid"] {
-  display: grid;
   grid-template-columns: repeat(auto-fill, minmax(132px, 1fr));
   gap: 12px;
 }
@@ -21,6 +21,7 @@
 
 /* body > symbol */
 .css_related_symbols_section .css_related_symbol_body .css_related_symbol {
+  display: flex;
   padding: 18px 12px;
   border-style: solid;
   border-width: 1px;
@@ -32,7 +33,6 @@
 
 /* view: grid */
 .css_related_symbols_section .css_related_symbol_body[view="grid"] .css_related_symbol {
-  display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
@@ -41,7 +41,6 @@
 
 /* view: list */
 .css_related_symbols_section .css_related_symbol_body[view="list"] .css_related_symbol {
-  display: flex;
   flex-direction: row;
   align-items: center;
   text-align: left;
