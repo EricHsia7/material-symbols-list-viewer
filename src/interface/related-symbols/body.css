@@ -105,6 +105,7 @@
   font-size: 14px;
   font-weight: 600;
   color: var(--m-cssvar-333333);
+  word-break: break-all;
 }
 
 /* body > symbol > text > description */
