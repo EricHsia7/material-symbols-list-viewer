@@ -16,6 +16,7 @@
   font-weight: 700;
   display: flex;
   align-items: center;
+  color: var(--m-cssvar-333333);
 }
 
 /* head > view control */
@@ -44,9 +45,14 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  color: var(--m-cssvar-333333);
-  background: var(--m-cssvar-f9f9fb);
+  color: var(--m-cssvar-333333-60);
+  background-color: transparent;
   border-radius: 10px;
+}
+
+.css_related_symbols_section .css_related_symbol_head .css_related_symbol_view_control .css_related_symbol_view_control_button[pressed="true"] {
+  background-color: var(--m-cssvar-f9f9fb);
+  color: var(--m-cssvar-333333);
 }
 
 .css_related_symbols_section .css_related_symbol_head .css_related_symbol_view_control .css_related_symbol_view_control_button span.css_material_symbols_rounded {
