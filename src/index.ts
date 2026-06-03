@@ -1,7 +1,7 @@
 import { getSearchIndex } from './data/apis/get-search-index';
 import { getSimilarity } from './data/apis/get-similarity';
 import { initializeSearch } from './data/search';
-import { showSymbol } from './interface/symbol';
+import { initializeSymbol } from './interface/index';
 
 import './interface/theme.css';
 
@@ -18,12 +18,13 @@ import './interface/icons/index.css';
 import './interface/symbol/index.css';
 import './interface/symbol/stage.css';
 import './interface/symbol/info.css';
+import { getQueryParameter } from './data/query-parameter';
 
 window.app = {
   initialize: async function () {
     await Promise.all([getSearchIndex(), getSimilarity()]);
     await initializeSearch();
-    showSymbol('interests');
+    initializeSymbol(getQueryParameter('symbol') || 'interests');
   }
 };
 

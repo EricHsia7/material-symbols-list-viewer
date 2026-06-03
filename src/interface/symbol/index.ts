@@ -1,6 +1,6 @@
-import { Details, getDetails } from '../../data/details';
+import { Details } from '../../data/details';
 import { copyToClipboard } from '../../tools/copy';
-import { getBlankIconElement, setGlyph } from '../icons';
+import { setGlyph } from '../icons';
 
 const symbolSection = document.querySelector('.css_symbol_section') as HTMLElement;
 
@@ -24,7 +24,7 @@ function generateElementOfKeyword(): HTMLElement {
   return element;
 }
 
-function updateSymbolSection(symbolName: string, details: Details): void {
+export function updateSymbolSection(symbolName: string, details: Details): void {
   function updateGlyph(symbolName: string): void {
     setGlyph(symbolGlyphElement, symbolName);
   }
@@ -105,11 +105,6 @@ function updateSymbolSection(symbolName: string, details: Details): void {
   }
 
   previousKeywords = details.keywords;
-}
-
-export async function showSymbol(symbolName: string) {
-  const details = await getDetails(symbolName);
-  updateSymbolSection(symbolName, details);
 }
 
 async function copySymbolName(symbolName: string) {
