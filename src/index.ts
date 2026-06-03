@@ -22,6 +22,7 @@ import './interface/symbol/info.css';
 
 import './interface/related-symbols/index.css';
 import './interface/related-symbols/head.css';
+import './interface/related-symbols/body.css';
 
 window.app = {
   initialize: async function () {
