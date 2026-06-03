@@ -41,7 +41,7 @@
 .css_related_symbols_section .css_related_symbol_head .css_related_symbol_view_control .css_related_symbol_view_control_button {
   font-size: 13px;
   font-weight: 500;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
   color: var(--m-cssvar-333333);
@@ -49,7 +49,7 @@
   border-radius: 10px;
 }
 
-.css_related_symbols_section .css_related_symbol_head .css_related_symbol_view_control .css_related_symbol_view_control_button .css_related_symbol_view_control_button_glyph span.css_material_symbols_rounded {
+.css_related_symbols_section .css_related_symbol_head .css_related_symbol_view_control .css_related_symbol_view_control_button span.css_material_symbols_rounded {
   color: var(--m-cssvar-333333);
   font-size: 16px;
   width: 16px;
