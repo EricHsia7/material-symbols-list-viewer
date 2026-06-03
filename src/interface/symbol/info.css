@@ -48,8 +48,21 @@
   border-radius: 15px;
 }
 
-/* info > metadata */
-.css_symbol_section .css_symbol_info .css_symbol_info_metadata {}
+/* info > actions */
+.css_symbol_section .css_symbol_info .css_symbol_info_actions {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 18px;
+}
+
+/* info > actions > action */
+.css_symbol_section .css_symbol_info .css_symbol_info_actions .css_symbol_info_action {
+  padding: 10px 12px;
+  border-color: var(--m-cssvar-ededf2);
+  border-radius: 10px;
+  background: var(--m-cssvar-card-background);
+}
 
 @media (max-width: 720px) {
   .css_symbol_section .css_symbol_info {
@@ -57,13 +70,13 @@
     align-items: center;
   }
 
-  .css_symbol_section .css_symbol_info .css_symbol_info_metadata {
+  .css_symbol_section .css_symbol_info .css_symbol_info_actions {
     width: 100%;
   }
 }
 
 @media (max-width: 460px) {
-  .css_symbol_section .css_symbol_info .css_symbol_info_metadata {
+  .css_symbol_section .css_symbol_info .css_symbol_info_actions {
     grid-template-columns: 1fr;
   }
 }
