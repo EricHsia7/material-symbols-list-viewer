@@ -64,7 +64,7 @@
   border-width: 1px;
   border-color: var(--m-cssvar-ededf2);
   border-radius: 10px;
-  background: var(--m-cssvar-card-background);
+  background: var(--m-cssvar-component-background);
   color: var(--m-cssvar-333333);
   display: flex;
   align-items: center;

@@ -35,7 +35,7 @@
   border-width: 1px;
   border-color: var(--m-cssvar-ededf2);
   border-radius: 10px;
-  background: var(--m-cssvar-card-background);
+  background: var(--m-cssvar-component-background);
 }
 
 /* head > view control > button */
