@@ -6,14 +6,14 @@ const symbolSection = document.querySelector('.css_symbol_section') as HTMLEleme
 
 const symbolStageElement = symbolSection.querySelector('.css_symbol_stage') as HTMLElement;
 const symbolGlyphElement = symbolStageElement.querySelector('.css_symbol_glyph') as HTMLElement;
-const symbolActionsElement = symbolStageElement.querySelector('.css_symbol_info_actions') as HTMLElement;
-const [symbolActionCopyNameElement, symbolActionShuffleElement, symbolActionCopyLinkElement] = symbolActionsElement.querySelectorAll('.css_symbol_info_action') as NodeListOf<HTMLElement>;
 
 const symbolInfoElement = symbolSection.querySelector('.css_symbol_info') as HTMLElement;
 const symbolCategory = symbolInfoElement.querySelector('.css_symbol_info_category') as HTMLElement;
 const symbolNameElement = symbolInfoElement.querySelector('.css_symbol_info_name') as HTMLElement;
 const symbolDescription = symbolInfoElement.querySelector('.css_symbol_info_description') as HTMLElement;
 const keywordsElement = symbolInfoElement.querySelector('.css_symbol_info_keywords') as HTMLElement;
+const symbolActionsElement = symbolInfoElement.querySelector('.css_symbol_info_actions') as HTMLElement;
+const [symbolActionCopyNameElement, symbolActionShuffleElement, symbolActionCopyLinkElement] = symbolActionsElement.querySelectorAll('.css_symbol_info_action') as NodeListOf<HTMLElement>;
 
 let previousSymbolName: string = '';
 let previousKeywords: Details['keywords'] = [];
