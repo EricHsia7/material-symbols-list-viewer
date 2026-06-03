@@ -4,8 +4,19 @@ import { getBlankIconElement, setGlyph } from '../icons';
 
 const relatedSymbolsSection = document.querySelector('.css_related_symbols_section') as HTMLElement;
 const bodyElement = relatedSymbolsSection.querySelector('.css_related_symbol_body') as HTMLElement;
+const headElement = relatedSymbolsSection.querySelector('.css_related_symbol_head') as HTMLElement;
+const viewControlElement = headElement.querySelector('.css_related_symbol_view_control') as HTMLElement;
+const [viewControlButtonGridElement, viewControlButtonListElement] = viewControlElement.querySelectorAll('.css_related_symbol_view_control_button') as NodeListOf<HTMLElement>;
 
 let previousSymbolNames: Details['similarSymbols'] = [];
+
+viewControlButtonGridElement.addEventListener('onclick', function () {
+  bodyElement.setAttribute('view', 'grid');
+});
+
+viewControlButtonListElement.addEventListener('onclick', function () {
+  bodyElement.setAttribute('view', 'list');
+});
 
 function generateElementOfSymbol(): HTMLElement {
   const element = document.createElement('div');
