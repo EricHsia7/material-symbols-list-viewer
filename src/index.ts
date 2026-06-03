@@ -2,7 +2,7 @@ import { getSearchIndex } from './data/apis/get-search-index';
 import { getSimilarity } from './data/apis/get-similarity';
 import { initializeSearch } from './data/search';
 import { initializeSymbol } from './interface/index';
-import { getQueryParameter } from './data/query-parameter';
+import { getQueryParameter } from './tools/query-parameter';
 
 import './interface/theme.css';
 
