@@ -7,6 +7,7 @@ const symbolSection = document.querySelector('.css_symbol_section') as HTMLEleme
 const symbolStageElement = symbolSection.querySelector('.css_symbol_stage') as HTMLElement;
 const symbolGlyphElement = symbolStageElement.querySelector('.css_symbol_glyph') as HTMLElement;
 const symbolGlyphActionsElement = symbolStageElement.querySelector('.css_symbol_glyph_actions') as HTMLElement;
+const [symbolGlyphActionCopyNameElement, symbolGlyphActionShuffleElement, symbolGlyphActionCopyLinkElement] = symbolGlyphActionsElement.querySelectorAll('.css_symbol_info_action') as NodeListOf<HTMLElement>;
 
 const symbolInfoElement = symbolSection.querySelector('.css_symbol_info') as HTMLElement;
 const symbolCategory = symbolInfoElement.querySelector('.css_symbol_info_category') as HTMLElement;
@@ -29,8 +30,10 @@ export function updateSymbolSection(symbolName: string, details: Details): void 
     setGlyph(symbolGlyphElement, symbolName);
   }
 
-  function updateCopyButton(symbolName: string): void {
-    // copySymbolName(symbolName);
+  function updateCopyNameAction(symbolName: string): void {
+    symbolGlyphActionCopyNameElement.onclick = function () {
+      copySymbolName(symbolName);
+    };
   }
 
   function updateCategory(): void {
@@ -98,7 +101,7 @@ export function updateSymbolSection(symbolName: string, details: Details): void 
   if (previousSymbolName !== symbolName) {
     updateGlyph(symbolName);
     updateName(symbolName);
-    updateCopyButton(symbolName);
+    updateCopyNameAction(symbolName);
     updateCategory();
     updateDescription();
     updateKeywords(details.keywords);
@@ -109,10 +112,4 @@ export function updateSymbolSection(symbolName: string, details: Details): void 
 
 async function copySymbolName(symbolName: string) {
   const copy = await copyToClipboard(symbolName);
-  // if (copy) {
-  //   rightButtonElement.setAttribute('copied', 'true');
-  //   setTimeout(function () {
-  //     rightButtonElement.setAttribute('copied', 'false');
-  //   }, 1000);
-  // }
 }
