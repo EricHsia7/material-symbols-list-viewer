@@ -62,7 +62,7 @@ export function updateSymbolSection(symbolName: string, details: Details): void 
 
     const keywordsQuantity = keywords.length;
 
-    const keywordElements = Array.from(keywordsElement.querySelectorAll('.css_symbol_keyword'));
+    const keywordElements = Array.from(keywordsElement.querySelectorAll('.css_symbol_info_keyword'));
     const currentKeywordElementsLength = keywordElements.length;
     if (keywordsQuantity !== currentKeywordElementsLength) {
       const difference = currentKeywordElementsLength - keywordsQuantity;
