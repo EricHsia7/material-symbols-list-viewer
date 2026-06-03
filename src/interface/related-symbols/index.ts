@@ -10,11 +10,11 @@ const [viewControlButtonGridElement, viewControlButtonListElement] = viewControl
 
 let previousSymbolNames: Details['similarSymbols'] = [];
 
-viewControlButtonGridElement.addEventListener('onclick', function () {
+viewControlButtonGridElement.addEventListener('click', function () {
   bodyElement.setAttribute('view', 'grid');
 });
 
-viewControlButtonListElement.addEventListener('onclick', function () {
+viewControlButtonListElement.addEventListener('click', function () {
   bodyElement.setAttribute('view', 'list');
 });
 
