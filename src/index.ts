@@ -2,6 +2,7 @@ import { getSearchIndex } from './data/apis/get-search-index';
 import { getSimilarity } from './data/apis/get-similarity';
 import { initializeSearch } from './data/search';
 import { initializeSymbol } from './interface/index';
+import { getQueryParameter } from './data/query-parameter';
 
 import './interface/theme.css';
 
@@ -18,7 +19,9 @@ import './interface/icons/index.css';
 import './interface/symbol/index.css';
 import './interface/symbol/stage.css';
 import './interface/symbol/info.css';
-import { getQueryParameter } from './data/query-parameter';
+
+import './interface/related-symbol/index.css';
+import './interface/related-symbol/head.css';
 
 window.app = {
   initialize: async function () {
