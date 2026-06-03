@@ -59,9 +59,16 @@
 /* info > actions > action */
 .css_symbol_section .css_symbol_info .css_symbol_info_actions .css_symbol_info_action {
   padding: 10px 12px;
+  border-style: solid;
+  border-width: 1px;
   border-color: var(--m-cssvar-ededf2);
   border-radius: 10px;
   background: var(--m-cssvar-card-background);
+  color: var(--m-cssvar-333333);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
 }
 
 @media (max-width: 720px) {
