@@ -1,0 +1,56 @@
+/* head */
+.css_related_symbols_section .css_related_symbol_head {
+  position: relative;
+  width: 100%;
+  height: 40px;
+}
+
+/* head > title */
+.css_related_symbols_section .css_related_symbol_head .css_related_symbol_title {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: calc(100% - 150px);
+  height: 40px;
+  font-size: 32px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+}
+
+/* head > view control */
+.css_related_symbols_section .css_related_symbol_head .css_related_symbol_view_control {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  width: 150px;
+  height: 40px;
+  display: grid;
+  padding: 5px;
+  gap: 5px;
+  box-sizing: border-box;
+  border-style: solid;
+  border-width: 1px;
+  border-color: var(--m-cssvar-ededf2);
+  border-radius: 10px;
+  background: var(--m-cssvar-card-background);
+}
+
+/* head > view control > button */
+.css_related_symbols_section .css_related_symbol_head .css_related_symbol_view_control .css_related_symbol_view_control_button {
+  font-size: 13px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--m-cssvar-333333);
+  background: var(--m-cssvar-f9f9fb);
+  border-radius: 10px;
+}
+
+.css_related_symbols_section .css_related_symbol_head .css_related_symbol_view_control .css_related_symbol_view_control_button .css_related_symbol_view_control_button_glyph span.css_material_symbols_rounded {
+  color: var(--m-cssvar-333333);
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+}
