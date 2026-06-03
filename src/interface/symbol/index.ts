@@ -6,8 +6,8 @@ const symbolSection = document.querySelector('.css_symbol_section') as HTMLEleme
 
 const symbolStageElement = symbolSection.querySelector('.css_symbol_stage') as HTMLElement;
 const symbolGlyphElement = symbolStageElement.querySelector('.css_symbol_glyph') as HTMLElement;
-const symbolGlyphActionsElement = symbolStageElement.querySelector('.css_symbol_glyph_actions') as HTMLElement;
-const [symbolGlyphActionCopyNameElement, symbolGlyphActionShuffleElement, symbolGlyphActionCopyLinkElement] = symbolGlyphActionsElement.querySelectorAll('.css_symbol_info_action') as NodeListOf<HTMLElement>;
+const symbolActionsElement = symbolStageElement.querySelector('.css_symbol_info_actions') as HTMLElement;
+const [symbolActionCopyNameElement, symbolActionShuffleElement, symbolActionCopyLinkElement] = symbolActionsElement.querySelectorAll('.css_symbol_info_action') as NodeListOf<HTMLElement>;
 
 const symbolInfoElement = symbolSection.querySelector('.css_symbol_info') as HTMLElement;
 const symbolCategory = symbolInfoElement.querySelector('.css_symbol_info_category') as HTMLElement;
@@ -31,7 +31,7 @@ export function updateSymbolSection(symbolName: string, details: Details): void 
   }
 
   function updateCopyNameAction(symbolName: string): void {
-    symbolGlyphActionCopyNameElement.onclick = function () {
+    symbolActionCopyNameElement.onclick = function () {
       copySymbolName(symbolName);
     };
   }
