@@ -64,6 +64,6 @@
 }
 
 /* pressed: true */
-.css_related_symbols_section .css_related_symbol_head .css_related_symbol_view_control .css_related_symbol_view_control_button span.css_material_symbols_rounded {
+.css_related_symbols_section .css_related_symbol_head .css_related_symbol_view_control .css_related_symbol_view_control_button[pressed="true"] span.css_material_symbols_rounded {
   color: var(--m-cssvar-333333);
 }
