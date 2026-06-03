@@ -8,11 +8,19 @@ function generateElementOfRelatedSymbol(): HTMLElement {
   glyphElement.classList.add('css_related_symbol_glyph');
   glyphElement.appendChild(getBlankIconElement());
 
+  const textElement = document.createElement('div');
+  textElement.classList.add('css_related_symbol_text');
+
   const nameElement = document.createElement('div');
   nameElement.classList.add('css_related_symbol_name');
 
+  const descriptionElement = document.createElement('div');
+  descriptionElement.classList.add('css_related_symbol_description');
+
   element.appendChild(glyphElement);
-  element.appendChild(nameElement);
+  textElement.appendChild(nameElement);
+  textElement.appendChild(descriptionElement);
+  element.appendChild(textElement);
   return element;
 }
 
@@ -24,9 +32,12 @@ function updateRelatedSymbolsSection(): void {
     }
 
     function updateName(thisElement: HTMLElement, similarSymbolName: string): void {
-      const nameElement = thisElement.querySelector('.css_related_symbol_name') as HTMLElement;
+      const textElement = thisElement.querySelector('.css_related_symbol_text');
+      const nameElement = textElement.querySelector('.css_related_symbol_name') as HTMLElement;
       nameElement.innerText = similarSymbolName;
     }
+
+    function updateDescription(thisElement: HTMLElement): void {}
 
     function updateOnclick(thisElement: HTMLElement, similarSymbolName: string): void {
       thisElement.onclick = function () {

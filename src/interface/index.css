@@ -20,7 +20,7 @@ body {
   text-rendering: optimizeLegibility;
   min-height: 100vh;
   margin: 0 auto;
-  padding: 76px 24px 88px;
+  padding: calc(var(--m-cssvar-safe-area-top) + 60px) 24px 88px;
   max-width: 1300px;
 }
 

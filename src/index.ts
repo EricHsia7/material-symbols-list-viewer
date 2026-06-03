@@ -20,8 +20,8 @@ import './interface/symbol/index.css';
 import './interface/symbol/stage.css';
 import './interface/symbol/info.css';
 
-import './interface/related-symbol/index.css';
-import './interface/related-symbol/head.css';
+import './interface/related-symbols/index.css';
+import './interface/related-symbols/head.css';
 
 window.app = {
   initialize: async function () {

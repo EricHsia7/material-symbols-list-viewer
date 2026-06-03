@@ -1,0 +1,124 @@
+/* body */
+.css_related_symbols_section .css_related_symbol_body {
+  position: relative;
+  width: 100%;
+  height: auto;
+}
+
+/* view: grid */
+.css_related_symbols_section .css_related_symbol_body[view="grid"] {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(132px, 1fr));
+  gap: 12px;
+}
+
+/* view: list */
+.css_related_symbols_section .css_related_symbol_body[view="list"] {
+  grid-template-columns: 1fr;
+  gap: 8px;
+}
+
+/* body > symbol */
+.css_related_symbols_section .css_related_symbol_body .css_related_symbol {
+  padding: 18px 12px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: var(--m-cssvar-ededf2);
+  border-radius: 12px;
+  background: var(--m-cssvar-card-background);
+  cursor: pointer;
+}
+
+/* view: grid */
+.css_related_symbols_section .css_related_symbol_body[view="grid"] .css_related_symbol {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 8px;
+}
+
+/* view: list */
+.css_related_symbols_section .css_related_symbol_body[view="list"] .css_related_symbol {
+  flex-direction: row;
+  align-items: center;
+  text-align: left;
+  gap: 16px;
+  padding: 12px 16px;
+}
+
+/* body > symbol > glyph */
+.css_related_symbols_section .css_related_symbol_body .css_related_symbol .css_related_symbol_glyph {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* view: grid */
+.css_related_symbols_section .css_related_symbol_body[view="grid"] .css_related_symbol .css_related_symbol_glyph {
+  width: 40px;
+  height: 40px;
+}
+
+/* view: list */
+.css_related_symbols_section .css_related_symbol_body[view="list"] .css_related_symbol .css_related_symbol_glyph {
+  width: 30px;
+  height: 30px;
+}
+
+.css_related_symbols_section .css_related_symbol_body .css_related_symbol .css_related_symbol_glyph span.css_material_symbols_rounded {
+  color: var(--m-cssvar-333333);
+}
+
+/* view: grid */
+.css_related_symbols_section .css_related_symbol_body[view="grid"] .css_related_symbol .css_related_symbol_glyph span.css_material_symbols_rounded {
+  font-size: 40px;
+  width: 40px;
+  height: 40px;
+}
+
+/* view: list */
+.css_related_symbols_section .css_related_symbol_body[view="list"] .css_related_symbol .css_related_symbol_glyph span.css_material_symbols_rounded {
+  font-size: 30px;
+  width: 30px;
+  height: 30px;
+}
+
+/* body > symbol > text */
+.css_related_symbols_section .css_related_symbol_body .css_related_symbol .css_related_symbol_text {
+  display: flex;
+}
+
+/* view: grid */
+.css_related_symbols_section .css_related_symbol_body[view="grid"] .css_related_symbol .css_related_symbol_text {
+  flex-direction: row;
+}
+
+/* view: list */
+.css_related_symbols_section .css_related_symbol_body[view="list"] .css_related_symbol .css_related_symbol_text {
+  flex-direction: column;
+}
+
+/* body > symbol > text > name */
+.css_related_symbols_section .css_related_symbol_body .css_related_symbol .css_related_symbol_text .css_related_symbol_name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--m-cssvar-333333);
+}
+
+/* body > symbol > text > description */
+.css_related_symbols_section .css_related_symbol_body .css_related_symbol .css_related_symbol_text .css_related_symbol_description {
+  font-size: 12px;
+  color: var(--m-cssvar-333333-60);
+}
+
+/* view: grid */
+.css_related_symbols_section .css_related_symbol_body[view="grid"] .css_related_symbol .css_related_symbol_text .css_related_symbol_description {
+  display: none;
+}
+
+/* view: list */
+.css_related_symbols_section .css_related_symbol_body[view="list"] .css_related_symbol .css_related_symbol_text .css_related_symbol_description {
+  display: inline-block;
+}
