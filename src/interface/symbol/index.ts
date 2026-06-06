@@ -44,8 +44,8 @@ export function updateSymbolSection(symbolName: string, details: Details): void 
     symbolNameElement.innerText = symbolName;
   }
 
-  function updateDescription(): void {
-    // TODO: details -> description
+  function updateDescription(description: Details['description']): void {
+    symbolDescription.innerText = description;
   }
 
   function updateKeywords(keywords: Details['keywords']): void {

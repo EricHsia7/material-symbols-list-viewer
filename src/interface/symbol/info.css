@@ -27,6 +27,8 @@
 /* info > description */
 .css_symbol_section .css_symbol_info .css_symbol_info_description {
   color: var(--m-cssvar-333333-60);
+  word-break: break-all;
+  white-space: pre;
 }
 
 /* info > keywords */
