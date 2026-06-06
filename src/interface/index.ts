@@ -11,4 +11,8 @@ export async function initializeSymbol(symbolName: string) {
   if (currentSymbol !== symbolName) {
     setQueryParameter('symbol', symbolName);
   }
+  document.documentElement.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
 }
