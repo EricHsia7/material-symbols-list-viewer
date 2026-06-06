@@ -103,7 +103,7 @@ export function updateSymbolSection(symbolName: string, details: Details): void 
     updateName(symbolName);
     updateCopyNameAction(symbolName);
     updateCategory();
-    updateDescription();
+    updateDescription(details.description);
     updateKeywords(details.keywords);
   }
 
