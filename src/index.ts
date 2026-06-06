@@ -3,6 +3,7 @@ import { getSimilarity } from './data/apis/get-similarity';
 import { initializeSearch } from './data/search';
 import { initializeSymbol } from './interface/index';
 import { getQueryParameter } from './tools/query-parameter';
+import { getManifest } from './data/apis/get-manifest';
 
 import './interface/theme.css';
 
@@ -26,6 +27,7 @@ import './interface/related-symbols/body.css';
 
 window.app = {
   initialize: async function () {
+    await getManifest();
     await Promise.all([getSearchIndex(), getSimilarity()]);
     await initializeSearch();
     initializeSymbol(getQueryParameter('symbol') || 'interests');
