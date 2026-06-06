@@ -1,6 +1,6 @@
 @property --m-visible-search-results-quantity {
   syntax: '<number>';
-  inherits: false;
+  inherits: true;
   initial-value: 2;
 }
 

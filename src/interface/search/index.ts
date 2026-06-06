@@ -112,7 +112,7 @@ function updateSearchResults(searchResults: SearchResultArray): void {
 
   const searchResultsQuantity = searchResults.length;
 
-  searchResultsElement.style.setProperty('--m-visible-search-results-quantity', Math.max(2, Math.min(searchResultsQuantity, 10)).toString());
+  searchPanelElement.style.setProperty('--m-visible-search-results-quantity', Math.max(2, Math.min(searchResultsQuantity, 10)).toString());
 
   const searchResultElements = Array.from(searchResultsElement.querySelectorAll('.css_search_result'));
   const currentSearchResultElementsLength = searchResultElements.length;
