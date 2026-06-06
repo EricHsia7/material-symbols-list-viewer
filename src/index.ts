@@ -38,6 +38,7 @@ interface AppWindow extends Window {
     await initializeSearch();
 
     initializeSymbol(getQueryParameter('symbol') || 'interests');
+
     window.addEventListener('popstate', function () {
       initializeSymbol(getQueryParameter('symbol') || 'interests');
     });
