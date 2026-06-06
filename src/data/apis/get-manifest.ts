@@ -16,7 +16,7 @@ export interface ManifestData {
   sha512: ManifestDataHash;
 }
 
-export type ManifestDataType = 'search_index' | 'index' | 'similarity';
+export type ManifestDataType = 'search_index' | 'index' | 'similarity' | 'description';
 
 export type Manifest = Record<ManifestDataType, ManifestData>;
 

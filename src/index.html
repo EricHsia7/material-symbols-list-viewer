@@ -31,59 +31,52 @@
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,300,0..1,0&display=swap" rel="stylesheet" />
   </head>
   <body>
-    <div class="css_gallery_field" displayed="true">
-      <div class="css_gallery_body">
-        <div class="css_gallery_symbols"></div>
-      </div>
-      <div class="css_gallery_head">
-        <div class="css_gallery_head_button_left">
-          <span class="css_material_symbols_rounded">bookmark_added</span>
+    <div class="css_symbol_section">
+      <div class="css_symbol_stage">
+        <div class="css_symbol_glyph">
+          <span class="css_material_symbols_rounded"></span>
         </div>
-        <div class="css_gallery_head_button_right">
-          <span class="css_material_symbols_rounded">search</span>
+      </div>
+      <div class="css_symbol_info">
+        <div class="css_symbol_info_category"></div>
+        <div class="css_symbol_info_name"></div>
+        <div class="css_symbol_info_description"></div>
+        <div class="css_symbol_info_keywords"></div>
+        <div class="css_symbol_info_actions">
+          <div class="css_symbol_info_action"><span class="css_material_symbols_rounded">content_copy</span>Copy</div>
+          <div class="css_symbol_info_action"><span class="css_material_symbols_rounded">autorenew</span>Shuffle</div>
+          <div class="css_symbol_info_action"><span class="css_material_symbols_rounded">link</span>Link</div>
         </div>
       </div>
     </div>
 
-    <div class="css_search_lightbox" displayed="false"></div>
-
-    <div class="css_search_field" displayed="false">
-      <div class="css_search_body">
-        <div class="css_search_results"></div>
-      </div>
-      <div class="css_search_head">
-        <div class="css_search_head_button_left">
-          <span class="css_material_symbols_rounded">arrow_back</span>
+    <div class="css_related_symbols_section">
+      <div class="css_related_symbol_head">
+        <div class="css_related_symbol_title">Related</div>
+        <div class="css_related_symbol_view_control">
+          <div class="css_related_symbol_view_control_button" pressed="true"><span class="css_material_symbols_rounded">grid_view</span>Grid</div>
+          <div class="css_related_symbol_view_control_button" pressed="false"><span class="css_material_symbols_rounded">notes</span>List</div>
         </div>
-        <div class="css_search_head_search_input">
+      </div>
+      <div class="css_related_symbol_body" view="grid"></div>
+    </div>
+
+    <div class="css_head">
+      <div class="css_head_container">
+        <div class="css_head_glyph"><span class="css_material_symbols_rounded">interests</span></div>
+        <div class="css_head_search"><span class="css_material_symbols_rounded">search</span></div>
+      </div>
+    </div>
+
+    <div class="css_search" displayed="false">
+      <div class="css_search_panel" style="--m-visible-search-results-quantity: 2">
+        <div class="css_search_input">
+          <div class="css_search_input_icon">
+            <span class="css_material_symbols_rounded">search</span>
+          </div>
           <input type="text" placeholder="Search" />
         </div>
-      </div>
-    </div>
-
-    <div class="css_symbol_field" displayed="false">
-      <div class="css_symbol_body">
-        <div class="css_symbol_symbol">
-          <div class="css_symbol_symbol_icon">
-            <span class="css_material_symbols_rounded"></span>
-          </div>
-          <div class="css_symbol_symbol_name"></div>
-        </div>
-        <div class="css_symbol_similar_symbols"></div>
-        <div class="css_symbol_keywords"></div>
-      </div>
-      <div class="css_symbol_head">
-        <div class="css_symbol_head_button_left">
-          <span class="css_material_symbols_rounded">arrow_back</span>
-        </div>
-        <div class="css_symbol_head_button_right" copied="false">
-          <div class="css_symbol_head_button_right_check">
-            <span class="css_material_symbols_rounded">check</span>
-          </div>
-          <div class="css_symbol_head_button_right_copy">
-            <span class="css_material_symbols_rounded">content_copy</span>
-          </div>
-        </div>
+        <div class="css_search_results"></div>
       </div>
     </div>
 

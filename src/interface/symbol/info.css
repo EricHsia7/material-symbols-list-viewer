@@ -1,0 +1,98 @@
+/* info */
+.css_symbol_section .css_symbol_info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* info > category */
+.css_symbol_section .css_symbol_info .css_symbol_info_category {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--m-cssvar-main-color);
+}
+
+/* info > name */
+.css_symbol_section .css_symbol_info .css_symbol_info_name {
+  margin: 0 0 14px;
+  font-size: clamp(42px, 7vw, 72px);
+  line-height: 1.1;
+  font-weight: 700;
+  color: var(--m-cssvar-333333);
+  word-break: break-all;
+}
+
+/* info > description */
+.css_symbol_section .css_symbol_info .css_symbol_info_description {
+  color: var(--m-cssvar-333333-60);
+  word-break: break-word;
+}
+
+/* info > keywords */
+.css_symbol_section .css_symbol_info .css_symbol_info_keywords {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 14px 0 18px;
+}
+
+/* info > keywords > keyword */
+.css_symbol_section .css_symbol_info .css_symbol_info_keywords .css_symbol_info_keyword {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 10px;
+  font-size: 13px;
+  color: var(--m-cssvar-333333-60);
+  background: var(--m-cssvar-ffffff);
+  border: 1px solid var(--m-cssvar-f9f9fb);
+  border-radius: 15px;
+}
+
+/* info > actions */
+.css_symbol_section .css_symbol_info .css_symbol_info_actions {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 18px;
+}
+
+/* info > actions > action */
+.css_symbol_section .css_symbol_info .css_symbol_info_actions .css_symbol_info_action {
+  padding: 10px 12px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: var(--m-cssvar-ededf2);
+  border-radius: 10px;
+  background: var(--m-cssvar-component-background);
+  color: var(--m-cssvar-333333);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.css_symbol_section .css_symbol_info .css_symbol_info_actions .css_symbol_info_action span.css_material_symbols_rounded {
+  font-size: 24px;
+  width: 24px;
+  height: 24px;
+}
+
+@media (max-width: 720px) {
+  .css_symbol_section .css_symbol_info {
+    text-align: center;
+    align-items: center;
+  }
+
+  .css_symbol_section .css_symbol_info .css_symbol_info_actions {
+    width: 100%;
+  }
+}
+
+@media (max-width: 460px) {
+  .css_symbol_section .css_symbol_info .css_symbol_info_actions {
+    grid-template-columns: 1fr;
+  }
+}

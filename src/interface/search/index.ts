@@ -1,43 +1,54 @@
+import { initializeSymbol } from '..';
 import { searchFor, SearchResult, SearchResultArray } from '../../data/search';
-import { getBlankIconElement, setIcon } from '../icons';
-import { openSymbol } from '../symbol';
+import { getBlankIconElement, setGlyph } from '../icons';
 
-const searchLightboxElement = document.querySelector('.css_search_lightbox') as HTMLElement;
-const searchField = document.querySelector('.css_search_field') as HTMLElement;
-const searchHeadElement = searchField.querySelector('.css_search_head') as HTMLElement;
-const searchHeadLeftButtonElement = searchHeadElement.querySelector('.css_search_head_button_left') as HTMLElement;
-const searchHeadSearchInputElement = searchHeadElement.querySelector('.css_search_head_search_input input[type="text"]') as HTMLInputElement;
-const searchBodyElement = searchField.querySelector('.css_search_body') as HTMLElement;
-const searchResultsElement = searchBodyElement.querySelector('.css_search_results') as HTMLElement;
+const searchElement = document.querySelector('.css_search') as HTMLElement;
+const searchPanelElement = searchElement.querySelector('.css_search_panel') as HTMLElement;
+const searchInputElement = searchPanelElement.querySelector('.css_search_input input[type="text"]') as HTMLInputElement;
+const searchResultsElement = searchPanelElement.querySelector('.css_search_results') as HTMLElement;
 
 let initialized: boolean = false;
 let previousQuery: string = '';
 let previousSearchResults: SearchResultArray = [];
 
-export async function initializeSearchField() {
+export function initializeSearchEvents(): void {
   if (initialized) {
     return;
   }
   initialized = true;
 
-  searchHeadLeftButtonElement.onclick = function () {
-    closeSearch();
-  };
+  searchElement.addEventListener('click', function (event: Event) {
+    event.stopPropagation();
 
-  searchHeadSearchInputElement.addEventListener('selectionchange', function () {
+    if (event.target === searchElement) {
+      hideSearch();
+    }
+  });
+
+  searchInputElement.addEventListener('selectionchange', function () {
     updateSearch();
   });
 
-  searchHeadSearchInputElement.addEventListener('keyup', function () {
+  searchInputElement.addEventListener('keyup', function () {
     updateSearch();
   });
 
-  searchHeadSearchInputElement.addEventListener('paste', function () {
+  searchInputElement.addEventListener('paste', function () {
     updateSearch();
   });
 
-  searchHeadSearchInputElement.addEventListener('cut', function () {
+  searchInputElement.addEventListener('cut', function () {
     updateSearch();
+  });
+
+  document.addEventListener('keydown', function (event: KeyboardEvent) {
+    if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === 'k') {
+      event.preventDefault();
+      showSearch();
+    }
+    if (event.key === 'Escape') {
+      hideSearch();
+    }
   });
 }
 
@@ -45,20 +56,20 @@ function generateElementOfSearchResult(): HTMLElement {
   const element = document.createElement('div');
   element.classList.add('css_search_result');
 
-  const iconElement = document.createElement('div');
-  iconElement.classList.add('css_search_result_symbol');
-  iconElement.appendChild(getBlankIconElement());
+  const glyphElement = document.createElement('div');
+  glyphElement.classList.add('css_search_result_glyph');
+  glyphElement.appendChild(getBlankIconElement());
 
-  const symbolNameElement = document.createElement('div');
-  symbolNameElement.classList.add('css_search_result_symbol_name');
+  const nameElement = document.createElement('div');
+  nameElement.classList.add('css_search_result_name');
 
-  element.appendChild(iconElement);
-  element.appendChild(symbolNameElement);
+  element.appendChild(glyphElement);
+  element.appendChild(nameElement);
   return element;
 }
 
 function updateSearch(): void {
-  const query = searchHeadSearchInputElement.value;
+  const query = searchInputElement.value;
   if (query === previousQuery) {
     return;
   }
@@ -71,18 +82,19 @@ function updateSearch(): void {
 function updateSearchResults(searchResults: SearchResultArray): void {
   function updateSearchResult(thisElement: HTMLElement, thisSearchResult: SearchResult, previousSearchResult: SearchResult | null): void {
     function updateSymbol(thisElement: HTMLElement, thisSearchResult: SearchResult): void {
-      const symbolElement = thisElement.querySelector('.css_search_result_symbol') as HTMLElement;
-      setIcon(symbolElement, thisSearchResult[0]);
+      const symbolElement = thisElement.querySelector('.css_search_result_glyph') as HTMLElement;
+      setGlyph(symbolElement, thisSearchResult[0]);
     }
 
     function updateSymbolName(thisElement: HTMLElement, thisSearchResult: SearchResult): void {
-      const symbolNameElement = thisElement.querySelector('.css_search_result_symbol_name') as HTMLElement;
+      const symbolNameElement = thisElement.querySelector('.css_search_result_name') as HTMLElement;
       symbolNameElement.innerText = thisSearchResult[0];
     }
 
     function updateOnclick(thisElement: HTMLElement, thisSearchResult: SearchResult): void {
       thisElement.onclick = function () {
-        openSymbol(thisSearchResult[0]);
+        hideSearch();
+        initializeSymbol(thisSearchResult[0]);
       };
     }
 
@@ -100,6 +112,8 @@ function updateSearchResults(searchResults: SearchResultArray): void {
   }
 
   const searchResultsQuantity = searchResults.length;
+
+  searchPanelElement.style.setProperty('--m-visible-search-results-quantity', Math.max(2, Math.min(searchResultsQuantity, 10)).toString());
 
   const searchResultElements = Array.from(searchResultsElement.querySelectorAll('.css_search_result'));
   const currentSearchResultElementsLength = searchResultElements.length;
@@ -137,19 +151,19 @@ function updateSearchResults(searchResults: SearchResultArray): void {
 }
 
 export function showSearch(): void {
-  searchField.setAttribute('displayed', 'true');
-  searchLightboxElement.setAttribute('displayed', 'true');
+  searchElement.setAttribute('displayed', 'true');
+  searchPanelElement.classList.add('css_search_panel_open');
+  searchInputElement.focus();
 }
 
 export function hideSearch(): void {
-  searchField.setAttribute('displayed', 'false');
-  searchLightboxElement.setAttribute('displayed', 'false');
+  searchElement.setAttribute('displayed', 'false');
+  searchPanelElement.classList.remove('css_search_panel_open');
 }
 
-export function openSearch(): void {
-  showSearch();
-}
-
-export function closeSearch(): void {
-  hideSearch();
+export function searchKeyword(keyword: string): void {
+  searchElement.setAttribute('displayed', 'true');
+  searchPanelElement.classList.add('css_search_panel_open');
+  searchInputElement.value = keyword;
+  updateSearch();
 }

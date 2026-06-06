@@ -1,8 +1,8 @@
 html {
   background-color: var(--m-cssvar-ffffff);
-  height: 100vh;
-  overscroll-behavior-y: none;
-  overflow: clip;
+  min-height: 100vh;
+  overscroll-behavior-x: auto;
+  overscroll-behavior-y: contain;
 }
 
 html::-webkit-scrollbar {
@@ -18,9 +18,10 @@ body {
   background-color: var(--m-cssvar-ffffff);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
-  height: 100vh;
-  overscroll-behavior-y: none;
-  overflow: clip;
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: calc(var(--m-cssvar-safe-area-top) + 60px) 24px 88px;
+  max-width: 1300px;
 }
 
 body::-webkit-scrollbar {

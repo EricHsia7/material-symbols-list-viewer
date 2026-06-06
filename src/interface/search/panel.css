@@ -1,0 +1,72 @@
+@property --m-visible-search-results-quantity {
+  syntax: '<number>';
+  inherits: true;
+  initial-value: 2;
+}
+
+/* search > panel */
+.css_search .css_search_panel {
+  position: absolute;
+  top: calc(var(--m-cssvar-safe-area-top) + 14vh);
+  left: 50%;
+  transform: translateX(-50%) translateY(0px) scale(1);
+  width: min(640px, calc(100vw - 32px));
+  background: var(--m-cssvar-ffffff);
+  border-width: 1px;
+  border-style: solid;
+  border-color: var(--m-cssvar-ededf2);
+  border-radius: 15px;
+  box-shadow:
+    0 24px 60px rgba(0, 0, 0, 0.28),
+    0 4px 14px rgba(0, 0, 0, 0.16);
+  overflow: clip;
+  box-sizing: border-box;
+  min-height: 145px;
+  height: calc(55px + 45px * var(--m-visible-search-results-quantity));
+}
+
+.css_search .css_search_panel.css_search_panel_open {
+  animation-name: css-panel-in;
+  animation-duration: 320ms;
+  animation-timing-function: cubic-bezier(0.2, 0.8, 0.2, 1);
+  animation-fill-mode: forwards;
+}
+
+@media (max-width: 767px) {
+  .css_search .css_search_panel {
+    top: calc(var(--m-cssvar-safe-area-top) + 64px);
+    width: calc(100vw - 20px);
+    border-radius: 15px;
+  }
+
+  .css_search .css_search_panel.css_search_panel_open {
+    animation-name: css-popover-in;
+    animation-duration: 320ms;
+    animation-timing-function: cubic-bezier(0.2, 0.8, 0.2, 1);
+    animation-fill-mode: forwards;
+  }
+}
+
+@keyframes css-panel-in {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-8px) scale(0.9);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0px) scale(1);
+  }
+}
+
+@keyframes css-popover-in {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-10px) scale(0.9);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0px) scale(1);
+  }
+}

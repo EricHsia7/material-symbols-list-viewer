@@ -1,0 +1,23 @@
+/* stage */
+.css_symbol_section .css_symbol_stage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 24px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: var(--m-cssvar-ededf2);
+  border-radius: 18px;
+  background: var(--m-cssvar-component-background);
+  /* box-shadow: 0px 0.7px 1.462px rgba(0, 0, 0, 0.015), 0px 3px 9px rgba(0, 0, 0, 0.03); */
+}
+
+/* stage > glyph */
+.css_symbol_section .css_symbol_stage .css_symbol_glyph span.css_material_symbols_rounded {
+  font-size: clamp(96px, 22vw, 168px);
+  width: clamp(96px, 22vw, 168px);
+  height: auto;
+  aspect-ratio: 1;
+  color: var(--m-cssvar-333333);
+}

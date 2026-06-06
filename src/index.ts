@@ -1,8 +1,12 @@
 import { getSearchIndex } from './data/apis/get-search-index';
 import { getSimilarity } from './data/apis/get-similarity';
 import { initializeSearch } from './data/search';
-import { initializeGalleryField } from './interface/gallery';
-import { initializeSearchField } from './interface/search';
+import { initializeSymbol } from './interface/index';
+import { getQueryParameter } from './tools/query-parameter';
+import { getManifest } from './data/apis/get-manifest';
+import { initializeSearchEvents } from './interface/search';
+import { initializeHeadEvents } from './interface/head';
+import { initializeRelatedSymbolsEvents } from './interface/related-symbols';
 
 import './interface/theme.css';
 
@@ -10,31 +14,43 @@ import './interface/index.css';
 
 import './interface/icons/index.css';
 
-import './interface/gallery/field.css';
-import './interface/gallery/head.css';
-import './interface/gallery/body.css';
-import './interface/gallery/symbols.css';
-
-import './interface/search/lightbox.css';
-import './interface/search/field.css';
-import './interface/search/head.css';
-import './interface/search/body.css';
+import './interface/search/index.css';
+import './interface/search/panel.css';
+import './interface/search/input.css';
 import './interface/search/results.css';
 
-import './interface/symbol/field.css';
-import './interface/symbol/head.css';
-import './interface/symbol/body.css';
-import './interface/symbol/symbol.css';
-import './interface/symbol/similar-symbols.css';
-import './interface/symbol/keywords.css';
+import './interface/symbol/index.css';
+import './interface/symbol/stage.css';
+import './interface/symbol/info.css';
 
-window.app = {
+import './interface/related-symbols/index.css';
+import './interface/related-symbols/head.css';
+import './interface/related-symbols/body.css';
+
+import './interface/head/index.css';
+
+interface AppWindow extends Window {
+  app: {
+    initialize: Function;
+  };
+}
+
+(window as unknown as AppWindow).app = {
   initialize: async function () {
-    await initializeGalleryField();
+    await getManifest();
     await Promise.all([getSearchIndex(), getSimilarity()]);
     await initializeSearch();
-    await initializeSearchField();
+
+    initializeSymbol(getQueryParameter('symbol') || 'interests');
+
+    window.addEventListener('popstate', function () {
+      initializeSymbol(getQueryParameter('symbol') || 'interests');
+    });
+
+    initializeRelatedSymbolsEvents();
+    initializeSearchEvents();
+    initializeHeadEvents();
   }
 };
 
-export default window.app;
+export default (window as unknown as AppWindow).app;

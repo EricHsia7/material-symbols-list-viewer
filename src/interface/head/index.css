@@ -1,0 +1,59 @@
+/* head */
+.css_head {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: calc(var(--m-cssvar-safe-area-top) + 55px);
+  display: flex;
+  justify-content: center;
+  align-items: end;
+  background: var(--m-cssvar-ffffff-45);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+
+/* head > container */
+.css_head .css_head_container {
+  position: relative;
+  width: clamp(150px, 100%, 1300px);
+  height: 55px;
+}
+
+/* head > container > glyph */
+.css_head .css_head_container .css_head_glyph {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 55px;
+  height: 55px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.css_head .css_head_container .css_head_glyph span.css_material_symbols_rounded {
+  color: var(--m-cssvar-333333);
+  font-size: 30px;
+  width: 30px;
+  height: 30px;
+}
+
+/* head > container > search */
+.css_head .css_head_container .css_head_search {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  width: 55px;
+  height: 55px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.css_head .css_head_container .css_head_search span.css_material_symbols_rounded {
+  color: var(--m-cssvar-333333);
+  font-size: 30px;
+  width: 30px;
+  height: 30px;
+}
