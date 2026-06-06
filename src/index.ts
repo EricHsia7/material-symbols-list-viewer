@@ -4,7 +4,7 @@ import { initializeSearch } from './data/search';
 import { initializeSymbol } from './interface/index';
 import { getQueryParameter } from './tools/query-parameter';
 import { getManifest } from './data/apis/get-manifest';
-import { hideSearch, showSearch } from './interface/search';
+import { initializeSearchEvents } from './interface/search';
 
 import './interface/theme.css';
 
@@ -43,15 +43,7 @@ interface AppWindow extends Window {
       initializeSymbol(getQueryParameter('symbol') || 'interests');
     });
 
-    document.addEventListener('keydown', function (event: KeyboardEvent) {
-      if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === 'k') {
-        event.preventDefault();
-        showSearch();
-      }
-      if (event.key === 'Escape') {
-        hideSearch();
-      }
-    });
+    initializeSearchEvents();
   }
 };
 

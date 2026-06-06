@@ -11,7 +11,7 @@ let initialized: boolean = false;
 let previousQuery: string = '';
 let previousSearchResults: SearchResultArray = [];
 
-export async function initializeSearchField() {
+export function initializeSearchEvents(): void {
   if (initialized) {
     return;
   }
@@ -39,6 +39,16 @@ export async function initializeSearchField() {
 
   searchInputElement.addEventListener('cut', function () {
     updateSearch();
+  });
+
+  document.addEventListener('keydown', function (event: KeyboardEvent) {
+    if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === 'k') {
+      event.preventDefault();
+      showSearch();
+    }
+    if (event.key === 'Escape') {
+      hideSearch();
+    }
   });
 }
 

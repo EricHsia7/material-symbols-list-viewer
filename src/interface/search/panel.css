@@ -6,6 +6,7 @@
 
 /* search > panel */
 .css_search .css_search_panel {
+  position: relative;
   width: min(640px, calc(100vw - 32px));
   background: var(--m-cssvar-ffffff);
   border-width: 1px;
@@ -16,6 +17,7 @@
     0 24px 60px rgba(0, 0, 0, 0.28),
     0 4px 14px rgba(0, 0, 0, 0.16);
   overflow: clip;
+  box-sizing: border-box;
   min-height: 145px;
   height: calc(55px + 45px * var(--m-visible-search-results-quantity));
 }
