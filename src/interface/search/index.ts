@@ -7,50 +7,42 @@ const searchPanelElement = searchElement.querySelector('.css_search_panel') as H
 const searchInputElement = searchPanelElement.querySelector('.css_search_input input[type="text"]') as HTMLInputElement;
 const searchResultsElement = searchPanelElement.querySelector('.css_search_results') as HTMLElement;
 
-let initialized: boolean = false;
 let previousQuery: string = '';
 let previousSearchResults: SearchResultArray = [];
 
-export function initializeSearchEvents(): void {
-  if (initialized) {
-    return;
+searchElement.addEventListener('click', function (event: Event) {
+  event.stopPropagation();
+
+  if (event.target === searchElement) {
+    hideSearch();
   }
-  initialized = true;
+});
 
-  searchElement.addEventListener('click', function (event: Event) {
-    event.stopPropagation();
+searchInputElement.addEventListener('selectionchange', function () {
+  updateSearch();
+});
 
-    if (event.target === searchElement) {
-      hideSearch();
-    }
-  });
+searchInputElement.addEventListener('keyup', function () {
+  updateSearch();
+});
 
-  searchInputElement.addEventListener('selectionchange', function () {
-    updateSearch();
-  });
+searchInputElement.addEventListener('paste', function () {
+  updateSearch();
+});
 
-  searchInputElement.addEventListener('keyup', function () {
-    updateSearch();
-  });
+searchInputElement.addEventListener('cut', function () {
+  updateSearch();
+});
 
-  searchInputElement.addEventListener('paste', function () {
-    updateSearch();
-  });
-
-  searchInputElement.addEventListener('cut', function () {
-    updateSearch();
-  });
-
-  document.addEventListener('keydown', function (event: KeyboardEvent) {
-    if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === 'k') {
-      event.preventDefault();
-      showSearch();
-    }
-    if (event.key === 'Escape') {
-      hideSearch();
-    }
-  });
-}
+document.addEventListener('keydown', function (event: KeyboardEvent) {
+  if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === 'k') {
+    event.preventDefault();
+    showSearch();
+  }
+  if (event.key === 'Escape') {
+    hideSearch();
+  }
+});
 
 function generateElementOfSearchResult(): HTMLElement {
   const element = document.createElement('div');

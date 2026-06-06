@@ -42,8 +42,6 @@ interface AppWindow extends Window {
     window.addEventListener('popstate', function () {
       initializeSymbol(getQueryParameter('symbol') || 'interests');
     });
-
-    initializeSearchEvents();
   }
 };
 
