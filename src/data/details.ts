@@ -1,5 +1,4 @@
-import { joinByDelimiters } from '../tools/split';
-import { splitByDelimiter } from '../tools/split';
+import { joinByDelimiters, splitByDelimiter } from '../tools/split';
 import { getDescription } from './apis/get-description';
 import { getSearchIndex } from './apis/get-search-index';
 import { getSimilarity } from './apis/get-similarity';
@@ -52,9 +51,9 @@ export async function getDetails(symbolName: string): Promise<Details> {
   }
   const descriptionSymbolKey = descriptionSymbolNameComponents.join('_');
   if (description.descriptions.hasOwnProperty(descriptionSymbolKey)) {
-    const { wordKeys, delimiters } = splitByDelimiter(description.descriptions[descriptionSymbolKey], description.delimiters);
+    const { result: wordKeys, delimiters } = splitByDelimiter(description.descriptions[descriptionSymbolKey], description.delimiters);
     for (let i = wordKeys.length - 1; i >= 0; i--) {
-      wordKeys.splice(i, descriptionDictionary[parseInt(wordKeys[i], 36)]);
+      wordKeys.splice(i, 1, descriptionDictionary[parseInt(wordKeys[i], 36)]);
     }
     thisDescription = joinByDelimiters(wordKeys, delimiters);
   }
