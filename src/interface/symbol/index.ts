@@ -1,6 +1,7 @@
 import { Details } from '../../data/details';
 import { copyToClipboard } from '../../tools/copy';
 import { setGlyph } from '../icons';
+import { searchKeyword } from '../search';
 
 const symbolSection = document.querySelector('.css_symbol_section') as HTMLElement;
 
@@ -54,12 +55,20 @@ export function updateSymbolSection(symbolName: string, details: Details): void 
         thisElement.innerText = thisKeyword;
       }
 
+      function updateOnclick(thisElement: HTMLElement, thisKeyword: string): void {
+        thisElement.onclick = function () {
+          searchKeyword(thisKeyword);
+        };
+      }
+
       if (previousKeyword) {
         if (thisKeyword !== previousKeyword) {
           updateText(thisElement, thisKeyword);
+          updateOnclick(thisElement, thisKeyword);
         }
       } else {
         updateText(thisElement, thisKeyword);
+        updateOnclick(thisElement, thisKeyword);
       }
     }
 

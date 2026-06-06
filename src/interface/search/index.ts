@@ -160,3 +160,10 @@ export function hideSearch(): void {
   searchElement.setAttribute('displayed', 'false');
   searchPanelElement.classList.remove('css_search_panel_open');
 }
+
+export function searchKeyword(keyword: string): void {
+  searchElement.setAttribute('displayed', 'true');
+  searchPanelElement.classList.add('css_search_panel_open');
+  searchInputElement.value = keyword;
+  updateSearch();
+}
