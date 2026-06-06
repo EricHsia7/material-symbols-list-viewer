@@ -10,17 +10,19 @@ const [viewControlButtonGridElement, viewControlButtonListElement] = viewControl
 
 let previousSymbolNames: Details['similarSymbols'] = [];
 
-viewControlButtonGridElement.addEventListener('click', function () {
-  bodyElement.setAttribute('view', 'grid');
-  viewControlButtonGridElement.setAttribute('pressed', 'true');
-  viewControlButtonListElement.setAttribute('pressed', 'false');
-});
+export function initializeRelatedSymbolsEvents(): void {
+  viewControlButtonGridElement.addEventListener('click', function () {
+    bodyElement.setAttribute('view', 'grid');
+    viewControlButtonGridElement.setAttribute('pressed', 'true');
+    viewControlButtonListElement.setAttribute('pressed', 'false');
+  });
 
-viewControlButtonListElement.addEventListener('click', function () {
-  bodyElement.setAttribute('view', 'list');
-  viewControlButtonGridElement.setAttribute('pressed', 'false');
-  viewControlButtonListElement.setAttribute('pressed', 'true');
-});
+  viewControlButtonListElement.addEventListener('click', function () {
+    bodyElement.setAttribute('view', 'list');
+    viewControlButtonGridElement.setAttribute('pressed', 'false');
+    viewControlButtonListElement.setAttribute('pressed', 'true');
+  });
+}
 
 function generateElementOfSymbol(): HTMLElement {
   const element = document.createElement('div');

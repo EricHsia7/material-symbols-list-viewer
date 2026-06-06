@@ -24,6 +24,8 @@ import './interface/symbol/info.css';
 import './interface/related-symbols/index.css';
 import './interface/related-symbols/head.css';
 import './interface/related-symbols/body.css';
+import { initializeHeadEvents } from './interface/head';
+import { initializeRelatedSymbolsEvents } from './interface/related-symbols';
 
 interface AppWindow extends Window {
   app: {
@@ -42,6 +44,10 @@ interface AppWindow extends Window {
     window.addEventListener('popstate', function () {
       initializeSymbol(getQueryParameter('symbol') || 'interests');
     });
+
+    initializeRelatedSymbolsEvents();
+    initializeSearchEvents();
+    initializeHeadEvents();
   }
 };
 
