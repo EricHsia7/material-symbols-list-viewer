@@ -93,6 +93,7 @@ function updateSearchResults(searchResults: SearchResultArray): void {
 
     function updateOnclick(thisElement: HTMLElement, thisSearchResult: SearchResult): void {
       thisElement.onclick = function () {
+        hideSearch();
         initializeSymbol(thisSearchResult[0]);
       };
     }
