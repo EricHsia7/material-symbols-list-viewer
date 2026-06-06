@@ -52,11 +52,11 @@ export async function getDetails(symbolName: string): Promise<Details> {
   }
   const descriptionSymbolKey = descriptionSymbolNameComponents.join('_');
   if (description.descriptions.hasOwnProperty(descriptionSymbolKey)) {
-    const words = splitByDelimiter(description.descriptions[descriptionSymbolKey], description.delimiters);
-    for (let i = words.result.length - 1; i >= 0; i--) {
-      words.result.splice(i, descriptionDictionary[parseInt(words.result[i], 36)]);
+    const { wordKeys, delimiters } = splitByDelimiter(description.descriptions[descriptionSymbolKey], description.delimiters);
+    for (let i = wordKeys.length - 1; i >= 0; i--) {
+      wordKeys.splice(i, descriptionDictionary[parseInt(wordKeys[i], 36)]);
     }
-    thisDescription = joinByDelimiters(words.result, words.delimiters);
+    thisDescription = joinByDelimiters(wordKeys, delimiters);
   }
 
   return {
