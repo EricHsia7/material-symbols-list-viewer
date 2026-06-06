@@ -27,7 +27,7 @@
 
 .css_search .css_search_panel.css_search_panel_open {
   animation-name: css-panel-in;
-  animation-duration: 150ms;
+  animation-duration: 300ms;
   animation-timing-function: cubic-bezier(0.2, 0.8, 0.2, 1);
   animation-fill-mode: forwards;
 
@@ -42,7 +42,7 @@
 
   .css_search .css_search_panel.css_search_panel_open {
     animation-name: css-popover-in;
-    animation-duration: 150ms;
+    animation-duration: 300ms;
     animation-timing-function: cubic-bezier(0.2, 0.8, 0.2, 1);
     animation-fill-mode: forwards;
   }
