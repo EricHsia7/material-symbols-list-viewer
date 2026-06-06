@@ -25,13 +25,22 @@ import './interface/related-symbols/index.css';
 import './interface/related-symbols/head.css';
 import './interface/related-symbols/body.css';
 
-window.app = {
+interface AppWindow extends Window {
+  app: {
+    initialize: Function;
+  };
+}
+
+(window as unknown as AppWindow).app = {
   initialize: async function () {
     await getManifest();
     await Promise.all([getSearchIndex(), getSimilarity()]);
     await initializeSearch();
     initializeSymbol(getQueryParameter('symbol') || 'interests');
+    window.addEventListener('popstate', function () {
+      initializeSymbol(getQueryParameter('symbol') || 'interests');
+    });
   }
 };
 
-export default window.app;
+export default (window as unknown as AppWindow).app;
