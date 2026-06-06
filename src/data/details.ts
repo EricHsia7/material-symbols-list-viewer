@@ -1,3 +1,4 @@
+import { joinByDelimiters } from '../tools/split';
 import { splitByDelimiter } from '../tools/split';
 import { getDescription } from './apis/get-description';
 import { getSearchIndex } from './apis/get-search-index';
@@ -43,7 +44,7 @@ export async function getDetails(symbolName: string): Promise<Details> {
     }
   }
 
-  let thisDescription: strictNullChecks = '';
+  let thisDescription: string = '';
   const descriptionDictionary = description.dictionary.split(',');
   const descriptionSymbolNameComponents = symbolName.split('_');
   for (let i = descriptionSymbolNameComponents.length - 1; i >= 0; i--) {
