@@ -153,6 +153,7 @@ function updateSearchResults(searchResults: SearchResultArray): void {
 export function showSearch(): void {
   searchElement.setAttribute('displayed', 'true');
   searchPanelElement.classList.add('css_search_panel_open');
+  searchInputElement.focus();
 }
 
 export function hideSearch(): void {
