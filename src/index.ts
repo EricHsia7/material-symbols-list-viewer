@@ -4,6 +4,7 @@ import { initializeSearch } from './data/search';
 import { initializeSymbol } from './interface/index';
 import { getQueryParameter } from './tools/query-parameter';
 import { getManifest } from './data/apis/get-manifest';
+import { hideSearch, showSearch } from './interface/search';
 
 import './interface/theme.css';
 
@@ -11,11 +12,10 @@ import './interface/index.css';
 
 import './interface/icons/index.css';
 
-// import './interface/search/lightbox.css';
-// import './interface/search/field.css';
-// import './interface/search/head.css';
-// import './interface/search/body.css';
-// import './interface/search/results.css';
+import './interface/search/index.css';
+import './interface/search/panel.css';
+import './interface/search/input.css';
+import './interface/search/results.css';
 
 import './interface/symbol/index.css';
 import './interface/symbol/stage.css';
@@ -36,9 +36,20 @@ interface AppWindow extends Window {
     await getManifest();
     await Promise.all([getSearchIndex(), getSimilarity()]);
     await initializeSearch();
+
     initializeSymbol(getQueryParameter('symbol') || 'interests');
     window.addEventListener('popstate', function () {
       initializeSymbol(getQueryParameter('symbol') || 'interests');
+    });
+
+    document.addEventListener('keydown', function (event: KeyboardEvent) {
+      if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === 'k') {
+        event.preventDefault();
+        showSearch();
+      }
+      if (event.key === 'Escape') {
+        hideSearch();
+      }
     });
   }
 };

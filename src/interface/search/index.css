@@ -11,4 +11,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  visibility: hidden;
+}
+
+.css_search[displayed="true"] {
+  visibility: visible;
 }

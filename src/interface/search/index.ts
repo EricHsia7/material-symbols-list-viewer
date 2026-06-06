@@ -1,155 +1,148 @@
-// import { searchFor, SearchResult, SearchResultArray } from '../../data/search';
-// import { getBlankIconElement, setGlyph } from '../icons';
-// import { showSymbol } from '../symbol';
+import { initializeSymbol } from '..';
+import { searchFor, SearchResult, SearchResultArray } from '../../data/search';
+import { getBlankIconElement, setGlyph } from '../icons';
 
-// const searchLightboxElement = document.querySelector('.css_search_lightbox') as HTMLElement;
-// const searchField = document.querySelector('.css_search_field') as HTMLElement;
-// const searchHeadElement = searchField.querySelector('.css_search_head') as HTMLElement;
-// const searchHeadLeftButtonElement = searchHeadElement.querySelector('.css_search_head_button_left') as HTMLElement;
-// const searchHeadSearchInputElement = searchHeadElement.querySelector('.css_search_head_search_input input[type="text"]') as HTMLInputElement;
-// const searchBodyElement = searchField.querySelector('.css_search_body') as HTMLElement;
-// const searchResultsElement = searchBodyElement.querySelector('.css_search_results') as HTMLElement;
+const searchElement = document.querySelector('.css_search') as HTMLElement;
+const searchPanelElement = searchElement.querySelector('.css_search_panel') as HTMLElement;
+const searchInputElement = searchPanelElement.querySelector('.css_search_input input[type="text"]') as HTMLInputElement;
+const searchResultsElement = searchPanelElement.querySelector('.css_search_results') as HTMLElement;
 
-// let initialized: boolean = false;
-// let previousQuery: string = '';
-// let previousSearchResults: SearchResultArray = [];
+let initialized: boolean = false;
+let previousQuery: string = '';
+let previousSearchResults: SearchResultArray = [];
 
-// export async function initializeSearchField() {
-//   if (initialized) {
-//     return;
-//   }
-//   initialized = true;
+export async function initializeSearchField() {
+  if (initialized) {
+    return;
+  }
+  initialized = true;
 
-//   searchHeadLeftButtonElement.onclick = function () {
-//     closeSearch();
-//   };
+  searchElement.addEventListener('click', function (event: Event) {
+    event.stopPropagation();
 
-//   searchHeadSearchInputElement.addEventListener('selectionchange', function () {
-//     updateSearch();
-//   });
+    if (event.target === searchElement) {
+      hideSearch();
+    }
+  });
 
-//   searchHeadSearchInputElement.addEventListener('keyup', function () {
-//     updateSearch();
-//   });
+  searchInputElement.addEventListener('selectionchange', function () {
+    updateSearch();
+  });
 
-//   searchHeadSearchInputElement.addEventListener('paste', function () {
-//     updateSearch();
-//   });
+  searchInputElement.addEventListener('keyup', function () {
+    updateSearch();
+  });
 
-//   searchHeadSearchInputElement.addEventListener('cut', function () {
-//     updateSearch();
-//   });
-// }
+  searchInputElement.addEventListener('paste', function () {
+    updateSearch();
+  });
 
-// function generateElementOfSearchResult(): HTMLElement {
-//   const element = document.createElement('div');
-//   element.classList.add('css_search_result');
+  searchInputElement.addEventListener('cut', function () {
+    updateSearch();
+  });
+}
 
-//   const iconElement = document.createElement('div');
-//   iconElement.classList.add('css_search_result_symbol');
-//   iconElement.appendChild(getBlankIconElement());
+function generateElementOfSearchResult(): HTMLElement {
+  const element = document.createElement('div');
+  element.classList.add('css_search_result');
 
-//   const symbolNameElement = document.createElement('div');
-//   symbolNameElement.classList.add('css_search_result_symbol_name');
+  const glyphElement = document.createElement('div');
+  glyphElement.classList.add('css_search_result_glyph');
+  glyphElement.appendChild(getBlankIconElement());
 
-//   element.appendChild(iconElement);
-//   element.appendChild(symbolNameElement);
-//   return element;
-// }
+  const nameElement = document.createElement('div');
+  nameElement.classList.add('css_search_result_name');
 
-// function updateSearch(): void {
-//   const query = searchHeadSearchInputElement.value;
-//   if (query === previousQuery) {
-//     return;
-//   }
+  element.appendChild(glyphElement);
+  element.appendChild(nameElement);
+  return element;
+}
 
-//   const searchResults = searchFor(query);
-//   updateSearchResults(searchResults);
-//   previousQuery = query;
-// }
+function updateSearch(): void {
+  const query = searchInputElement.value;
+  if (query === previousQuery) {
+    return;
+  }
 
-// function updateSearchResults(searchResults: SearchResultArray): void {
-//   function updateSearchResult(thisElement: HTMLElement, thisSearchResult: SearchResult, previousSearchResult: SearchResult | null): void {
-//     function updateSymbol(thisElement: HTMLElement, thisSearchResult: SearchResult): void {
-//       const symbolElement = thisElement.querySelector('.css_search_result_symbol') as HTMLElement;
-//       setGlyph(symbolElement, thisSearchResult[0]);
-//     }
+  const searchResults = searchFor(query);
+  updateSearchResults(searchResults);
+  previousQuery = query;
+}
 
-//     function updateSymbolName(thisElement: HTMLElement, thisSearchResult: SearchResult): void {
-//       const symbolNameElement = thisElement.querySelector('.css_search_result_symbol_name') as HTMLElement;
-//       symbolNameElement.innerText = thisSearchResult[0];
-//     }
+function updateSearchResults(searchResults: SearchResultArray): void {
+  function updateSearchResult(thisElement: HTMLElement, thisSearchResult: SearchResult, previousSearchResult: SearchResult | null): void {
+    function updateSymbol(thisElement: HTMLElement, thisSearchResult: SearchResult): void {
+      const symbolElement = thisElement.querySelector('.css_search_result_glyph') as HTMLElement;
+      setGlyph(symbolElement, thisSearchResult[0]);
+    }
 
-//     function updateOnclick(thisElement: HTMLElement, thisSearchResult: SearchResult): void {
-//       thisElement.onclick = function () {
-//         showSymbol(thisSearchResult[0]);
-//       };
-//     }
+    function updateSymbolName(thisElement: HTMLElement, thisSearchResult: SearchResult): void {
+      const symbolNameElement = thisElement.querySelector('.css_search_result_name') as HTMLElement;
+      symbolNameElement.innerText = thisSearchResult[0];
+    }
 
-//     if (previousSearchResult) {
-//       if (thisSearchResult[0] !== previousSearchResult[0]) {
-//         updateSymbol(thisElement, thisSearchResult);
-//         updateSymbolName(thisElement, thisSearchResult);
-//         updateOnclick(thisElement, thisSearchResult);
-//       }
-//     } else {
-//       updateSymbol(thisElement, thisSearchResult);
-//       updateSymbolName(thisElement, thisSearchResult);
-//       updateOnclick(thisElement, thisSearchResult);
-//     }
-//   }
+    function updateOnclick(thisElement: HTMLElement, thisSearchResult: SearchResult): void {
+      thisElement.onclick = function () {
+        initializeSymbol(thisSearchResult[0]);
+      };
+    }
 
-//   const searchResultsQuantity = searchResults.length;
+    if (previousSearchResult) {
+      if (thisSearchResult[0] !== previousSearchResult[0]) {
+        updateSymbol(thisElement, thisSearchResult);
+        updateSymbolName(thisElement, thisSearchResult);
+        updateOnclick(thisElement, thisSearchResult);
+      }
+    } else {
+      updateSymbol(thisElement, thisSearchResult);
+      updateSymbolName(thisElement, thisSearchResult);
+      updateOnclick(thisElement, thisSearchResult);
+    }
+  }
 
-//   const searchResultElements = Array.from(searchResultsElement.querySelectorAll('.css_search_result'));
-//   const currentSearchResultElementsLength = searchResultElements.length;
-//   if (searchResultsQuantity !== currentSearchResultElementsLength) {
-//     const difference = currentSearchResultElementsLength - searchResultsQuantity;
-//     if (difference < 0) {
-//       const fragment = new DocumentFragment();
-//       for (let o = 0; o > difference; o--) {
-//         const newSearchResultElement = generateElementOfSearchResult();
-//         fragment.appendChild(newSearchResultElement);
-//         searchResultElements.push(newSearchResultElement);
-//       }
-//       searchResultsElement.append(fragment);
-//     } else if (difference > 0) {
-//       for (let p = currentSearchResultElementsLength - 1, q = currentSearchResultElementsLength - difference - 1; p > q; p--) {
-//         searchResultElements[p].remove();
-//         searchResultElements.splice(p, 1);
-//       }
-//     }
-//   }
+  const searchResultsQuantity = searchResults.length;
 
-//   for (let i = 0; i < searchResultsQuantity; i++) {
-//     const thisElement = searchResultElements[i] as HTMLElement;
-//     const thisSymbol = searchResults[i];
+  const searchResultElements = Array.from(searchResultsElement.querySelectorAll('.css_search_result'));
+  const currentSearchResultElementsLength = searchResultElements.length;
+  if (searchResultsQuantity !== currentSearchResultElementsLength) {
+    const difference = currentSearchResultElementsLength - searchResultsQuantity;
+    if (difference < 0) {
+      const fragment = new DocumentFragment();
+      for (let o = 0; o > difference; o--) {
+        const newSearchResultElement = generateElementOfSearchResult();
+        fragment.appendChild(newSearchResultElement);
+        searchResultElements.push(newSearchResultElement);
+      }
+      searchResultsElement.append(fragment);
+    } else if (difference > 0) {
+      for (let p = currentSearchResultElementsLength - 1, q = currentSearchResultElementsLength - difference - 1; p > q; p--) {
+        searchResultElements[p].remove();
+        searchResultElements.splice(p, 1);
+      }
+    }
+  }
 
-//     if (previousSearchResults[i]) {
-//       const previousSymbol = previousSearchResults[i];
-//       updateSearchResult(thisElement, thisSymbol, previousSymbol);
-//     } else {
-//       updateSearchResult(thisElement, thisSymbol, null);
-//     }
-//   }
+  for (let i = 0; i < searchResultsQuantity; i++) {
+    const thisElement = searchResultElements[i] as HTMLElement;
+    const thisSymbol = searchResults[i];
 
-//   previousSearchResults = searchResults;
-// }
+    if (previousSearchResults[i]) {
+      const previousSymbol = previousSearchResults[i];
+      updateSearchResult(thisElement, thisSymbol, previousSymbol);
+    } else {
+      updateSearchResult(thisElement, thisSymbol, null);
+    }
+  }
 
-// export function showSearch(): void {
-//   searchField.setAttribute('displayed', 'true');
-//   searchLightboxElement.setAttribute('displayed', 'true');
-// }
+  previousSearchResults = searchResults;
+}
 
-// export function hideSearch(): void {
-//   searchField.setAttribute('displayed', 'false');
-//   searchLightboxElement.setAttribute('displayed', 'false');
-// }
+export function showSearch(): void {
+  searchElement.setAttribute('displayed', 'true');
+  searchPanelElement.classList.add('css_search_panel_open');
+}
 
-// export function openSearch(): void {
-//   showSearch();
-// }
-
-// export function closeSearch(): void {
-//   hideSearch();
-// }
+export function hideSearch(): void {
+  searchElement.setAttribute('displayed', 'false');
+  searchPanelElement.classList.remove('css_search_panel_open');
+}

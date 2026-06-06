@@ -1,56 +1,44 @@
-/* results */
-.css_search_field .css_search_body .css_search_results {
-  position: relative;
-  margin-top: 60px;
-  width: 100%;
-}
-
-@media (max-width: 900px) {
-  .css_search_field .css_search_body .css_search_results {
-    margin-top: calc(var(--m-cssvar-safe-area-top) + 60px);
-  }
-}
-
-/* results > result */
-.css_search_field .css_search_body .css_search_results .css_search_result {
-  position: relative;
-  width: 100%;
-  height: 45px;
-  contain: layout;
-  overflow: clip;
-}
-
-/* results > result > icon */
-.css_search_field .css_search_body .css_search_results .css_search_result .css_search_result_symbol {
+/* search > panel > results */
+.css_search .css_search_panel .css_search_results {
   position: absolute;
+  top: 55px;
+  left: 0px;
+  width: 100%;
+  height: calc(45px * var(--m-visible-search-results-quantity));
+}
+
+/* search > panel > results > result */
+.css_search .css_search_panel .css_search_results .css_search_result {
+  position: relative;
+  left: 10px;
+  width: calc(100% - 10px - 10px);
+  height: 45px;
+}
+
+/* search > panel > results > result > glyph */
+.css_search .css_search_panel .css_search_results .css_search_result .css_search_result_glyph {
+  position: absolute;
+  left: 0px;
   top: 0px;
-  left: calc((60px - 45px) / 2);
   width: 45px;
   height: 45px;
-  contain: layout;
-  overflow: clip;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.css_search_field .css_search_body .css_search_results .css_search_result .css_search_result_symbol span.css_material_symbols_rounded {
+.css_search .css_search_panel .css_search_results .css_search_result .css_search_result_glyph span.css_material_symbols_rounded {
   color: var(--m-cssvar-333333);
 }
 
-/* results > result > symbol name */
-.css_search_field .css_search_body .css_search_results .css_search_result .css_search_result_symbol_name {
+/* search > panel > results > result > name */
+.css_search .css_search_panel .css_search_results .css_search_result .css_search_result_name {
   position: absolute;
+  left: 45px;
   top: 0px;
-  left: 60px;
-  width: calc(100% - 60px - (60px - 45px) / 2);
+  width: calc(100% - 45px - 10px);
   height: 45px;
-  contain: layout;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  word-break: keep-all;
-  white-space: nowrap;
-  line-height: 45px;
+  display: flex;
+  align-items: center;
   color: var(--m-cssvar-333333);
-  font-size: 20px;
 }
