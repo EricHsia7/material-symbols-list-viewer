@@ -2,6 +2,7 @@
   --m-cssvar-main-color: rgb(61, 91, 156);
 
   --m-cssvar-ffffff: rgb(255, 255, 255);
+  --m-cssvar-ffffff-45: rgba(255, 255, 255, 0.45);
 
   --m-cssvar-f9f9fb: rgb(249, 249, 251);
 
@@ -19,6 +20,7 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --m-cssvar-ffffff: rgb(15, 17, 21);
+    --m-cssvar-ffffff-45: rgba(15, 17, 21, 0.45);
 
     --m-cssvar-f9f9fb: rgb(31, 32, 33);
 
