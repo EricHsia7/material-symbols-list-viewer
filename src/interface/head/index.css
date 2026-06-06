@@ -27,10 +27,16 @@
   left: 0px;
   width: 55px;
   height: 55px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .css_head .css_head_container .css_head_glyph span.css_material_symbols_rounded {
   color: var(--m-cssvar-333333);
+  font-size: 30px;
+  width: 30px;
+  height: 30px;
 }
 
 /* head > container > search */
@@ -40,8 +46,14 @@
   right: 0px;
   width: 55px;
   height: 55px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .css_head .css_head_container .css_head_search span.css_material_symbols_rounded {
   color: var(--m-cssvar-333333);
+  font-size: 30px;
+  width: 30px;
+  height: 30px;
 }
