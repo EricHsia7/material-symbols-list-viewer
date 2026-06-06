@@ -5,6 +5,8 @@ import { initializeSymbol } from './interface/index';
 import { getQueryParameter } from './tools/query-parameter';
 import { getManifest } from './data/apis/get-manifest';
 import { initializeSearchEvents } from './interface/search';
+import { initializeHeadEvents } from './interface/head';
+import { initializeRelatedSymbolsEvents } from './interface/related-symbols';
 
 import './interface/theme.css';
 
@@ -24,8 +26,8 @@ import './interface/symbol/info.css';
 import './interface/related-symbols/index.css';
 import './interface/related-symbols/head.css';
 import './interface/related-symbols/body.css';
-import { initializeHeadEvents } from './interface/head';
-import { initializeRelatedSymbolsEvents } from './interface/related-symbols';
+
+import './interface/head/index.css';
 
 interface AppWindow extends Window {
   app: {
