@@ -18,8 +18,8 @@
 /* search > panel > results > result */
 .css_search .css_search_panel .css_search_results .css_search_result {
   position: relative;
-  left: 10px;
-  width: calc(100% - 10px - 10px);
+  left: 5px;
+  width: calc(100% - 5px - 5px);
   height: 45px;
 }
 
@@ -42,9 +42,9 @@
 /* search > panel > results > result > name */
 .css_search .css_search_panel .css_search_results .css_search_result .css_search_result_name {
   position: absolute;
-  left: 45px;
+  left: 50px;
   top: 0px;
-  width: calc(100% - 45px - 10px);
+  width: calc(100% - 45px - 5px - 5px);
   height: 45px;
   display: flex;
   align-items: center;
