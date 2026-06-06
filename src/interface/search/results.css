@@ -5,6 +5,14 @@
   left: 0px;
   width: 100%;
   height: calc(45px * var(--m-visible-search-results-quantity));
+  overflow-x: hidden;
+  overflow-y: scroll;
+  overscroll-behavior-x: auto;
+  overscroll-behavior-y: contain;
+}
+
+.css_search .css_search_panel .css_search_results::-webkit-scrollbar {
+  display: none;
 }
 
 /* search > panel > results > result */
