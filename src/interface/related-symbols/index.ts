@@ -84,9 +84,7 @@ export function updateRelatedSymbolsSection(symbolNames: Details['similarSymbols
 
   const symbolNamesQuantity = symbolNames.length;
 
-  if (symbolNamesQuantity === 0) {
-    bodyElement.setAttribute('empty', 'true');
-  }
+  bodyElement.setAttribute('empty', symbolNamesQuantity === 0 ? 'true' : 'false');
 
   const symbolElements = Array.from(bodyElement.querySelectorAll('.css_related_symbol'));
   const currentSymbolElementsLength = symbolElements.length;
