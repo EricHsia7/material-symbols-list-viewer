@@ -60,7 +60,7 @@ export function searchFor(query: string, searchFrom: number = 0, skipBroadTerms:
       query
         .trim()
         .toLowerCase()
-        .split(/[\s_]+/)
+        .split(/[\s_\-]+/)
     )
   );
   const queryWordsLength = queryWords.length;
