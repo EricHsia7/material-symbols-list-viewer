@@ -1,7 +1,7 @@
 @property --m-visible-search-results-quantity {
   syntax: '<number>';
   inherits: true;
-  initial-value: 2;
+  initial-value: 0;
 }
 
 /* search > panel */
@@ -21,7 +21,7 @@
     0 4px 14px rgba(0, 0, 0, 0.16);
   overflow: clip;
   box-sizing: border-box;
-  min-height: 145px;
+  min-height: 55px;
   height: calc(55px + 45px * var(--m-visible-search-results-quantity));
 }
 
