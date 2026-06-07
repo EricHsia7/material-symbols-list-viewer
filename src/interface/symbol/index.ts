@@ -30,6 +30,8 @@ function generateElementOfKeyword(): HTMLElement {
   const element = document.createElement('div');
   element.classList.add('css_symbol_info_keyword');
 
+  ripple.add(element);
+
   return element;
 }
 
@@ -68,10 +70,6 @@ export function updateSymbolSection(symbolName: string, details: Details): void 
         };
       }
 
-      function updateRipple(thisElement: HTMLElement): void {
-        ripple.add(thisElement);
-      }
-
       if (previousKeyword) {
         if (thisKeyword !== previousKeyword) {
           updateText(thisElement, thisKeyword);
@@ -80,7 +78,6 @@ export function updateSymbolSection(symbolName: string, details: Details): void 
       } else {
         updateText(thisElement, thisKeyword);
         updateOnclick(thisElement, thisKeyword);
-        updateRipple(thisElement);
       }
     }
 

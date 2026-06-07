@@ -1,6 +1,7 @@
 import { initializeSymbol } from '..';
 import { searchFor, SearchResult, SearchResultArray } from '../../data/search';
 import { getBlankIconElement, setGlyph } from '../icons';
+import { Ripple } from '../ripple';
 
 const searchElement = document.querySelector('.css_search') as HTMLElement;
 const searchPanelElement = searchElement.querySelector('.css_search_panel') as HTMLElement;
@@ -10,6 +11,8 @@ const searchResultsElement = searchPanelElement.querySelector('.css_search_resul
 let initialized: boolean = false;
 let previousQuery: string = '';
 let previousSearchResults: SearchResultArray = [];
+
+const ripple = new Ripple();
 
 export function initializeSearchEvents(): void {
   if (initialized) {
@@ -65,6 +68,9 @@ function generateElementOfSearchResult(): HTMLElement {
 
   element.appendChild(glyphElement);
   element.appendChild(nameElement);
+
+  ripple.add(element);
+
   return element;
 }
 
