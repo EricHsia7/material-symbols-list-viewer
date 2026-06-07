@@ -38,6 +38,7 @@ export function updateSymbolSection(symbolName: string, details: Details): void 
     symbolActionCopyNameElement.onclick = function () {
       copySymbolName(symbolName);
     };
+    ripple.add(symbolActionCopyNameElement);
   }
 
   function updateCategory(): void {
