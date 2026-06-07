@@ -55,7 +55,7 @@ export class Ripple {
     if (computed.position === 'static') {
       element.classList.add('css_ripple_position');
     }
-    element.classList.remove('css_ripple_overflow');
+    element.classList.add('css_ripple_overflow');
 
     const svgns = 'http://www.w3.org/2000/svg';
     const svg = document.createElementNS(svgns, 'svg');
