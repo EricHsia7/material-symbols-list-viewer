@@ -48,6 +48,7 @@
   color: var(--m-cssvar-333333-60);
   background-color: transparent;
   border-radius: 8px;
+  cursor: pointer;
 }
 
 /* pressed: true */
@@ -61,6 +62,7 @@
   font-size: 16px;
   width: 16px;
   height: 16px;
+  cursor: pointer;
 }
 
 /* pressed: true */
