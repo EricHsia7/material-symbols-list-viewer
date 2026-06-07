@@ -24,11 +24,8 @@ export class Ripple {
     }
     // Remove any leftover overlays and temporary styling.
     element.querySelectorAll('svg[data-ripple]').forEach((svg) => svg.remove());
-    element.style.removeProperty('overflow');
-    if (element.dataset.rippleSetPosition) {
-      element.style.removeProperty('position');
-      delete element.dataset.rippleSetPosition;
-    }
+    element.classList.remove('css_ripple_position');
+    element.classList.remove('css_ripple_overflow');
   }
 
   _render(element: HTMLElement, event: PointerEvent): void {
@@ -54,15 +51,12 @@ export class Ripple {
     const distanceBottomRightCorner = Math.sqrt(Math.pow(distanceBottom, 2) + Math.pow(distanceRight, 2));
     const rippleScale = Math.max(2, Math.max(distanceTopLeftCorner, distanceTopRightCorner, distanceBottomLeftCorner, distanceBottomRightCorner) / (rippleSize / 2));
 
-    // 3. render — apply temporary styling to the host element
     const computed = getComputedStyle(element);
     if (computed.position === 'static') {
-      element.style.position = 'relative';
-      element.dataset.rippleSetPosition = 'true';
+      element.classList.add('css_ripple_position');
     }
-    element.style.overflow = 'clip';
+    element.classList.remove('css_ripple_overflow');
 
-    // 3. render — create an SVG that spans the same area as the target element
     const svgns = 'http://www.w3.org/2000/svg';
     const svg = document.createElementNS(svgns, 'svg');
     svg.dataset.ripple = 'true';
@@ -79,7 +73,6 @@ export class Ripple {
       overflow: 'visible'
     });
 
-    // 3. render — animated circle that ripples out from the pointer center
     const circle = document.createElementNS(svgns, 'circle');
     circle.setAttribute('cx', relativeX.toString());
     circle.setAttribute('cy', relativeY.toString());
