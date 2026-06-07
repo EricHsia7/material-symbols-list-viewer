@@ -9,8 +9,38 @@
   backdrop-filter: blur(2px);
   -webkit-backdrop-filter: blur(2px);
   visibility: hidden;
+  opacity: 0;
 }
 
 .css_search[displayed="true"] {
   visibility: visible;
+}
+
+.css_search.css_search_fade_in {
+  animation-name: css-fade-in;
+  animation-duration: var(--m-cssvar-transition-duration);
+  animation-fill-mode: forwards;
+  animation-timing-function: ease;
+}
+
+.css_search.css_search_faded_in {
+  opacity: 1;
+}
+
+.css_search.css_search_fade_out {
+  animation-name: css-fade-in;
+  animation-duration: var(--m-cssvar-transition-duration);
+  animation-fill-mode: forwards;
+  animation-timing-function: ease;
+  animation-direction: reverse;
+}
+
+@keyframes css-fade-in {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
 }

@@ -152,18 +152,45 @@ function updateSearchResults(searchResults: SearchResultArray): void {
 
 export function showSearch(): void {
   searchElement.setAttribute('displayed', 'true');
-  searchPanelElement.classList.add('css_search_panel_open');
-  searchInputElement.focus();
+  searchElement.addEventListener(
+    'animationend',
+    function () {
+      searchElement.classList.add('css_search_faded_in');
+      searchPanelElement.classList.add('css_search_panel_faded_in');
+
+      searchElement.classList.remove('css_search_fade_in');
+      searchPanelElement.classList.remove('css_search_panel_fade_in');
+
+      searchInputElement.focus();
+    },
+    { once: true }
+  );
+
+  searchElement.classList.add('css_search_fade_in');
+  searchPanelElement.classList.add('css_search_panel_fade_in');
 }
 
 export function hideSearch(): void {
-  searchElement.setAttribute('displayed', 'false');
-  searchPanelElement.classList.remove('css_search_panel_open');
+  searchElement.addEventListener(
+    'animationend',
+    function () {
+      searchElement.setAttribute('displayed', 'false');
+
+      searchElement.classList.remove('css_search_faded_in');
+      searchPanelElement.classList.remove('css_search_panel_faded_in');
+
+      searchElement.classList.remove('css_search_fade_out');
+      searchPanelElement.classList.remove('css_search_panel_fade_out');
+    },
+    { once: true }
+  );
+
+  searchElement.classList.add('css_search_fade_out');
+  searchPanelElement.classList.add('css_search_panel_fade_out');
 }
 
 export function searchKeyword(keyword: string): void {
-  searchElement.setAttribute('displayed', 'true');
-  searchPanelElement.classList.add('css_search_panel_open');
+  showSearch();
   searchInputElement.value = keyword;
   updateSearch();
 }

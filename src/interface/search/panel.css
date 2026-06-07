@@ -25,11 +25,24 @@
   height: calc(55px + 45px * var(--m-visible-search-results-quantity));
 }
 
-.css_search .css_search_panel.css_search_panel_open {
+.css_search .css_search_panel.css_search_panel_fade_in {
   animation-name: css-panel-in;
-  animation-duration: 320ms;
-  animation-timing-function: cubic-bezier(0.2, 0.8, 0.2, 1);
+  animation-duration: var(--m-cssvar-transition-duration);
+  animation-timing-function: ease;
   animation-fill-mode: forwards;
+}
+
+.css_search .css_search_panel.css_search_panel_faded_in {
+  transform: translateX(-50%) translateY(0px) scale(1);
+}
+
+
+.css_search .css_search_panel.css_search_panel_fade_out {
+  animation-name: css-panel-in;
+  animation-duration: var(--m-cssvar-transition-duration);
+  animation-timing-function: ease;
+  animation-fill-mode: forwards;
+  animation-direction: reverse;
 }
 
 @media (max-width: 767px) {
@@ -38,35 +51,14 @@
     width: calc(100vw - 20px);
     border-radius: 15px;
   }
-
-  .css_search .css_search_panel.css_search_panel_open {
-    animation-name: css-popover-in;
-    animation-duration: 320ms;
-    animation-timing-function: cubic-bezier(0.2, 0.8, 0.2, 1);
-    animation-fill-mode: forwards;
-  }
 }
 
 @keyframes css-panel-in {
   0% {
-    opacity: 0;
-    transform: translateX(-50%) translateY(-8px) scale(0.9);
+    transform: translateX(-50%) scale(0.9);
   }
 
   100% {
-    opacity: 1;
-    transform: translateX(-50%) translateY(0px) scale(1);
-  }
-}
-
-@keyframes css-popover-in {
-  0% {
-    opacity: 0;
-    transform: translateX(-50%) translateY(-10px) scale(0.9);
-  }
-
-  100% {
-    opacity: 1;
-    transform: translateX(-50%) translateY(0px) scale(1);
+    transform: translateX(-50%) scale(1);
   }
 }

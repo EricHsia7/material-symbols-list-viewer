@@ -15,6 +15,8 @@
 
   --m-cssvar-head-background: linear-gradient(180deg, var(--m-cssvar-ffffff) 0%, var(--m-cssvar-ffffff) 5%, rgba(0, 0, 0, 0) 100%);
   --m-cssvar-component-background: radial-gradient(in hsl 120% 120% at 50% 0%, var(--m-cssvar-f9f9fb), var(--m-cssvar-ffffff) 70%);
+
+  --m-cssvar-transition-duration: 320ms;
 }
 
 @media (prefers-color-scheme: dark) {
