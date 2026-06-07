@@ -171,6 +171,8 @@ export function showSearch(): void {
 }
 
 export function hideSearch(): void {
+  searchInputElement.blur();
+
   searchElement.addEventListener(
     'animationend',
     function () {
