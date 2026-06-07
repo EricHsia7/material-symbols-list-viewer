@@ -1,7 +1,6 @@
 import { initializeSymbol } from '..';
 import { searchFor, SearchResult, SearchResultArray } from '../../data/search';
 import { getBlankIconElement, setGlyph } from '../icons';
-import { Ripple } from '../ripple';
 
 const searchElement = document.querySelector('.css_search') as HTMLElement;
 const searchPanelElement = searchElement.querySelector('.css_search_panel') as HTMLElement;

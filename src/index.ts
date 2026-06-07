@@ -29,8 +29,6 @@ import './interface/related-symbols/body.css';
 
 import './interface/head/index.css';
 
-import './interface/ripple/index.css';
-
 interface AppWindow extends Window {
   app: {
     initialize: Function;

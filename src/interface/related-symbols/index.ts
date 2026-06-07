@@ -1,7 +1,6 @@
 import { initializeSymbol } from '..';
 import { Details } from '../../data/details';
 import { getBlankIconElement, setGlyph } from '../icons';
-import { Ripple } from '../ripple';
 
 const relatedSymbolsSection = document.querySelector('.css_related_symbols_section') as HTMLElement;
 const bodyElement = relatedSymbolsSection.querySelector('.css_related_symbol_body') as HTMLElement;
@@ -10,8 +9,6 @@ const viewControlElement = headElement.querySelector('.css_related_symbol_view_c
 const [viewControlButtonGridElement, viewControlButtonListElement] = viewControlElement.querySelectorAll('.css_related_symbol_view_control_button') as NodeListOf<HTMLElement>;
 
 let previousSymbolNames: Details['similarSymbols'] = [];
-
-const ripple = new Ripple();
 
 export function initializeRelatedSymbolsEvents(): void {
   viewControlButtonGridElement.addEventListener('click', function () {
@@ -48,8 +45,6 @@ function generateElementOfSymbol(): HTMLElement {
   textElement.appendChild(nameElement);
   textElement.appendChild(descriptionElement);
   element.appendChild(textElement);
-
-  ripple.add(element);
   return element;
 }
 
