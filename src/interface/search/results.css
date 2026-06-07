@@ -21,6 +21,8 @@
   left: 5px;
   width: calc(100% - 5px - 5px);
   height: 45px;
+  contain: layout;
+  overflow: clip;
 }
 
 /* search > panel > results > result > glyph */
@@ -33,6 +35,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  contain: layout;
+  overflow: clip;
 }
 
 .css_search .css_search_panel .css_search_results .css_search_result .css_search_result_glyph span.css_material_symbols_rounded {
@@ -49,4 +53,6 @@
   display: flex;
   align-items: center;
   color: var(--m-cssvar-333333);
+  contain: layout;
+  overflow: clip;
 }
