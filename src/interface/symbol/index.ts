@@ -1,6 +1,7 @@
 import { Details } from '../../data/details';
 import { copyToClipboard } from '../../tools/copy';
 import { setGlyph } from '../icons';
+import { Ripple } from '../ripple';
 import { searchKeyword } from '../search';
 
 const symbolSection = document.querySelector('.css_symbol_section') as HTMLElement;
@@ -18,6 +19,8 @@ const [symbolActionCopyNameElement, symbolActionShuffleElement, symbolActionCopy
 
 let previousSymbolName: string = '';
 let previousKeywords: Details['keywords'] = [];
+
+const ripple = new Ripple();
 
 function generateElementOfKeyword(): HTMLElement {
   const element = document.createElement('div');
@@ -61,6 +64,10 @@ export function updateSymbolSection(symbolName: string, details: Details): void 
         };
       }
 
+      function updateRipple(thisElement: HTMLElement): void {
+        ripple.add(thisElement);
+      }
+
       if (previousKeyword) {
         if (thisKeyword !== previousKeyword) {
           updateText(thisElement, thisKeyword);
@@ -69,6 +76,7 @@ export function updateSymbolSection(symbolName: string, details: Details): void 
       } else {
         updateText(thisElement, thisKeyword);
         updateOnclick(thisElement, thisKeyword);
+        updateRipple(thisElement);
       }
     }
 
