@@ -1,6 +1,5 @@
 :root {
   --m-cssvar-main-color: rgb(61, 91, 156);
-  --m-cssvar-main-color-15: rgba(61, 91, 156, 0.15);
 
   --m-cssvar-ffffff: rgb(255, 255, 255);
   --m-cssvar-ffffff-45: rgba(255, 255, 255, 0.45);
@@ -12,7 +11,7 @@
 
   --m-cssvar-333333: rgb(51, 51, 51);
   --m-cssvar-333333-60: rgba(51, 51, 51, 0.6);
-
+  --m-cssvar-333333-15: rgba(51, 51, 51, 0.15);
 
   --m-cssvar-head-background: linear-gradient(180deg, var(--m-cssvar-ffffff) 0%, var(--m-cssvar-ffffff) 5%, rgba(0, 0, 0, 0) 100%);
   --m-cssvar-component-background: radial-gradient(in hsl 120% 120% at 50% 0%, var(--m-cssvar-f9f9fb), var(--m-cssvar-ffffff) 70%);
@@ -32,6 +31,7 @@
 
     --m-cssvar-333333: rgb(255, 255, 255);
     --m-cssvar-333333-60: rgba(255, 255, 255, 0.6);
+    --m-cssvar-333333-15: rgba(255, 255, 255, 0.15);
   }
 }
 

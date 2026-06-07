@@ -3,7 +3,7 @@ export class Ripple {
   duration: number;
   _handlers: WeakMap<HTMLElement, Function>;
 
-  constructor(color: string = 'var(--m-cssvar-main-color-15)', duration: number = 600): void {
+  constructor(color: string = 'var(--m-cssvar-333333-15)', duration: number = 800): void {
     this.color = color;
     this.duration = duration;
     this._handlers = new WeakMap();
@@ -82,7 +82,7 @@ export class Ripple {
     circle.style.transformOrigin = 'center';
     circle.style.transform = 'scale(0)';
     circle.style.opacity = '1';
-    circle.style.transition = `transform ${this.duration}ms ease-out, opacity ${this.duration}ms ease-out`;
+    circle.style.transition = `transform ${this.duration}ms ease, opacity ${this.duration}ms ease`;
 
     svg.appendChild(circle);
     element.appendChild(svg);
