@@ -12,8 +12,6 @@ let initialized: boolean = false;
 let previousQuery: string = '';
 let previousSearchResults: SearchResultArray = [];
 
-const ripple = new Ripple();
-
 export function initializeSearchEvents(): void {
   if (initialized) {
     return;
@@ -68,8 +66,6 @@ function generateElementOfSearchResult(): HTMLElement {
 
   element.appendChild(glyphElement);
   element.appendChild(nameElement);
-
-  ripple.add(element);
 
   return element;
 }

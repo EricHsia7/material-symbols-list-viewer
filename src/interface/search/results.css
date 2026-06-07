@@ -21,7 +21,6 @@
   left: 5px;
   width: calc(100% - 5px - 5px);
   height: 45px;
-  border-radius: 10px;
   contain: layout;
   overflow: clip;
 }
