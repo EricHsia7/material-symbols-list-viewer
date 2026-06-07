@@ -1,3 +1,5 @@
+const supportTouch = 'ontouchstart' in document;
+
 export class Ripple {
   color: string;
   duration: number;
@@ -12,14 +14,14 @@ export class Ripple {
   add(element: HTMLElement) {
     if (this._handlers.has(element)) return; // avoid double-binding
     const handler = (event: PointerEvent) => this._render(element, event);
-    element.addEventListener('pointerdown', handler);
+    element.addEventListener(supportTouch ? 'touchstart' : 'mousedown', handler);
     this._handlers.set(element, handler);
   }
 
   remove(element: HTMLElement): void {
     const handler = this._handlers.get(element);
     if (handler) {
-      element.removeEventListener('pointerdown', handler);
+      element.removeEventListener(supportTouch ? 'touchstart' : 'mousedown', handler);
       this._handlers.delete(element);
     }
     // Remove any leftover overlays and temporary styling.
@@ -29,13 +31,13 @@ export class Ripple {
   }
 
   _render(element: HTMLElement, event: PointerEvent): void {
-    const scroll_x = document.documentElement.scrollLeft;
-    const scroll_y = document.documentElement.scrollTop;
+    const scrollX = document.documentElement.scrollLeft;
+    const scrollY = document.documentElement.scrollTop;
     const x = event.pageX;
     const y = event.pageY;
     const elementRect = element.getBoundingClientRect();
-    const elementX = elementRect.x + scroll_x;
-    const elementY = elementRect.y + scroll_y;
+    const elementX = elementRect.x + scrollX;
+    const elementY = elementRect.y + scrollY;
     const elementWidth = element.clientWidth;
     const elementHeight = element.clientHeight;
     const relativeX = x - elementX;
@@ -70,7 +72,7 @@ export class Ripple {
       width: `${elementWidth}px`,
       height: `${elementHeight}px`,
       pointerEvents: 'none',
-      overflow: 'visible'
+      overflow: 'clip'
     });
 
     const circle = document.createElementNS(svgns, 'circle');
