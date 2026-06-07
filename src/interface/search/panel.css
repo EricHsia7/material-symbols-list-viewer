@@ -55,7 +55,7 @@
 
 @keyframes css-panel-in {
   0% {
-    transform: translateX(-50%) scale(0.9);
+    transform: translateX(-50%) scale(0.95);
   }
 
   100% {
