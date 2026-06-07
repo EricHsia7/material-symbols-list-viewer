@@ -22,6 +22,10 @@ let previousKeywords: Details['keywords'] = [];
 
 const ripple = new Ripple();
 
+ripple.add(symbolActionCopyNameElement);
+ripple.add(symbolActionShuffleElement);
+ripple.add(symbolActionCopyLinkElement);
+
 function generateElementOfKeyword(): HTMLElement {
   const element = document.createElement('div');
   element.classList.add('css_symbol_info_keyword');
@@ -38,7 +42,6 @@ export function updateSymbolSection(symbolName: string, details: Details): void 
     symbolActionCopyNameElement.onclick = function () {
       copySymbolName(symbolName);
     };
-    ripple.add(symbolActionCopyNameElement);
   }
 
   function updateCategory(): void {
