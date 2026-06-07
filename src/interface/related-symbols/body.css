@@ -4,8 +4,11 @@
   position: relative;
   width: 100%;
   height: auto;
-  min-height: 144px;
   margin-top: 16px;
+}
+
+.css_related_symbols_section .css_related_symbol_body[empty="true"] {
+  height: 144px;
 }
 
 .css_related_symbols_section .css_related_symbol_body[empty="true"]::after {
