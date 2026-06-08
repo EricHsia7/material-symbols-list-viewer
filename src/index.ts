@@ -29,6 +29,8 @@ import './interface/related-symbols/body.css';
 
 import './interface/head/index.css';
 
+import './interface/toast/index.css';
+
 interface AppWindow extends Window {
   app: {
     initialize: Function;
