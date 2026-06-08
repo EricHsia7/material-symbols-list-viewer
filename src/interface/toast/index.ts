@@ -42,5 +42,6 @@ export function showToast(glyph: string, message: string, button?: ToastButton |
     { once: true }
   );
 
+  toastElement.setAttribute('displayed', 'true');
   toastElement.classList.add('css_toast_fade_in');
 }
