@@ -122,6 +122,6 @@ export function updateSymbolSection(symbolName: string, details: Details): void 
 async function copySymbolName(symbolName: string) {
   const copy = await copyToClipboard(symbolName);
   if (copy) {
-    showToast('check_circle', 'Copied symbol nmae.');
+    showToast('check_circle', 'Symbol nmae copied to clipboard.');
   }
 }
