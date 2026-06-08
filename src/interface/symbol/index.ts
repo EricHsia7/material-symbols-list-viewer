@@ -1,4 +1,5 @@
 import { Details } from '../../data/details';
+import { showToast } from '../../toast';
 import { copyToClipboard } from '../../tools/copy';
 import { setGlyph } from '../icons';
 import { searchKeyword } from '../search';
@@ -120,4 +121,7 @@ export function updateSymbolSection(symbolName: string, details: Details): void 
 
 async function copySymbolName(symbolName: string) {
   const copy = await copyToClipboard(symbolName);
+  if (copy) {
+    showToast('check_circle', 'Copied symbol nmae.');
+  }
 }

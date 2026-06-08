@@ -1,0 +1,132 @@
+@keyframes css-toast-fade-in {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) scale(0.98);
+  }
+
+  13% {
+    opacity: 1;
+    transform: translateX(-50%) scale(1);
+  }
+
+  89% {
+    opacity: 1;
+    transform: translateX(-50%) scale(1);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateX(-50%) scale(0.95);
+  }
+}
+
+/* toast */
+.css_toast {
+  width: clamp(180px, calc(100% - 20px), 450px);
+  height: 45px;
+  border-radius: calc(45px / 2);
+  position: fixed;
+  left: 50%;
+  bottom: calc(20px + var(--m-cssvar-safe-area-bottom));
+  opacity: 0;
+  transform: translateX(-50%) scale(0.98);
+  background: var(--m-cssvar-ffffff-45);
+  border-width: 1px;
+  border-style: solid;
+  border-color: var(--m-cssvar-ededf2);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  overflow: clip;
+  will-change: transform, opacity;
+  visibility: hidden;
+}
+
+.css_toast[displayed="true"] {
+  visibility: visible;
+}
+
+.css_toast[displayed="true"].css_toast_fade_in {
+  animation-name: css-toast-fade-in;
+  animation-duration: 2800ms;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-in-out;
+}
+
+/* toast > glyph */
+.css_toast .css_toast_glyph {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 45px;
+  height: 45px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@keyframes css-fill-toast-glyph {
+  0% {
+    --m-cssvar-font-variation-settings-fill: 0;
+  }
+
+  13% {
+    --m-cssvar-font-variation-settings-fill: 1;
+  }
+
+  100% {
+    --m-cssvar-font-variation-settings-fill: 1;
+  }
+}
+
+.css_toast .css_toast_glyph span.css_material_symbols_rounded {
+  color: var(--m-cssvar-333333);
+  --m-cssvar-font-variation-settings-fill: 0;
+}
+
+.css_toast[displayed="true"].css_toast_fade_in .css_toast_glyph span.css_material_symbols_rounded {
+  animation-name: css-fill-toast-glyph;
+  animation-duration: 2800ms;
+  /* avoid css-toast-fade-in from synchronizing with this shorter timeline */
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-in-out;
+}
+
+.css_toast .css_toast_message {
+  position: absolute;
+  top: 0px;
+  left: 45px;
+  width: calc(100% - 45px);
+  height: 45px;
+  color: var(--m-cssvar-333333);
+  font-size: 17px;
+  word-break: keep-all;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  overflow: clip;
+}
+
+.css_toast[button="true"] .css_toast_message {
+  width: calc(100% - 45px - 90px);
+}
+
+.css_toast .css_toast_button {
+  position: absolute;
+  top: 0px;
+  right: 15px;
+  width: calc(90px - 15px);
+  height: 45px;
+  color: var(--m-cssvar-main-color);
+  font-size: 17px;
+  text-decoration: underline;
+  word-break: keep-all;
+  white-space: nowrap;
+  text-align: right;
+  line-height: 45px;
+  overflow: clip;
+  visibility: hidden;
+}
+
+.css_toast[button="true"] .css_toast_button {
+  visibility: visible;
+}
