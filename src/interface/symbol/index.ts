@@ -1,5 +1,5 @@
 import { Details } from '../../data/details';
-import { showToast } from '../../toast';
+import { showToast } from '../toast';
 import { copyToClipboard } from '../../tools/copy';
 import { setGlyph } from '../icons';
 import { searchKeyword } from '../search';

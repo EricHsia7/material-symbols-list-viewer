@@ -1,4 +1,4 @@
-import { setGlyph } from '../interface/icons';
+import { setGlyph } from '../icons';
 
 const toastElement = document.querySelector('.css_toast') as HTMLElement;
 const toastGlyphElement = toastElement.querySelector('.css_toast_glyph') as HTMLElement;
