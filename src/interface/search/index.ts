@@ -163,6 +163,7 @@ export function showSearch(): void {
       searchPanelElement.classList.remove('css_search_panel_fade_in');
 
       searchInputElement.focus();
+      searchInputElement.select();
     },
     { once: true }
   );
