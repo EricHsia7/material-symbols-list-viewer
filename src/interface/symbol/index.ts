@@ -136,7 +136,7 @@ async function copySymbolName(symbolName: string) {
 async function copySymbolLink(symbolName: string) {
   const url = new URL('https://erichsia7.github.io/material-symbols-list-viewer/');
   url.searchParams.set('symbol', symbolName);
-  const copy = await copyToClipboard(encodeURIComponent(url.toString()));
+  const copy = await copyToClipboard(url.toString());
   if (copy) {
     showToast('check_circle', 'Link copied to clipboard.');
   }
