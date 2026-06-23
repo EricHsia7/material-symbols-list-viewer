@@ -2,6 +2,7 @@ import { setGlyph } from '../icons';
 
 const toastElement = document.querySelector('.css_toast') as HTMLElement;
 const toastGlyphElement = toastElement.querySelector('.css_toast_glyph') as HTMLElement;
+const toastGlyphSpanElement = toastElement.querySelector('span.css_material_symbols_rounded') as HTMLElement;
 const toastMessageElement = toastElement.querySelector('.css_toast_message') as HTMLElement;
 const toastButtonElement = toastElement.querySelector('.css_toast_button') as HTMLElement;
 
@@ -11,7 +12,20 @@ export interface ToastButton {
 }
 
 export function showToast(glyph: string, message: string, button?: ToastButton | null): void {
-  setGlyph(toastGlyphElement, glyph);
+  const toastElementAnimations = toastElement.getAnimations();
+  const toastIconSpanElementAnimations = toastGlyphSpanElement.getAnimations();
+
+  for (const animation of toastElementAnimations) {
+    animation.cancel();
+    animation.play();
+  }
+
+  for (const animation of toastIconSpanElementAnimations) {
+    animation.cancel();
+    animation.play();
+  }
+
+  toastGlyphSpanElement.innerText = glyph;
   toastMessageElement.innerText = message;
 
   if (typeof button === 'object' && button !== null && button !== undefined) {
@@ -35,13 +49,11 @@ export function showToast(glyph: string, message: string, button?: ToastButton |
 
   toastElement.addEventListener(
     'animationend',
-    function (event: AnimationEvent) {
+    function () {
       toastElement.setAttribute('displayed', 'false');
-      toastElement.classList.remove('css_toast_fade_in');
     },
     { once: true }
   );
 
   toastElement.setAttribute('displayed', 'true');
-  toastElement.classList.add('css_toast_fade_in');
 }

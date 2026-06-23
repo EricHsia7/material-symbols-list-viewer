@@ -43,9 +43,6 @@
 
 .css_toast[displayed="true"] {
   visibility: visible;
-}
-
-.css_toast[displayed="true"].css_toast_fade_in {
   animation-name: css-toast-fade-in;
   animation-duration: 2800ms;
   animation-fill-mode: forwards;
@@ -83,7 +80,7 @@
   --m-cssvar-font-variation-settings-fill: 0;
 }
 
-.css_toast[displayed="true"].css_toast_fade_in .css_toast_glyph span.css_material_symbols_rounded {
+.css_toast[displayed="true"] .css_toast_glyph span.css_material_symbols_rounded {
   animation-name: css-fill-toast-glyph;
   animation-duration: 2800ms;
   /* avoid css-toast-fade-in from synchronizing with this shorter timeline */
