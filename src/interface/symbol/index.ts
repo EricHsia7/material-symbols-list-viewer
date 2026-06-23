@@ -37,6 +37,12 @@ export function updateSymbolSection(symbolName: string, details: Details): void 
     };
   }
 
+  function updateCopyLinkAction(symbolName: string): void {
+    symbolActionCopyLinkElement.onclick = function () {
+      copySymbolLink(symbolName);
+    };
+  }
+
   function updateCategory(): void {
     // TODO: details -> category
   }
@@ -111,6 +117,7 @@ export function updateSymbolSection(symbolName: string, details: Details): void 
     updateGlyph(symbolName);
     updateName(symbolName);
     updateCopyNameAction(symbolName);
+    updateCopyLinkAction(symbolName);
     updateCategory();
     updateDescription(details.description);
     updateKeywords(details.keywords);
@@ -123,5 +130,14 @@ async function copySymbolName(symbolName: string) {
   const copy = await copyToClipboard(symbolName);
   if (copy) {
     showToast('check_circle', 'Symbol name copied to clipboard.');
+  }
+}
+
+async function copySymbolLink(symbolName: string) {
+  const url = new URL('https://erichsia7.github.io/material-symbols-list-viewer/');
+  url.searchParams.set('symbol', symbolName);
+  const copy = await copyToClipboard(encodeURIComponent(url.toString()));
+  if (copy) {
+    showToast('check_circle', 'Link copied to clipboard.');
   }
 }
