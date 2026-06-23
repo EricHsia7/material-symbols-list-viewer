@@ -1,8 +1,6 @@
-import { setGlyph } from '../icons';
-
 const toastElement = document.querySelector('.css_toast') as HTMLElement;
 const toastGlyphElement = toastElement.querySelector('.css_toast_glyph') as HTMLElement;
-const toastGlyphSpanElement = toastElement.querySelector('span.css_material_symbols_rounded') as HTMLElement;
+const toastGlyphSpanElement = toastGlyphElement.querySelector('span.css_material_symbols_rounded') as HTMLElement;
 const toastMessageElement = toastElement.querySelector('.css_toast_message') as HTMLElement;
 const toastButtonElement = toastElement.querySelector('.css_toast_button') as HTMLElement;
 
