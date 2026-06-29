@@ -17,19 +17,19 @@ export interface Description {
   descriptions: DescriptionSymbols;
 }
 
-const variableCache_similarity = {
+const variableCache_description = {
   available: false,
   data: {}
 };
 
 export async function getDescription(): Promise<Description> {
-  if (variableCache_similarity.available) {
-    return variableCache_similarity.data as Description;
+  if (variableCache_description.available) {
+    return variableCache_description.data as Description;
   }
   const manifest = await getManifest();
   const url = `${manifest.description.compressed}?_=${manifest.description.sha256}`;
   const data = (await fetchData(url)) as Description;
-  variableCache_similarity.available = true;
-  variableCache_similarity.data = data;
+  variableCache_description.available = true;
+  variableCache_description.data = data;
   return data;
 }
