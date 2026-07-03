@@ -69,13 +69,13 @@ function generateElementOfSearchResult(): HTMLElement {
   return element;
 }
 
-function updateSearch(): void {
+async function updateSearch() {
   const query = searchInputElement.value;
   if (query === previousQuery) {
     return;
   }
 
-  const searchResults = searchFor(query);
+  const searchResults = await searchFor(query);
   updateSearchResults(searchResults);
   previousQuery = query;
 }
