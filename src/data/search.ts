@@ -60,6 +60,9 @@ export async function initializeSearch(): Promise<true> {
 }
 
 export async function searchFor(query: string, searchFrom: number = 0, skipBroadTerms: boolean = true, broadThreshold: number = 0.3): Promise<SearchResultArray> {
+  if (query === '') {
+    return [];
+  }
   const result = await new Promise((resolve, reject) => {
     searchWorkerResolution.push(resolve); // Store the resolve function
 
