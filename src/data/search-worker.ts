@@ -14,8 +14,8 @@ function initialize(searchIndex: SearchIndex) {
   const dictionary = searchIndex.dictionary.split(',');
   const symbols = searchIndex.symbols;
   const names = [];
-  const wordToSymbols: Record<string, Array<number>> = {}; // { w0: [0, 2], ... }
-  const symbolToWords: Array<Array<number>> = []; // [[0, 1, 2, 3], [4, 5, 6], ...]
+  const wordToSymbols: SearchStructure['wordToSymbols'] = {}; // { w0: [0, 2], ... }
+  const symbolToWords: SearchStructure['symbolToWords'] = []; // [[0, 1, 2, 3], [4, 5, 6], ...]
 
   let nameIndex = 0;
   for (const symbolKey in symbols) {
