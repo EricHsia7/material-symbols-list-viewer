@@ -46,7 +46,7 @@ module.exports = (env, argv) => {
         skipWaiting: true,
         exclude: [/\.map$/, /\.erm$/, /LICENSE\.txt$/],
         include: [/\.js|css|png$/, /index\.html$/],
-        cacheId: `material-symbols-list-viewer-${new Date().getTime()}`,
+        cacheId: `material-symbols-list-viewer`,
         navigateFallback: './index.html',
         navigateFallbackDenylist: [/\/[^\/]+\.(?!(html$))[^\/.]{0,}$/],
         runtimeCaching: [
