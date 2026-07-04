@@ -1,4 +1,5 @@
-const { inflate } = require('pako/lib/inflate');
+const { inflate } = require('pako');
+const decoder = new TextDecoder();
 
 export async function fetchData(url: string): Promise<object> {
   // Fetch data
@@ -28,10 +29,7 @@ export async function fetchData(url: string): Promise<object> {
     position += chunk.length;
   }
 
-  // Create a blob from the concatenated Uint8Array
-  const blob = new Blob([uint8Array], { type: 'application/gzip' });
-  const arrayBuffer = await blob.arrayBuffer();
-  const inflatedData = inflate(arrayBuffer, { to: 'string' });
+  const inflatedData = inflate(uint8Array.buffer) as ArrayBuffer;
 
-  return JSON.parse(inflatedData);
+  return JSON.parse(decoder.decode(inflatedData));
 }
