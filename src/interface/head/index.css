@@ -37,6 +37,7 @@
   font-size: 30px;
   width: 30px;
   height: 30px;
+  --m-cssvar-font-variation-settings-fill: 1;
 }
 
 /* head > container > search */
