@@ -12,18 +12,18 @@ class ErrorCodePlugin {
   }
 
   apply(compiler) {
-    compiler.hooks.compilation.tap('ErrorCodePlugin', (compilation) => {
+    const pluginName = 'ErrorCodePlugin';
+
+    compiler.hooks.compilation.tap(pluginName, (compilation) => {
       compilation.hooks.processAssets.tap(
         {
-          name: 'ErrorCodePlugin',
+          name: pluginName,
           // This stage runs AFTER tree shaking and optimization
           stage: Compilation.PROCESS_ASSETS_STAGE_OPTIMIZE_SIZE
         },
         (assets) => {
           for (const [pathname, source] of Object.entries(assets)) {
             if (!pathname.endsWith('.js')) continue;
-
-            const { source: originalSource, map: originalMap } = compilation.getAsset(pathname).source.sourceAndMap();
 
             const code = source.source();
             const s = new MagicString(code);
@@ -59,8 +59,8 @@ class ErrorCodePlugin {
                 s.toString(), // The modified code
                 pathname, // The filename
                 newMap, // The map for specific changes
-                originalSource, // The code before changes
-                originalMap, // The map before changes
+                source.source(), // The code before changes
+                source.map(), // The map before changes
                 true // Remove original source from the map? (usually true for production)
               )
             );
@@ -74,14 +74,17 @@ class ErrorCodePlugin {
   }
 
   isNewError(node) {
+    if (node === null) return false;
     return node.type === 'NewExpression' && node.callee.type === 'Identifier' && node.callee.name === 'Error';
   }
 
   isNewTypeError(node) {
+    if (node === null) return false;
     return node.type === 'NewExpression' && node.callee.type === 'Identifier' && node.callee.name === 'TypeError';
   }
 
   walk(node, callback) {
+    if (node === null) return false;
     callback(node);
     for (const key in node) {
       if (node[key] && typeof node[key] === 'object') {

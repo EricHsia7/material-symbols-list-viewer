@@ -1,4 +1,4 @@
-import { fetchData } from '../loader';
+import { fetchInflate } from '../loader';
 import { getManifest } from './get-manifest';
 
 export interface Index {
@@ -16,7 +16,8 @@ export async function getIndex(): Promise<Index> {
   }
   const manifest = await getManifest();
   const url = `${manifest.index.compressed}?_=${manifest.index.sha256}`;
-  const data = (await fetchData(url)) as Index;
+  const inflatedData = await fetchInflate(url);
+  const data = JSON.parse(new TextDecoder().decode(inflatedData)) as Index;
   variableCache_index.available = true;
   variableCache_index.data = data;
   return data;

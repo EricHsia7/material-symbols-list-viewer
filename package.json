@@ -51,6 +51,6 @@
   },
   "dependencies": {
     "js-levenshtein": "1.1.6",
-    "pako": "3.0.0"
+    "fflate": "0.8.3"
   }
 }
