@@ -3,7 +3,7 @@ declare const self: DedicatedWorkerGlobalScope;
 // export {}; // make a script a module if no any export or import
 
 import { Decompress } from 'fflate';
-import { LoaderMessageData, LoaderMessageDone, LoaderMessageError, LoaderMessageProgress } from './loader';
+import { LoaderMessageData, LoaderMessageDone, LoaderMessageError } from './loader';
 
 self.onmessage = function (event: MessageEvent): void {
   const { id, url } = event.data;
