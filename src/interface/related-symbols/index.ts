@@ -8,6 +8,8 @@ const headElement = relatedSymbolsSection.querySelector('.css_related_symbol_hea
 const viewControlElement = headElement.querySelector('.css_related_symbol_view_control') as HTMLElement;
 const [viewControlButtonGridElement, viewControlButtonListElement] = viewControlElement.querySelectorAll('.css_related_symbol_view_control_button') as NodeListOf<HTMLElement>;
 
+const symbolElements: Array<HTMLElement> = []; // div.css_related_symbol(n) in div.css_related_symbol_body(1)
+
 let previousSymbolNames: Details['similarSymbols'] = [];
 
 export function initializeRelatedSymbolsEvents(): void {
@@ -86,7 +88,6 @@ export function updateRelatedSymbolsSection(symbolNames: Details['similarSymbols
 
   bodyElement.setAttribute('empty', symbolNamesQuantity === 0 ? 'true' : 'false');
 
-  const symbolElements = Array.from(bodyElement.querySelectorAll('.css_related_symbol'));
   const currentSymbolElementsLength = symbolElements.length;
   if (symbolNamesQuantity !== currentSymbolElementsLength) {
     const difference = currentSymbolElementsLength - symbolNamesQuantity;

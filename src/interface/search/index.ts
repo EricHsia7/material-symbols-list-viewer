@@ -7,6 +7,8 @@ const searchPanelElement = searchElement.querySelector('.css_search_panel') as H
 const searchInputElement = searchPanelElement.querySelector('.css_search_input input[type="text"]') as HTMLInputElement;
 const searchResultsElement = searchPanelElement.querySelector('.css_search_results') as HTMLElement;
 
+const searchResultElements: Array<HTMLElement> = []; // div.css_search_result(n) in div.css_search_results(1)
+
 let initialized: boolean = false;
 let previousQuery: string = '';
 let previousSearchResults: SearchResultArray = [];
@@ -116,7 +118,6 @@ function updateSearchResults(searchResults: SearchResultArray): void {
 
   searchPanelElement.style.setProperty('--m-visible-search-results-quantity', Math.min(searchResultsQuantity, 10).toString());
 
-  const searchResultElements = Array.from(searchResultsElement.querySelectorAll('.css_search_result'));
   const currentSearchResultElementsLength = searchResultElements.length;
   if (searchResultsQuantity !== currentSearchResultElementsLength) {
     const difference = currentSearchResultElementsLength - searchResultsQuantity;

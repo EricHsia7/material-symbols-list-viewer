@@ -17,6 +17,8 @@ const keywordsElement = symbolInfoElement.querySelector('.css_symbol_info_keywor
 const symbolActionsElement = symbolInfoElement.querySelector('.css_symbol_info_actions') as HTMLElement;
 const [symbolActionCopyNameElement, symbolActionShuffleElement, symbolActionCopyLinkElement] = symbolActionsElement.querySelectorAll('.css_symbol_info_action') as NodeListOf<HTMLElement>;
 
+const keywordElements: Array<HTMLElement> = []; // div.css_symbol_info_keyword(n) in div.css_symbol_info_keywords(1)
+
 let previousSymbolName: string = '';
 let previousKeywords: Details['keywords'] = [];
 
@@ -80,7 +82,6 @@ export function updateSymbolSection(symbolName: string, details: Details): void 
 
     const keywordsQuantity = keywords.length;
 
-    const keywordElements = Array.from(keywordsElement.querySelectorAll('.css_symbol_info_keyword'));
     const currentKeywordElementsLength = keywordElements.length;
     if (keywordsQuantity !== currentKeywordElementsLength) {
       const difference = currentKeywordElementsLength - keywordsQuantity;
