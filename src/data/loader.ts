@@ -1,35 +1,78 @@
-const { inflate } = require('pako');
-const decoder = new TextDecoder();
+export interface LoaderMessageData {
+  type: 'data';
+  id: number;
+  chunk: Uint8Array;
+  final: boolean;
+}
 
-export async function fetchData(url: string): Promise<object> {
-  // Fetch data
-  const response = await fetch(url);
-  if (!response.ok) {
-    throw new Error(`HTTP error! status: ${response.status}`);
-  }
+export interface LoaderMessageDone {
+  type: 'done';
+  id: number;
+  loaded: number;
+  total: number;
+}
 
-  // Read chunks
-  const reader = response.body.getReader();
-  const chunks = [];
-  let receivedLength = 0;
-  while (true) {
-    const { done, value } = await reader.read();
-    if (done) {
+export interface LoaderMessageError {
+  type: 'error';
+  id: number;
+  error: Error['message'];
+}
+
+export type LoaderMessage = LoaderMessageData | LoaderMessageDone | LoaderMessageError;
+
+export interface LoaderJob {
+  resolve: Function;
+  reject: Function;
+  chunks: Array<Uint8Array>;
+}
+
+const worker = new Worker(new URL('./loader-worker.ts', import.meta.url));
+
+let nextId: number = 0;
+const pending = new Map<number, LoaderJob>();
+
+worker.onmessage = (event: MessageEvent) => {
+  const message = event.data as LoaderMessage;
+  const job = pending.get(message.id);
+  if (!job) return;
+
+  switch (message.type) {
+    case 'data':
+      job.chunks.push(message.chunk); // inflated Uint8Array
       break;
-    }
-    chunks.push(value);
-    receivedLength += value.length;
+    case 'done':
+      pending.delete(message.id);
+      job.resolve(concatChunks(job.chunks));
+      break;
+    case 'error':
+      pending.delete(message.id);
+      job.reject(new Error(message.error));
+      break;
   }
+};
 
-  // Concatenate all the chunks into a single Uint8Array
-  const uint8Array = new Uint8Array(receivedLength);
-  let position = 0;
+worker.onerror = (e) => console.error('Worker crashed:', e.message);
+
+function concatChunks(chunks: Array<Uint8Array>): Uint8Array {
+  const size = chunks.reduce((n, c) => n + c.length, 0);
+  const result = new Uint8Array(size);
+  let pos = 0;
   for (const chunk of chunks) {
-    uint8Array.set(chunk, position);
-    position += chunk.length;
+    result.set(chunk, pos);
+    pos += chunk.length;
   }
+  return result;
+}
 
-  const inflatedData = inflate(uint8Array.buffer) as ArrayBuffer;
-
-  return JSON.parse(decoder.decode(inflatedData));
+/**
+ * fetch a url, and inflate the response
+ * @param url URL to fetch
+ * @returns inflated Uint8Array
+ */
+export function fetchInflate(url: string): Promise<Uint8Array> {
+  return new Promise((resolve, reject) => {
+    const id = nextId++;
+    pending.set(id, { resolve, reject, chunks: [] });
+    worker.postMessage({ id, url });
+  });
 }

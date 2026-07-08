@@ -1,4 +1,4 @@
-import { fetchData } from '../loader';
+import { fetchInflate } from '../loader';
 import { getManifest } from './get-manifest';
 
 /**
@@ -34,7 +34,8 @@ export async function getSimilarity(): Promise<Similarity> {
   }
   const manifest = await getManifest();
   const url = `${manifest.similarity.compressed}?_=${manifest.similarity.sha256}`;
-  const data = (await fetchData(url)) as Similarity;
+  const inflatedData = await fetchInflate(url);
+  const data = JSON.parse(new TextDecoder().decode(inflatedData)) as Similarity;
   variableCache_similarity.available = true;
   variableCache_similarity.data = data;
   return data;

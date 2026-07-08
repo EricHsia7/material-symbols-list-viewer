@@ -1,4 +1,4 @@
-import { fetchData } from '../loader';
+import { fetchInflate } from '../loader';
 import { getManifest } from './get-manifest';
 
 export type DescriptionDictionary = string;
@@ -28,7 +28,8 @@ export async function getDescription(): Promise<Description> {
   }
   const manifest = await getManifest();
   const url = `${manifest.description.compressed}?_=${manifest.description.sha256}`;
-  const data = (await fetchData(url)) as Description;
+  const inflatedData = await fetchInflate(url);
+  const data = JSON.parse(new TextDecoder().decode(inflatedData)) as Description;
   variableCache_description.available = true;
   variableCache_description.data = data;
   return data;

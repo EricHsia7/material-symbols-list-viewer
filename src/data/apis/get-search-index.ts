@@ -1,4 +1,4 @@
-import { fetchData } from '../loader';
+import { fetchInflate } from '../loader';
 import { getManifest } from './get-manifest';
 
 /**
@@ -37,7 +37,8 @@ export async function getSearchIndex(): Promise<SearchIndex> {
   }
   const manifest = await getManifest();
   const url = `${manifest.search_index.compressed}?_=${manifest.search_index.sha256}`;
-  const data = (await fetchData(url)) as SearchIndex;
+  const inflatedData = await fetchInflate(url);
+  const data = JSON.parse(new TextDecoder().decode(inflatedData)) as SearchIndex;
   variableCache_searchIndex.available = true;
   variableCache_searchIndex.data = data;
   return data;
