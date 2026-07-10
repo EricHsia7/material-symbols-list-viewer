@@ -50,6 +50,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
 
 .css_head .css_head_container .css_head_search span.css_material_symbols_rounded {
