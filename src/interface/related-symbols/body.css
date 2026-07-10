@@ -46,7 +46,6 @@
   border-color: var(--m-cssvar-ededf2);
   border-radius: 12px;
   background: var(--m-cssvar-ffffff);
-  cursor: pointer;
 }
 
 /* view: grid */
@@ -72,7 +71,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  cursor: pointer;
 }
 
 /* view: grid */
@@ -89,7 +87,6 @@
 
 .css_related_symbols_section .css_related_symbol_body .css_related_symbol .css_related_symbol_glyph span.css_material_symbols_rounded {
   color: var(--m-cssvar-333333);
-  cursor: pointer;
 }
 
 /* view: grid */
@@ -109,7 +106,6 @@
 /* body > symbol > text */
 .css_related_symbols_section .css_related_symbol_body .css_related_symbol .css_related_symbol_text {
   display: flex;
-  cursor: pointer;
 }
 
 /* view: grid */
@@ -128,14 +124,12 @@
   font-weight: 600;
   color: var(--m-cssvar-333333);
   word-break: break-all;
-  cursor: pointer;
 }
 
 /* body > symbol > text > description */
 .css_related_symbols_section .css_related_symbol_body .css_related_symbol .css_related_symbol_text .css_related_symbol_description {
   font-size: 12px;
   color: var(--m-cssvar-333333-60);
-  cursor: pointer;
 }
 
 /* view: grid */

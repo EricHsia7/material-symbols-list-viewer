@@ -23,7 +23,6 @@
   height: 45px;
   contain: layout;
   overflow: clip;
-  cursor: pointer;
 }
 
 /* search > panel > results > result > glyph */
