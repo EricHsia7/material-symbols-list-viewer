@@ -48,6 +48,7 @@
   background: var(--m-cssvar-ffffff);
   border: 1px solid var(--m-cssvar-f9f9fb);
   border-radius: 15px;
+  cursor: pointer;
 }
 
 /* info > actions */
@@ -72,6 +73,7 @@
   justify-content: center;
   font-size: 18px;
   font-weight: 500;
+  cursor: pointer;
 }
 
 .css_symbol_section .css_symbol_info .css_symbol_info_actions .css_symbol_info_action span.css_material_symbols_rounded {
