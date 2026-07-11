@@ -1,31 +1,30 @@
 const path = require('path');
 const fs = require('fs');
 const webpack = require('webpack');
-const TerserPlugin = require('terser-webpack-plugin');
+const MinimizerPlugin = require('minimizer-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
-const AdvancedPreset = require('cssnano-preset-advanced');
+const RemoveEmptyScriptsPlugin = require('webpack-remove-empty-scripts');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const WorkboxPlugin = require('workbox-webpack-plugin');
-const MangleCssClassPlugin = require('mangle-css-class-webpack-plugin');
 const { SubresourceIntegrityPlugin } = require('webpack-subresource-integrity');
 const postcssColorMixFunction = require('@csstools/postcss-color-mix-function');
 const { Hasher } = require('./hasher');
 const { ErrorCodePlugin } = require('./plugins/error-code-plugin');
 const { PostCssOptimizationPlugin } = require('./plugins/postcss-optimization-plugin');
+const { MangleCssNamespacePlugin } = require('./plugins/mangle-css-namespace-plugin');
 
 module.exports = (env, argv) => {
   return {
     plugins: [
+      new RemoveEmptyScriptsPlugin(),
       new MiniCssExtractPlugin({
         filename: '[contenthash].css',
         runtime: false
       }),
-      new MangleCssClassPlugin({
-        classNameRegExp: '(css_|m-cssvar-)[a-z0-9_-]*',
+      new MangleCssNamespacePlugin({
+        prefixes: ['css_', 'm-css-', 'm-cssvar-'],
         mangleCssVariables: true,
-        /*ignorePrefix: [''],*/
-        log: false
+        emitManifest: true
       }),
       new HtmlWebpackPlugin({
         template: './src/index.html', // Path to your custom HTML template file
@@ -112,8 +111,20 @@ module.exports = (env, argv) => {
           use: {
             loader: 'babel-loader',
             options: {
-              presets: [['@babel/preset-env', { exclude: ['@babel/plugin-transform-regenerator', '@babel/plugin-transform-template-literals', '@babel/plugin-transform-for-of'] }], 'babel-preset-modules', '@babel/preset-typescript'],
-              plugins: ['@babel/plugin-transform-runtime']
+              presets: [
+                [
+                  '@babel/preset-env',
+                  {
+                    modules: false,
+                    exclude: ['@babel/plugin-transform-regenerator', '@babel/plugin-transform-template-literals', '@babel/plugin-transform-for-of']
+                  }
+                ],
+                '@babel/preset-typescript'
+              ],
+              plugins: ['@babel/plugin-transform-runtime'],
+              assumptions: {
+                constantReexports: true
+              }
             }
           }
         },
@@ -131,23 +142,26 @@ module.exports = (env, argv) => {
       minimize: true,
       minimizer: [
         new ErrorCodePlugin(),
-        new TerserPlugin({
+        new MinimizerPlugin({
+          test: /\.[cm]?js(\?.*)?$/i,
+          minify: MinimizerPlugin.terserMinify,
           extractComments: true,
-          terserOptions: {
+          minimizerOptions: {
             compress: {
-              drop_console: [/*'log',*/ 'assert', 'clear', 'count', 'countReset', 'debug', 'dir', 'dirxml', 'error', 'group', 'groupCollapsed', 'groupEnd', 'info', 'profile', 'profileEnd', 'table', 'time', 'timeEnd', 'timeLog', 'timeStamp', 'trace', 'warn']
+              drop_console: [/* 'log', */ 'assert', 'clear', 'count', 'countReset', 'debug', 'dir', 'dirxml', 'error', 'group', 'groupCollapsed', 'groupEnd', 'info', 'profile', 'profileEnd', 'table', 'time', 'timeEnd', 'timeLog', 'timeStamp', 'trace', 'warn']
             }
           }
         }),
         new PostCssOptimizationPlugin({
           plugins: [postcssColorMixFunction({ preserve: false, enableProgressiveCustomProperties: false })]
         }),
-        new CssMinimizerPlugin({
+        new MinimizerPlugin({
+          test: /\.css(\?.*)?$/i,
+          minify: MinimizerPlugin.cssnanoMinify,
           parallel: true,
           minimizerOptions: {
             preset: [
               'default',
-              AdvancedPreset,
               {
                 discardComments: { removeAll: true }
               }

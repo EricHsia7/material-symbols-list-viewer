@@ -7,6 +7,7 @@ import { getManifest } from './data/apis/get-manifest';
 import { initializeSearchEvents } from './interface/search';
 import { initializeHeadEvents } from './interface/head';
 import { initializeRelatedSymbolsEvents } from './interface/related-symbols';
+import { getDescription } from './data/apis/get-description';
 
 import './interface/theme.css';
 
@@ -40,7 +41,7 @@ interface AppWindow extends Window {
 (window as unknown as AppWindow).app = {
   initialize: async function () {
     await getManifest();
-    await Promise.all([getSearchIndex(), getSimilarity()]);
+    await Promise.all([getSearchIndex(), getSimilarity(), getDescription()]);
     await initializeSearch();
 
     initializeSymbol(getQueryParameter('symbol') || 'interests');
