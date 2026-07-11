@@ -23,12 +23,12 @@ export function showToast(glyph: string, message: string, button?: ToastButton |
     animation.play();
   }
 
-  toastGlyphSpanElement.innerText = glyph;
-  toastMessageElement.innerText = message;
+  toastGlyphSpanElement.textContent = glyph;
+  toastMessageElement.textContent = message;
 
   if (typeof button === 'object' && button !== null && button !== undefined) {
     if (typeof button?.action === 'function') {
-      toastButtonElement.innerText = button.text;
+      toastButtonElement.textContent = button.text;
       toastButtonElement.addEventListener(
         'click',
         function () {

@@ -18,7 +18,7 @@
   left: 0px;
   width: 100%;
   height: 100%;
-  color: var(--m-cssvar-333333-60);
+  color: var(--m-cssvar-333333-60-flattened);
   font-size: 18px;
   display: flex;
   align-items: center;
@@ -129,7 +129,7 @@
 /* body > symbol > text > description */
 .css_related_symbols_section .css_related_symbol_body .css_related_symbol .css_related_symbol_text .css_related_symbol_description {
   font-size: 12px;
-  color: var(--m-cssvar-333333-60);
+  color: var(--m-cssvar-333333-60-flattened);
 }
 
 /* view: grid */

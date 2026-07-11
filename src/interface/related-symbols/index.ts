@@ -60,7 +60,7 @@ export function updateRelatedSymbolsSection(symbolNames: Details['similarSymbols
     function updateName(thisElement: HTMLElement, thisSymbolName: string): void {
       const textElement = thisElement.querySelector('.css_related_symbol_text') as HTMLElement;
       const nameElement = textElement.querySelector('.css_related_symbol_name') as HTMLElement;
-      nameElement.innerText = thisSymbolName;
+      nameElement.textContent = thisSymbolName;
     }
 
     function updateDescription(thisElement: HTMLElement): void {}

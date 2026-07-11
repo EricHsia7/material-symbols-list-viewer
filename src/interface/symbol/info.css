@@ -26,7 +26,7 @@
 
 /* info > description */
 .css_symbol_section .css_symbol_info .css_symbol_info_description {
-  color: var(--m-cssvar-333333-60);
+  color: var(--m-cssvar-333333-60-flattened);
   word-break: break-word;
 }
 
@@ -44,7 +44,7 @@
   align-items: center;
   padding: 3px 10px;
   font-size: 13px;
-  color: var(--m-cssvar-333333-60);
+  color: var(--m-cssvar-333333-60-flattened);
   background: var(--m-cssvar-ffffff);
   border: 1px solid var(--m-cssvar-f9f9fb);
   border-radius: 15px;

@@ -50,17 +50,17 @@ export function updateSymbolSection(symbolName: string, details: Details): void 
   }
 
   function updateName(symbolName: string): void {
-    symbolNameElement.innerText = symbolName;
+    symbolNameElement.textContent = symbolName;
   }
 
   function updateDescription(description: Details['description']): void {
-    symbolDescription.innerText = description;
+    symbolDescription.textContent = description;
   }
 
   function updateKeywords(keywords: Details['keywords']): void {
     function updateKeyword(thisElement: HTMLElement, thisKeyword: string, previousKeyword: string | null): void {
       function updateText(thisElement: HTMLElement, thisKeyword: string): void {
-        thisElement.innerText = thisKeyword;
+        thisElement.textContent = thisKeyword;
       }
 
       function updateOnclick(thisElement: HTMLElement, thisKeyword: string): void {

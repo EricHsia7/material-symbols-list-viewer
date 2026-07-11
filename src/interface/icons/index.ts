@@ -1,7 +1,7 @@
 export function getIconElement(identifier: string): HTMLSpanElement {
   const iconElement = document.createElement('span');
   iconElement.classList.add('css_material_symbols_rounded');
-  iconElement.innerText = identifier;
+  iconElement.textContent = identifier;
   return iconElement;
 }
 
@@ -13,5 +13,5 @@ export function getBlankIconElement(): HTMLSpanElement {
 
 export function setGlyph(parentElement: HTMLElement, identifier: string): void {
   const thisSpanElement = parentElement.querySelector('span.css_material_symbols_rounded') as HTMLElement;
-  thisSpanElement.innerText = identifier;
+  thisSpanElement.textContent = identifier;
 }

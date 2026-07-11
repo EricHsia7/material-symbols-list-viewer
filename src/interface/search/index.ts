@@ -65,8 +65,12 @@ function generateElementOfSearchResult(): HTMLElement {
   const nameElement = document.createElement('div');
   nameElement.classList.add('css_search_result_name');
 
+  const scoreElement = document.createElement('div');
+  scoreElement.classList.add('css_search_result_score');
+
   element.appendChild(glyphElement);
   element.appendChild(nameElement);
+  element.appendChild(scoreElement);
 
   return element;
 }
@@ -90,8 +94,13 @@ function updateSearchResults(searchResults: SearchResultArray): void {
     }
 
     function updateSymbolName(thisElement: HTMLElement, thisSearchResult: SearchResult): void {
-      const symbolNameElement = thisElement.querySelector('.css_search_result_name') as HTMLElement;
-      symbolNameElement.innerText = thisSearchResult[0];
+      const nameElement = thisElement.querySelector('.css_search_result_name') as HTMLElement;
+      nameElement.textContent = thisSearchResult[0];
+    }
+
+    function updateScore(thisElement: HTMLElement, thisSearchResult: SearchResult): void {
+      const scoreElement = thisElement.querySelector('.css_search_result_score') as HTMLElement;
+      scoreElement.textContent = thisSearchResult[1].toString();
     }
 
     function updateOnclick(thisElement: HTMLElement, thisSearchResult: SearchResult): void {
@@ -107,9 +116,14 @@ function updateSearchResults(searchResults: SearchResultArray): void {
         updateSymbolName(thisElement, thisSearchResult);
         updateOnclick(thisElement, thisSearchResult);
       }
+
+      if (thisSearchResult[1] !== previousSearchResult[1]) {
+        updateScore(thisElement, thisSearchResult);
+      }
     } else {
       updateSymbol(thisElement, thisSearchResult);
       updateSymbolName(thisElement, thisSearchResult);
+      updateScore(thisElement, thisSearchResult);
       updateOnclick(thisElement, thisSearchResult);
     }
   }
