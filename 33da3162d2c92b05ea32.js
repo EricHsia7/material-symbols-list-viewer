@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunkmaterialSymbolsListViewer=self.webpackChunkmaterialSymbolsListViewer||[]).push([[467],{467(e,n,t){function r(e,n,t,r,i,o,u){try{var a=e[o](u),s=a.value}catch(e){return void t(e)}a.done?n(s):Promise.resolve(s).then(r,i)}function i(e){return function(){var n=this,t=arguments;return new Promise(function(i,o){var u=e.apply(n,t);function a(e){r(u,i,o,a,s,"next",e)}function s(e){r(u,i,o,a,s,"throw",e)}a(void 0)})}}t.d(n,{a:()=>i})}}]);
-//# sourceMappingURL=33da3162d2c92b05ea32.js.map
