@@ -1,4 +1,4 @@
-@keyframes css-toast-fade-in {
+@keyframes m-css-toast-fade-in {
   0% {
     opacity: 0;
     transform: translateX(-50%) scale(0.98);
@@ -43,7 +43,7 @@
 
 .css_toast[displayed="true"] {
   visibility: visible;
-  animation-name: css-toast-fade-in;
+  animation-name: m-css-toast-fade-in;
   animation-duration: 2800ms;
   animation-fill-mode: forwards;
   animation-timing-function: ease-in-out;
@@ -61,7 +61,7 @@
   align-items: center;
 }
 
-@keyframes css-fill-toast-glyph {
+@keyframes m-css-fill-toast-glyph {
   0% {
     --m-cssvar-font-variation-settings-fill: 0;
   }
@@ -81,9 +81,9 @@
 }
 
 .css_toast[displayed="true"] .css_toast_glyph span.css_material_symbols_rounded {
-  animation-name: css-fill-toast-glyph;
+  animation-name: m-css-fill-toast-glyph;
   animation-duration: 2800ms;
-  /* avoid css-toast-fade-in from synchronizing with this shorter timeline */
+  /* avoid m-css-toast-fade-in from synchronizing with this shorter timeline */
   animation-fill-mode: forwards;
   animation-timing-function: ease-in-out;
 }

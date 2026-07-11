@@ -18,7 +18,7 @@
 }
 
 .css_search.css_search_fade_in {
-  animation-name: css-fade-in;
+  animation-name: m-css-fade-in;
   animation-duration: var(--m-cssvar-transition-duration);
   animation-fill-mode: forwards;
   animation-timing-function: ease;
@@ -29,14 +29,14 @@
 }
 
 .css_search.css_search_fade_out {
-  animation-name: css-fade-in;
+  animation-name: m-css-fade-in;
   animation-duration: var(--m-cssvar-transition-duration);
   animation-fill-mode: forwards;
   animation-timing-function: ease;
   animation-direction: reverse;
 }
 
-@keyframes css-fade-in {
+@keyframes m-css-fade-in {
   0% {
     opacity: 0;
   }

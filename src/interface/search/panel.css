@@ -26,7 +26,7 @@
 }
 
 .css_search .css_search_panel.css_search_panel_fade_in {
-  animation-name: css-panel-in;
+  animation-name: m-css-panel-in;
   animation-duration: var(--m-cssvar-transition-duration);
   animation-timing-function: ease;
   animation-fill-mode: forwards;
@@ -38,7 +38,7 @@
 
 
 .css_search .css_search_panel.css_search_panel_fade_out {
-  animation-name: css-panel-in;
+  animation-name: m-css-panel-in;
   animation-duration: var(--m-cssvar-transition-duration);
   animation-timing-function: ease;
   animation-fill-mode: forwards;
@@ -52,7 +52,7 @@
   }
 }
 
-@keyframes css-panel-in {
+@keyframes m-css-panel-in {
   0% {
     transform: translateX(-50%) scale(0.95);
   }
