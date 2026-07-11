@@ -116,7 +116,7 @@ function updateSearchResults(searchResults: SearchResultArray): void {
 
   const searchResultsQuantity = searchResults.length;
 
-  searchPanelElement.style.setProperty('--m-visible-search-results-quantity', Math.min(searchResultsQuantity, 10).toString());
+  searchPanelElement.style.setProperty('--m-cssvar-visible-search-results-quantity', Math.min(searchResultsQuantity, 10).toString());
 
   const currentSearchResultElementsLength = searchResultElements.length;
   if (searchResultsQuantity !== currentSearchResultElementsLength) {

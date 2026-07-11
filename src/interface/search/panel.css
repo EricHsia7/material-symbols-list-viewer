@@ -1,4 +1,4 @@
-@property --m-visible-search-results-quantity {
+@property --m-cssvar-visible-search-results-quantity {
   syntax: '<number>';
   inherits: true;
   initial-value: 0;
@@ -22,7 +22,7 @@
   overflow: clip;
   box-sizing: border-box;
   min-height: 55px;
-  height: calc(55px + 45px * var(--m-visible-search-results-quantity));
+  height: calc(55px + 45px * var(--m-cssvar-visible-search-results-quantity));
 }
 
 .css_search .css_search_panel.css_search_panel_fade_in {
