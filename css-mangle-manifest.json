@@ -60,5 +60,6 @@
   "m-cssvar-safe-area-left": "gb",
   "m-cssvar-safe-area-right": "hb",
   "m-cssvar-safe-area-top": "ib",
-  "m-cssvar-transition-duration": "jb"
+  "m-cssvar-transition-duration": "jb",
+  "m-cssvar-visible-search-results-quantity": "kb"
 }
