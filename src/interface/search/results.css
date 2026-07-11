@@ -1,4 +1,4 @@
-/* search > panel > results */
+/* search > panel > results */
 .css_search .css_search_panel .css_search_results {
   position: absolute;
   top: 55px;
@@ -15,7 +15,7 @@
   display: none;
 }
 
-/* search > panel > results > result */
+/* search > panel > results > result */
 .css_search .css_search_panel .css_search_results .css_search_result {
   position: relative;
   left: 5px;
@@ -25,7 +25,7 @@
   overflow: clip;
 }
 
-/* search > panel > results > result > glyph */
+/* search > panel > results > result > glyph */
 .css_search .css_search_panel .css_search_results .css_search_result .css_search_result_glyph {
   position: absolute;
   left: 0px;
@@ -43,7 +43,7 @@
   color: var(--m-cssvar-333333);
 }
 
-/* search > panel > results > result > name */
+/* search > panel > results > result > name */
 .css_search .css_search_panel .css_search_results .css_search_result .css_search_result_name {
   position: absolute;
   left: 50px;
