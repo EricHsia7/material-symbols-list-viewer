@@ -2,10 +2,11 @@ import { getIntersection } from '../tools/array';
 import { levenshtein } from '../tools/levenshtein';
 import { getSearchIndex } from './apis/get-search-index';
 
-const variableCache_searchStructure = {
-  available: false,
-  data: {}
-};
+let searchStructureMemoryCache_available: boolean = false;
+let searchStructureMemoryCache_dictionary: Array<string> = [];
+let searchStructureMemoryCache_names: Array<string> = [];
+let searchStructureMemoryCache_wordToSymbols: Record<string, Array<number>> = {};
+let searchStructureMemoryCache_symbolToWords: Array<Array<number>> = [];
 
 export async function initializeSearch() {
   const searchIndex = await getSearchIndex();
@@ -38,19 +39,25 @@ export async function initializeSearch() {
     nameIndex++;
   }
 
-  variableCache_searchStructure.available = true;
-  variableCache_searchStructure.data = { dictionary, names, wordToSymbols, symbolToWords };
+  searchStructureMemoryCache_dictionary = dictionary;
+  searchStructureMemoryCache_names = names;
+  searchStructureMemoryCache_wordToSymbols = wordToSymbols;
+  searchStructureMemoryCache_symbolToWords = symbolToWords;
+  searchStructureMemoryCache_available = true;
 }
 
 export type SearchResult = [symbolName: string, score: number];
 export type SearchResultArray = Array<SearchResult>;
 
 export function searchFor(query: string, searchFrom: number = 0, skipBroadTerms: boolean = true, broadThreshold: number = 0.3): SearchResultArray {
-  if (!variableCache_searchStructure.available) {
+  if (!searchStructureMemoryCache_available) {
     return [];
   }
 
-  const { dictionary, names, wordToSymbols, symbolToWords } = variableCache_searchStructure.data;
+  const dictionary = searchStructureMemoryCache_dictionary;
+  const names = searchStructureMemoryCache_names;
+  const wordToSymbols = searchStructureMemoryCache_wordToSymbols;
+  const symbolToWords = searchStructureMemoryCache_symbolToWords;
 
   const broadLength = Math.round(names.length * broadThreshold);
 
