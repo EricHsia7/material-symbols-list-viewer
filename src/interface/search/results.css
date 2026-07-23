@@ -46,7 +46,7 @@
 /* search > panel > results > result > name */
 .css_search .css_search_panel .css_search_results .css_search_result .css_search_result_name {
   position: absolute;
-  left: 50px;
+  left: 48px;
   top: 0px;
   width: calc(100% - 48px - 5px - 60px - 5px);
   /* glyph: 48px + gap: 5px + score: 60px + padding: 10px */
