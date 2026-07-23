@@ -61,11 +61,13 @@
 /* info > actions > action */
 .css_symbol_section .css_symbol_info .css_symbol_info_actions .css_symbol_info_action {
   padding: 10px 12px;
+  /*
   border-style: solid;
   border-width: 1px;
   border-color: var(--m-cssvar-ededf2);
-  border-radius: 10px;
-  background: var(--m-cssvar-component-background);
+  */
+  border-radius: 18px;
+  background: var(--m-cssvar-f9f9fb);
   color: var(--m-cssvar-333333);
   display: flex;
   align-items: center;

@@ -34,8 +34,7 @@
   border-style: solid;
   border-width: 1px;
   border-color: var(--m-cssvar-ededf2);
-  border-radius: 10px;
-  background: var(--m-cssvar-component-background);
+  border-radius: 20px;
 }
 
 /* head > view control > button */
@@ -47,7 +46,7 @@
   justify-content: center;
   color: var(--m-cssvar-333333-60);
   background-color: transparent;
-  border-radius: 8px;
+  border-radius: 16px;
 }
 
 /* pressed: true */
