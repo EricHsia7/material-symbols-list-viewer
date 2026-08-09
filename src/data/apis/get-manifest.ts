@@ -29,7 +29,9 @@ export async function getManifest(): Promise<Manifest> {
   if (variableCache_manifest.available) {
     return variableCache_manifest.data as Manifest;
   }
-  const url = `https://erichsia7.github.io/material-symbols-list/manifest.json?_${new Date().getTime()}`;
+  const now = new Date().getTime();
+  const interval = 24 * 60 * 60 * 1000;
+  const url = `https://erichsia7.github.io/material-symbols-list/manifest.json?_${Math.floor(now / interval)}`;
   const response = await fetch(url);
   const json = (await response.json()) as Manifest;
 

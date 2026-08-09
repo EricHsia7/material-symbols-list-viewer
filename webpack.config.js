@@ -62,6 +62,23 @@ module.exports = (env, argv) => {
             }
           },
           {
+            urlPattern: /^https:\/\/erichsia7\.github\.io\/material-symbols-list\/manifest.json/,
+            handler: 'StaleWhileRevalidate',
+            options: {
+              cacheName: 'material-symbols-list-manifest',
+              expiration: {
+                maxEntries: 8,
+                maxAgeSeconds: 60 * 60 * 24
+              },
+              matchOptions: {
+                ignoreSearch: false
+              },
+              cacheableResponse: {
+                statuses: [0, 200]
+              }
+            }
+          },
+          {
             urlPattern: /^https:\/\/erichsia7\.github\.io\/material-symbols-list\/[a-z\-]+\.gz/,
             handler: 'StaleWhileRevalidate',
             options: {
