@@ -56,19 +56,18 @@ module.exports = (env, argv) => {
           },
           {
             urlPattern: /^https:\/\/fonts\.gstatic\.com/,
-            handler: 'StaleWhileRevalidate',
+            handler: 'CacheFirst',
             options: {
               cacheName: 'google-fonts-sources'
             }
           },
           {
             urlPattern: /^https:\/\/erichsia7\.github\.io\/material-symbols-list\/manifest.json/,
-            handler: 'StaleWhileRevalidate',
+            handler: 'CacheFirst',
             options: {
               cacheName: 'material-symbols-list-manifest',
               expiration: {
-                maxEntries: 8,
-                maxAgeSeconds: 60 * 60 * 24
+                maxEntries: 8
               },
               matchOptions: {
                 ignoreSearch: false
@@ -80,12 +79,11 @@ module.exports = (env, argv) => {
           },
           {
             urlPattern: /^https:\/\/erichsia7\.github\.io\/material-symbols-list\/[a-z\-]+\.gz/,
-            handler: 'StaleWhileRevalidate',
+            handler: 'CacheFirst',
             options: {
               cacheName: 'material-symbols-list',
               expiration: {
-                maxEntries: 32,
-                maxAgeSeconds: 60 * 60 * 24
+                maxEntries: 32
               },
               matchOptions: {
                 ignoreSearch: false
