@@ -132,7 +132,12 @@ module.exports = (env, argv) => {
                     exclude: ['@babel/plugin-transform-regenerator', '@babel/plugin-transform-template-literals', '@babel/plugin-transform-for-of']
                   }
                 ],
-                '@babel/preset-typescript'
+                [
+                  '@babel/preset-typescript',
+                  {
+                    onlyRemoveTypeImports: false
+                  }
+                ]
               ],
               plugins: ['@babel/plugin-transform-runtime'],
               assumptions: {
